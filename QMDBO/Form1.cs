@@ -113,20 +113,6 @@ namespace QMDBO
             richTextBox1.Text = ClassOpenFile.OpenFile();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ClassHelper.IsFormAlreadyOpen(typeof(Form2)) == null)
-            {
-                Form2 fm2 = new Form2();
-                fm2.ShowDialog();
-            }
-        }
-
         private void clearStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow myRow in dataGridView1.Rows)
@@ -141,12 +127,6 @@ namespace QMDBO
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ClassHelper.writeCSV(dataGridView1, "result.csv");
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutBox1 ab = new AboutBox1();
-            ab.ShowDialog();
         }
 
         // end class

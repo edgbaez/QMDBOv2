@@ -122,5 +122,16 @@ namespace QMDBO
             AboutBox1 ab = new AboutBox1();
             ab.ShowDialog();
         }
+
+        private void подключенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ClassHelper.IsFormAlreadyOpen(typeof(Form3)) == null)
+            {
+                Form3 childForm = new Form3();
+                childForm.MdiParent = this;
+                childForm.WindowState = FormWindowState.Maximized;
+                childForm.Show();
+            }
+        }
     }
 }

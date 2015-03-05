@@ -114,6 +114,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Category.datasource" />
     <None Include="database.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

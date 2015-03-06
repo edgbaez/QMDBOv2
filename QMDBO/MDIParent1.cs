@@ -112,8 +112,9 @@ namespace QMDBO
         {
             if (ClassHelper.IsFormAlreadyOpen(typeof(Form2)) == null)
             {
-                Form2 fm2 = new Form2();
-                fm2.ShowDialog();
+                Form2 childForm = new Form2();
+                childForm.MdiParent = this;
+                childForm.Show();
             }
         }
 

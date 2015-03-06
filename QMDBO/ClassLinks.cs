@@ -20,8 +20,10 @@ namespace QMDBO
         public string object_status { get; set; }
         public string last_ddl_time { get; set; }
 
-        public static List<ClassLinks> LoadLinksListFromFile(string path)
+        public static List<ClassLinks> LoadLinksListFromFile()
         {
+            string path = "links.csv";
+
             if (!File.Exists(path))
             {
                 using (var stream = File.CreateText(path))

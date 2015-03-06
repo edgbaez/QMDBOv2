@@ -9,7 +9,6 @@ namespace QMDBO
 {
     public partial class Form1 : Form
     {
-        public string path = "links.csv";
 
         public Form1()
         {
@@ -18,9 +17,8 @@ namespace QMDBO
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = ClassLinks.LoadLinksListFromFile(path);
+            dataGridView1.DataSource = ClassLinks.LoadLinksListFromFile();
             ClassHelper.PopulateComboBox(comboBox1);
-            label3.Text = "Загружен файл " + path;
         }
 
         private void buttons_Disable()

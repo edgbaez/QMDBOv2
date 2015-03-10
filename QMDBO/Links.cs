@@ -5,14 +5,14 @@ namespace QMDBO
 {
     public partial class Links
     {
-        public int id { get; set; }
-        public int category_id { get; set; }
-        public string name { get; set; }
-        public string host { get; set; }
-        public string port { get; set; }
-        public string servicename { get; set; }
-        public string user { get; set; }
-        public string pass { get; set; }
+        public int Id { get; set; }
+        public int CategoryId { get; set; }
+        public string Name { get; set; }
+        public string Host { get; set; }
+        public string Port { get; set; }
+        public string Servicename { get; set; }
+        public string User { get; set; }
+        public string Pass { get; set; }
 
 
         public virtual Category Category { get; set; }

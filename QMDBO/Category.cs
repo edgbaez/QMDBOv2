@@ -10,8 +10,8 @@ namespace QMDBO
             this.Links = new ObservableListSource<Links>();
         }
 
-        public long id { get; set; }
-        public string name { get; set; }
+        public int CategoryId { get; set; }
+        public string Name { get; set; }
 
         public virtual ObservableListSource<Links> Links { get; set; }
     }

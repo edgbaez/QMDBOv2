@@ -21,7 +21,7 @@ namespace QMDBO
             _context = new DatabaseContext();
             _context.Categories.Load();
             this.categoryBindingSource.DataSource = _context.Categories.Local.ToBindingList();
-            dataGridView1.DataSource = ClassLinks.LoadLinksListFromFile();
+            //dataGridView1.DataSource = ClassLinks.LoadLinksListFromFile();
             ClassHelper.PopulateComboBox(comboBox1);
         }
 
@@ -56,7 +56,7 @@ namespace QMDBO
             if (ClassHelper.QuestionYesNoStart(richTextBox1.Text))
             {
                 this.buttons_Disable();
-                ClassWork cw = new ClassWork(richTextBox1.Text, textBox1.Text, dataGridView1, ClassWork.ONE, comboBox1_value);
+                ClassWork cw = new ClassWork(richTextBox1.Text, textBox1.Text, linksDataGridView, ClassWork.ONE, comboBox1_value);
                 backgroundWorker1.RunWorkerAsync(cw);
             }
         }
@@ -68,7 +68,7 @@ namespace QMDBO
             if (ClassHelper.QuestionYesNoStart(richTextBox1.Text))
             {
                 this.buttons_Disable();
-                ClassWork cw = new ClassWork(richTextBox1.Text, textBox1.Text, dataGridView1, ClassWork.ALL, comboBox1_value);
+                ClassWork cw = new ClassWork(richTextBox1.Text, textBox1.Text, linksDataGridView, ClassWork.ALL, comboBox1_value);
                 backgroundWorker1.RunWorkerAsync(cw);
             }
         }
@@ -117,7 +117,7 @@ namespace QMDBO
 
         private void clearStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow myRow in dataGridView1.Rows)
+            foreach (DataGridViewRow myRow in linksDataGridView.Rows)
             {
                 myRow.Cells[6].Value = null;
                 myRow.Cells[7].Value = null;
@@ -128,7 +128,7 @@ namespace QMDBO
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ClassHelper.writeCSV(dataGridView1, "result.csv");
+            ClassHelper.writeCSV(linksDataGridView, "result.csv");
         }
 
         // end class

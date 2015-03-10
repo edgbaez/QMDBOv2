@@ -118,10 +118,10 @@ namespace QMDBO
         {
             foreach (DataGridViewRow myRow in linksDataGridView.Rows)
             {
-                myRow.Cells[6].Value = null;
                 myRow.Cells[7].Value = null;
                 myRow.Cells[8].Value = null;
                 myRow.Cells[9].Value = null;
+                myRow.Cells[10].Value = null;
             }
         }
 

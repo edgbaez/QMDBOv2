@@ -110,8 +110,7 @@ namespace QMDBO
                         {
                             swOut.Write(";");
                         }
-
-                        value = dr.Cells[i].Value.ToString();
+                        value = (dr.Cells[i].Value ?? String.Empty).ToString();
                         //replace comma's with spaces
                         value = value.Replace(',', ' ');
                         //replace embedded newlines with spaces

@@ -21,7 +21,6 @@ namespace QMDBO
             _context = new DatabaseContext();
             _context.Categories.Load();
             this.categoryBindingSource.DataSource = _context.Categories.Local.ToBindingList();
-            //dataGridView1.DataSource = ClassLinks.LoadLinksListFromFile();
             ClassHelper.PopulateComboBox(comboBox1);
         }
 

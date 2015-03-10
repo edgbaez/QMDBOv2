@@ -4,12 +4,13 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.Threading;
+using System.Data.Entity;
 
 namespace QMDBO
 {
     public partial class Form1 : Form
     {
-
+        DatabaseContext _context;
         public Form1()
         {
             InitializeComponent();
@@ -17,6 +18,9 @@ namespace QMDBO
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            _context = new DatabaseContext();
+            _context.Categories.Load();
+            this.categoryBindingSource.DataSource = _context.Categories.Local.ToBindingList();
             dataGridView1.DataSource = ClassLinks.LoadLinksListFromFile();
             ClassHelper.PopulateComboBox(comboBox1);
         }

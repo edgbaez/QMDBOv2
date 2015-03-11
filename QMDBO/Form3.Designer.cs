@@ -251,6 +251,7 @@
             this.exportToolStripButton1.Name = "exportToolStripButton1";
             this.exportToolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.exportToolStripButton1.Text = "Экспорт";
+            this.exportToolStripButton1.Click += new System.EventHandler(this.exportToolStripButton1_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 

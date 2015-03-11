@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using System.IO;
 
 namespace QMDBO
 {
@@ -87,8 +88,50 @@ namespace QMDBO
             }
             else
             {
-                string row = categoryDataGridView.SelectedCells[0].Value.ToString();
-                MessageBox.Show(row);
+                int row_index = categoryDataGridView.SelectedCells[0].RowIndex;
+                if (categoryDataGridView.Rows[row_index].Cells[1].Value == null)
+                {
+                    MessageBox.Show("Выберите категорию");
+                }
+                else {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                    openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|CSV-файлы (*.csv)|*.csv|Все файлы (*.*)|*.*";
+                    if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+                    {
+                        string FileName = openFileDialog.FileName;
+                        string cell_value = categoryDataGridView.Rows[row_index].Cells[0].Value.ToString();
+                        int cell_value_int = Convert.ToInt32(cell_value);
+                        foreach (var line in File.ReadAllLines(FileName))
+                        {
+                            var columns = line.Split(';');
+                            var link = new Links
+                            {
+                                CategoryId = cell_value_int,
+                                Name = columns[1],
+                                Host = columns[2],
+                                Port = columns[3],
+                                Servicename = columns[4],
+                                User = columns[5],
+                                Pass = columns[6]
+                            };
+                            _context.Links.Add(link);
+                            _context.SaveChanges();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void exportToolStripButton1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt|CSV-файлы (*.csv)|*.csv|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = saveFileDialog.FileName;
+                ClassHelper.writeCSV(linksDataGridView, FileName);
             }
         }
 

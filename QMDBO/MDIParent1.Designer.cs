@@ -53,7 +53,7 @@
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.подключенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,8 +70,9 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.printPreviewToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.SettingsToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.linksToolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -274,24 +275,26 @@
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
-            this.подключенияToolStripMenuItem});
+            this.linksToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(59, 20);
             this.toolsMenu.Text = "&Сервис";
             // 
             // optionsToolStripMenuItem
             // 
+            this.optionsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("optionsToolStripMenuItem.Image")));
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "&Параметры";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
-            // подключенияToolStripMenuItem
+            // linksToolStripMenuItem
             // 
-            this.подключенияToolStripMenuItem.Name = "подключенияToolStripMenuItem";
-            this.подключенияToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.подключенияToolStripMenuItem.Text = "Подключения";
-            this.подключенияToolStripMenuItem.Click += new System.EventHandler(this.подключенияToolStripMenuItem_Click);
+            this.linksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("linksToolStripMenuItem.Image")));
+            this.linksToolStripMenuItem.Name = "linksToolStripMenuItem";
+            this.linksToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.linksToolStripMenuItem.Text = "Подключения";
+            this.linksToolStripMenuItem.Click += new System.EventHandler(this.linksToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -413,25 +416,37 @@
             this.newToolStripButton.Text = "Создать";
             this.newToolStripButton.Click += new System.EventHandler(this.ShowNewForm);
             // 
-            // printPreviewToolStripButton
-            // 
-            this.printPreviewToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.printPreviewToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripButton.Image")));
-            this.printPreviewToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
-            this.printPreviewToolStripButton.Name = "printPreviewToolStripButton";
-            this.printPreviewToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.printPreviewToolStripButton.Text = "Предварительный просмотр";
-            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
-            this.printPreviewToolStripButton});
+            this.SettingsToolStripButton,
+            this.linksToolStripButton2});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(784, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
+            // 
+            // SettingsToolStripButton
+            // 
+            this.SettingsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SettingsToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("SettingsToolStripButton.Image")));
+            this.SettingsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SettingsToolStripButton.Name = "SettingsToolStripButton";
+            this.SettingsToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.SettingsToolStripButton.Text = "Параметры";
+            this.SettingsToolStripButton.Click += new System.EventHandler(this.SettingsToolStripButton_Click);
+            // 
+            // linksToolStripButton2
+            // 
+            this.linksToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.linksToolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("linksToolStripButton2.Image")));
+            this.linksToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.linksToolStripButton2.Name = "linksToolStripButton2";
+            this.linksToolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.linksToolStripButton2.Text = "Подключения";
+            this.linksToolStripButton2.Click += new System.EventHandler(this.linksToolStripButton2_Click);
             // 
             // MDIParent1
             // 
@@ -498,9 +513,10 @@
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripButton newToolStripButton;
-        private System.Windows.Forms.ToolStripButton printPreviewToolStripButton;
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripMenuItem подключенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton SettingsToolStripButton;
+        private System.Windows.Forms.ToolStripButton linksToolStripButton2;
     }
 }
 

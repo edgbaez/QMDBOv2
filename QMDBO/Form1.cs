@@ -116,7 +116,14 @@ namespace QMDBO
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            ClassHelper.writeCSV(linksDataGridView, "result.csv");
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "Текстовые файлы (*.csv)|*.csv|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = saveFileDialog.FileName;
+                ClassHelper.writeCSV(linksDataGridView, FileName);
+            }
         }
 
         private void ClearToolStripButton_Click(object sender, EventArgs e)

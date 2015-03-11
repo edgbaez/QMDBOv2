@@ -124,7 +124,28 @@ namespace QMDBO
             ab.ShowDialog();
         }
 
-        private void подключенияToolStripMenuItem_Click(object sender, EventArgs e)
+        private void linksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ClassHelper.IsFormAlreadyOpen(typeof(Form3)) == null)
+            {
+                Form3 childForm = new Form3();
+                childForm.MdiParent = this;
+                childForm.WindowState = FormWindowState.Maximized;
+                childForm.Show();
+            }
+        }
+
+        private void SettingsToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (ClassHelper.IsFormAlreadyOpen(typeof(Form2)) == null)
+            {
+                Form2 childForm = new Form2();
+                childForm.MdiParent = this;
+                childForm.Show();
+            }
+        }
+
+        private void linksToolStripButton2_Click(object sender, EventArgs e)
         {
             if (ClassHelper.IsFormAlreadyOpen(typeof(Form3)) == null)
             {

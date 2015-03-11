@@ -32,7 +32,7 @@ namespace QMDBO
             progressBar1.Visible = true;
             progressBar1.Value = 0;
             textBox1.Enabled = false;
-            menuStrip1.Enabled = false;
+            toolStrip1.Enabled = false;
             comboBox1.Enabled = false;
         }
 
@@ -44,7 +44,7 @@ namespace QMDBO
             progressBar1.Visible = false;
             progressBar1.Value = 0;
             textBox1.Enabled = true;
-            menuStrip1.Enabled = true;
+            toolStrip1.Enabled = true;
             comboBox1.Enabled = true;
         }
 
@@ -108,13 +108,18 @@ namespace QMDBO
             ClassHelper.DragDropOpenFile(richTextBox1, e);
         }
 
-        private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void openToolStripButton_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
             richTextBox1.Text = ClassOpenFile.OpenFile();
         }
 
-        private void clearStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            ClassHelper.writeCSV(linksDataGridView, "result.csv");
+        }
+
+        private void ClearToolStripButton_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow myRow in linksDataGridView.Rows)
             {
@@ -123,11 +128,6 @@ namespace QMDBO
                 myRow.Cells[9].Value = null;
                 myRow.Cells[10].Value = null;
             }
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ClassHelper.writeCSV(linksDataGridView, "result.csv");
         }
 
         // end class

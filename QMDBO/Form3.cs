@@ -79,5 +79,18 @@ namespace QMDBO
             this._context.Dispose();
         }
 
+        private void importToolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (categoryDataGridView.SelectedCells[0].Value == null)
+            {
+                MessageBox.Show("Выберите категорию");
+            }
+            else
+            {
+                string row = categoryDataGridView.SelectedCells[0].Value.ToString();
+                MessageBox.Show(row);
+            }
+        }
+
     }
 }

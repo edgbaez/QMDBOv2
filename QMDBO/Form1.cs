@@ -82,12 +82,22 @@ namespace QMDBO
         {
             progressBar1.Value = e.ProgressPercentage;
             this.Text = e.ProgressPercentage.ToString() + "%";
+            MDIParent1 frm = this.MdiParent as MDIParent1;
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = e.ProgressPercentage.ToString() + "%";
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.buttons_Enable();
             this.Text = ClassHelper.CompletedText(e);
+            MDIParent1 frm = this.MdiParent as MDIParent1;
+            if(frm != null)
+            {
+                frm.toolStripStatusLabel.Text = ClassHelper.CompletedText(e);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

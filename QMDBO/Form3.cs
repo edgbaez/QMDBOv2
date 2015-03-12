@@ -82,6 +82,9 @@ namespace QMDBO
 
         private void importToolStripButton1_Click(object sender, EventArgs e)
         {
+            int counter = 1;
+            MDIParent1 frm = this.MdiParent as MDIParent1;
+
             if (categoryDataGridView.SelectedCells[0].Value == null)
             {
                 MessageBox.Show("Выберите категорию");
@@ -117,6 +120,12 @@ namespace QMDBO
                             };
                             _context.Links.Add(link);
                             _context.SaveChanges();
+
+                            if (frm != null)
+                            {
+                                counter++;
+                                frm.toolStripStatusLabel.Text = "Импортировано: " + counter.ToString();
+                            }
                         }
                     }
                 }

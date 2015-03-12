@@ -31,15 +31,15 @@ namespace QMDBO
         {
             if (e.Cancelled == true)
             {
-                return "Canceled!";
+                return "Отменено";
             }
             else if (e.Error != null)
             {
-                return "Error: " + e.Error.Message;
+                return "Ошибка: " + e.Error.Message;
             }
             else
             {
-                return "Done!";
+                return "Готово";
             }
         }
 

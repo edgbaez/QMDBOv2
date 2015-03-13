@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.categoryBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -43,11 +44,13 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.categoryBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.categoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.linksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.linksDataGridView = new System.Windows.Forms.DataGridView();
             this.importToolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.exportToolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.categoryDataGridView = new System.Windows.Forms.DataGridView();
+            this.categoryIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.linksDataGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,15 +58,12 @@
             this.servicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingNavigator)).BeginInit();
             this.categoryBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // categoryBindingNavigator
@@ -106,6 +106,10 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataSource = typeof(QMDBO.Category);
             // 
             // bindingNavigatorCountItem
             // 
@@ -192,6 +196,26 @@
             this.categoryBindingNavigatorSaveItem.Text = "Сохранить данные";
             this.categoryBindingNavigatorSaveItem.Click += new System.EventHandler(this.categoryBindingNavigatorSaveItem_Click);
             // 
+            // importToolStripButton1
+            // 
+            this.importToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.importToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("importToolStripButton1.Image")));
+            this.importToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.importToolStripButton1.Name = "importToolStripButton1";
+            this.importToolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.importToolStripButton1.Text = "Импорт";
+            this.importToolStripButton1.Click += new System.EventHandler(this.importToolStripButton1_Click);
+            // 
+            // exportToolStripButton1
+            // 
+            this.exportToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripButton1.Image")));
+            this.exportToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportToolStripButton1.Name = "exportToolStripButton1";
+            this.exportToolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.exportToolStripButton1.Text = "Экспорт";
+            this.exportToolStripButton1.Click += new System.EventHandler(this.exportToolStripButton1_Click);
+            // 
             // categoryDataGridView
             // 
             this.categoryDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -206,6 +230,18 @@
             this.categoryDataGridView.Name = "categoryDataGridView";
             this.categoryDataGridView.Size = new System.Drawing.Size(660, 125);
             this.categoryDataGridView.TabIndex = 1;
+            // 
+            // categoryIdDataGridViewTextBoxColumn1
+            // 
+            this.categoryIdDataGridViewTextBoxColumn1.DataPropertyName = "CategoryId";
+            this.categoryIdDataGridViewTextBoxColumn1.HeaderText = "CategoryId";
+            this.categoryIdDataGridViewTextBoxColumn1.Name = "categoryIdDataGridViewTextBoxColumn1";
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             // 
             // linksBindingSource
             // 
@@ -232,26 +268,6 @@
             this.linksDataGridView.Name = "linksDataGridView";
             this.linksDataGridView.Size = new System.Drawing.Size(660, 280);
             this.linksDataGridView.TabIndex = 2;
-            // 
-            // importToolStripButton1
-            // 
-            this.importToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.importToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("importToolStripButton1.Image")));
-            this.importToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.importToolStripButton1.Name = "importToolStripButton1";
-            this.importToolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.importToolStripButton1.Text = "Импорт";
-            this.importToolStripButton1.Click += new System.EventHandler(this.importToolStripButton1_Click);
-            // 
-            // exportToolStripButton1
-            // 
-            this.exportToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.exportToolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripButton1.Image")));
-            this.exportToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.exportToolStripButton1.Name = "exportToolStripButton1";
-            this.exportToolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.exportToolStripButton1.Text = "Экспорт";
-            this.exportToolStripButton1.Click += new System.EventHandler(this.exportToolStripButton1_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -295,22 +311,6 @@
             this.passDataGridViewTextBoxColumn.HeaderText = "Pass";
             this.passDataGridViewTextBoxColumn.Name = "passDataGridViewTextBoxColumn";
             // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataSource = typeof(QMDBO.Category);
-            // 
-            // categoryIdDataGridViewTextBoxColumn1
-            // 
-            this.categoryIdDataGridViewTextBoxColumn1.DataPropertyName = "CategoryId";
-            this.categoryIdDataGridViewTextBoxColumn1.HeaderText = "CategoryId";
-            this.categoryIdDataGridViewTextBoxColumn1.Name = "categoryIdDataGridViewTextBoxColumn1";
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,16 +319,17 @@
             this.Controls.Add(this.linksDataGridView);
             this.Controls.Add(this.categoryDataGridView);
             this.Controls.Add(this.categoryBindingNavigator);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "Form3";
             this.Text = "Подключения";
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingNavigator)).EndInit();
             this.categoryBindingNavigator.ResumeLayout(false);
             this.categoryBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

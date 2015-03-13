@@ -35,6 +35,17 @@
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.linksDataGridView = new System.Windows.Forms.DataGridView();
+            this.Selectv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.portDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Object_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Object_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Last_ddl_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
@@ -51,17 +62,6 @@
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ClearToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.Selectv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.portDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Object_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Object_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Last_ddl_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksBindingSource)).BeginInit();
@@ -142,6 +142,74 @@
             this.linksDataGridView.Name = "linksDataGridView";
             this.linksDataGridView.Size = new System.Drawing.Size(652, 335);
             this.linksDataGridView.TabIndex = 3;
+            // 
+            // Selectv
+            // 
+            this.Selectv.HeaderText = "Select";
+            this.Selectv.Name = "Selectv";
+            this.Selectv.Width = 50;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // hostDataGridViewTextBoxColumn
+            // 
+            this.hostDataGridViewTextBoxColumn.DataPropertyName = "Host";
+            this.hostDataGridViewTextBoxColumn.HeaderText = "Host";
+            this.hostDataGridViewTextBoxColumn.Name = "hostDataGridViewTextBoxColumn";
+            this.hostDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // portDataGridViewTextBoxColumn
+            // 
+            this.portDataGridViewTextBoxColumn.DataPropertyName = "Port";
+            this.portDataGridViewTextBoxColumn.HeaderText = "Port";
+            this.portDataGridViewTextBoxColumn.Name = "portDataGridViewTextBoxColumn";
+            this.portDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // servicenameDataGridViewTextBoxColumn
+            // 
+            this.servicenameDataGridViewTextBoxColumn.DataPropertyName = "Servicename";
+            this.servicenameDataGridViewTextBoxColumn.HeaderText = "Servicename";
+            this.servicenameDataGridViewTextBoxColumn.Name = "servicenameDataGridViewTextBoxColumn";
+            this.servicenameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // userDataGridViewTextBoxColumn
+            // 
+            this.userDataGridViewTextBoxColumn.DataPropertyName = "User";
+            this.userDataGridViewTextBoxColumn.HeaderText = "User";
+            this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
+            this.userDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // passDataGridViewTextBoxColumn
+            // 
+            this.passDataGridViewTextBoxColumn.DataPropertyName = "Pass";
+            this.passDataGridViewTextBoxColumn.HeaderText = "Pass";
+            this.passDataGridViewTextBoxColumn.Name = "passDataGridViewTextBoxColumn";
+            this.passDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Result
+            // 
+            this.Result.HeaderText = "Result";
+            this.Result.Name = "Result";
+            // 
+            // Object_type
+            // 
+            this.Object_type.HeaderText = "Object_type";
+            this.Object_type.Name = "Object_type";
+            // 
+            // Object_status
+            // 
+            this.Object_status.HeaderText = "Object_status";
+            this.Object_status.Name = "Object_status";
+            // 
+            // Last_ddl_time
+            // 
+            this.Last_ddl_time.HeaderText = "Last_ddl_time";
+            this.Last_ddl_time.Name = "Last_ddl_time";
             // 
             // linksBindingSource
             // 
@@ -305,74 +373,6 @@
             this.ClearToolStripButton.Text = "Очистить журнал";
             this.ClearToolStripButton.Click += new System.EventHandler(this.ClearToolStripButton_Click);
             // 
-            // Selectv
-            // 
-            this.Selectv.HeaderText = "Select";
-            this.Selectv.Name = "Selectv";
-            this.Selectv.Width = 50;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // hostDataGridViewTextBoxColumn
-            // 
-            this.hostDataGridViewTextBoxColumn.DataPropertyName = "Host";
-            this.hostDataGridViewTextBoxColumn.HeaderText = "Host";
-            this.hostDataGridViewTextBoxColumn.Name = "hostDataGridViewTextBoxColumn";
-            this.hostDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // portDataGridViewTextBoxColumn
-            // 
-            this.portDataGridViewTextBoxColumn.DataPropertyName = "Port";
-            this.portDataGridViewTextBoxColumn.HeaderText = "Port";
-            this.portDataGridViewTextBoxColumn.Name = "portDataGridViewTextBoxColumn";
-            this.portDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // servicenameDataGridViewTextBoxColumn
-            // 
-            this.servicenameDataGridViewTextBoxColumn.DataPropertyName = "Servicename";
-            this.servicenameDataGridViewTextBoxColumn.HeaderText = "Servicename";
-            this.servicenameDataGridViewTextBoxColumn.Name = "servicenameDataGridViewTextBoxColumn";
-            this.servicenameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // userDataGridViewTextBoxColumn
-            // 
-            this.userDataGridViewTextBoxColumn.DataPropertyName = "User";
-            this.userDataGridViewTextBoxColumn.HeaderText = "User";
-            this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
-            this.userDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // passDataGridViewTextBoxColumn
-            // 
-            this.passDataGridViewTextBoxColumn.DataPropertyName = "Pass";
-            this.passDataGridViewTextBoxColumn.HeaderText = "Pass";
-            this.passDataGridViewTextBoxColumn.Name = "passDataGridViewTextBoxColumn";
-            this.passDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Result
-            // 
-            this.Result.HeaderText = "Result";
-            this.Result.Name = "Result";
-            // 
-            // Object_type
-            // 
-            this.Object_type.HeaderText = "Object_type";
-            this.Object_type.Name = "Object_type";
-            // 
-            // Object_status
-            // 
-            this.Object_status.HeaderText = "Object_status";
-            this.Object_status.Name = "Object_status";
-            // 
-            // Last_ddl_time
-            // 
-            this.Last_ddl_time.HeaderText = "Last_ddl_time";
-            this.Last_ddl_time.Name = "Last_ddl_time";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +382,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "Form1";
             this.Text = "QMDBO";

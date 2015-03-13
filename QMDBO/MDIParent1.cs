@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -154,6 +155,12 @@ namespace QMDBO
                 childForm.WindowState = FormWindowState.Maximized;
                 childForm.Show();
             }
+        }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("http://mazdik.ru/?p=716");
+            Process.Start(sInfo);
         }
     }
 }

@@ -231,11 +231,5 @@ namespace QMDBO
             LoadDataIntoGrid();
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            this._context.Dispose();
-        }
-
     }
 }

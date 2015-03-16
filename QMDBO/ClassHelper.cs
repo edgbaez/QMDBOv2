@@ -67,7 +67,10 @@ namespace QMDBO
             foreach (Form OpenForm in Application.OpenForms)
             {
                 if (OpenForm.GetType() == FormType)
+                {
+                    OpenForm.BringToFront();
                     return OpenForm;
+                }
             }
 
             return null;

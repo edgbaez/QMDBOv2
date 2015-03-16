@@ -405,7 +405,7 @@
             this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripButton.Name = "newToolStripButton";
             this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.newToolStripButton.Text = "Создать";
+            this.newToolStripButton.Text = "Задача";
             this.newToolStripButton.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // toolStrip

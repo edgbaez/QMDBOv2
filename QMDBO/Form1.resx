@@ -120,29 +120,11 @@
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="Selectv.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Result.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Object_type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Object_status.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Last_ddl_time.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="linksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>474, 17</value>
-  </metadata>
   <metadata name="categoryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>296, 17</value>
+    <value>185, 17</value>
   </metadata>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>629, 17</value>
+    <value>361, 18</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="openToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -180,16 +162,19 @@
   <data name="ClearToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGpSURBVDhP7Y+7SyNRFMbv37CCbKesoOxfYGOnxSKClSh2
-        iloYDYjGStFKtLEIoqAxOi8hA8k8jMqoGfA9atzZKjqbEQ2JjgrKZkGtwuedJJhK+4U98OM7j3s+ziX/
-        oxC5XG6aMk+Zm9pPxz2q/epdv3z+CM/G5Ys35vwprhOSzWaRyWTwdH+LgZCBBn8MP2Y+pylwhOI6IY7j
-        wLZtXNlJ6OdpxJIP0C7usGndYet3QfXkfb73Xl9nSwaWZcE0TZzF4/j7/IJx+Rhm+oma3UL5lcKO5WBy
-        7QynqUeIpza2Ezdwo7hOiGEY0HUdO3oMwq6JxYNzLOwlsEQ1UNTgQQLLh4V+kNb8z1TJQNM0yLIMLaqg
-        cWIJVb55VA9/zvdRtmQQiUQ6eZ73ioLQWz82F6wY8J9U+/xGjW82j5t/GypQNThz7M4rhwP7+eVwOFwu
-        CEIdwzDNPMO0CxzXxbJsxwrH9VPTQReBZfvcHscxnVRb6NtGqrWhUOgLEUXxazQabaBfaFMUpYeqR5Wk
-        IUmSRmk+4uLmbo/O+1ZluVtV1VZKPb28LH/FvxyEvAEgbWuwjyC2ugAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGvSURBVDhP7Y9NSxtRFIbvb1CQ7pQGUvoL3LiLiyKCK7F0
+        V78WVQNiklWDrqTduAhSwcbofBUykMxMmirTNgPR2I5N0hEs0WkGNCQmKiimELsKb+8koVnpXvDAw3s+
+        7nk5lzxEM+r1+hJllbLyNlXMTEkHf92bR7XbGNv6deNOnF631gmpVqsolUq4Oi9jNqyjP5DAs+W7GQx+
+        R2udkEqlAsuycGzloR0WkchfQD06w2fzDF9+N1XLnzd6/+uTatvANE0YhoFsJoM/tRssyHswilfUrAxl
+        v4CkWcGbT1mkC5cQ0xa+5k5hR2udEF3XoWkakloCwraBtd1DvN/JYZ1qsKWh3Rw2vjX7IVrzPwttA1VV
+        Icsy1LiCgcV1OLyrcPru5qmfbRtEo9FRnufdoiC8cs2vhLpnAz+c3oD+xPuugZ0/9jRxzC3v2fMeXzDV
+        WI5EIl2CIPQxDDPEM8wLgePGWZZ9+YHjZqjpnI3AstN2j+OYUarD9O0A1d5wONxBRFF8FI/H++kXniuK
+        Mkl1KiZJHkmS/DR/bWPndo/Opz/K8kQsFhuhuOjlnY0r7nMQ8g9huWtuRamfzgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>463, 21</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAAAAAAAEAIABulgAAlgAAAICAAAABACAAKAgBAASXAABgYAAAAQAgAKiUAAAsnwEASEgAAAEA

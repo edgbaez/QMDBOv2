@@ -34,19 +34,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.linksDataGridView = new System.Windows.Forms.DataGridView();
-            this.Selectv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.portDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.servicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Object_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Object_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Last_ddl_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,13 +50,14 @@
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ClearToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.linksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -104,7 +93,7 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.linksDataGridView);
+            this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Controls.Add(this.categoryComboBox);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.button3);
@@ -116,105 +105,19 @@
             this.tabPage2.Text = "Подключения";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // linksDataGridView
+            // dataGridView1
             // 
-            this.linksDataGridView.AllowUserToAddRows = false;
-            this.linksDataGridView.AllowUserToDeleteRows = false;
-            this.linksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.linksDataGridView.AutoGenerateColumns = false;
-            this.linksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.linksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Selectv,
-            this.nameDataGridViewTextBoxColumn,
-            this.hostDataGridViewTextBoxColumn,
-            this.portDataGridViewTextBoxColumn,
-            this.servicenameDataGridViewTextBoxColumn,
-            this.userDataGridViewTextBoxColumn,
-            this.passDataGridViewTextBoxColumn,
-            this.Result,
-            this.Object_type,
-            this.Object_status,
-            this.Last_ddl_time});
-            this.linksDataGridView.DataSource = this.linksBindingSource;
-            this.linksDataGridView.Location = new System.Drawing.Point(0, 35);
-            this.linksDataGridView.Name = "linksDataGridView";
-            this.linksDataGridView.Size = new System.Drawing.Size(652, 335);
-            this.linksDataGridView.TabIndex = 3;
-            // 
-            // Selectv
-            // 
-            this.Selectv.HeaderText = "Select";
-            this.Selectv.Name = "Selectv";
-            this.Selectv.Width = 50;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // hostDataGridViewTextBoxColumn
-            // 
-            this.hostDataGridViewTextBoxColumn.DataPropertyName = "Host";
-            this.hostDataGridViewTextBoxColumn.HeaderText = "Host";
-            this.hostDataGridViewTextBoxColumn.Name = "hostDataGridViewTextBoxColumn";
-            this.hostDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // portDataGridViewTextBoxColumn
-            // 
-            this.portDataGridViewTextBoxColumn.DataPropertyName = "Port";
-            this.portDataGridViewTextBoxColumn.HeaderText = "Port";
-            this.portDataGridViewTextBoxColumn.Name = "portDataGridViewTextBoxColumn";
-            this.portDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // servicenameDataGridViewTextBoxColumn
-            // 
-            this.servicenameDataGridViewTextBoxColumn.DataPropertyName = "Servicename";
-            this.servicenameDataGridViewTextBoxColumn.HeaderText = "Servicename";
-            this.servicenameDataGridViewTextBoxColumn.Name = "servicenameDataGridViewTextBoxColumn";
-            this.servicenameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // userDataGridViewTextBoxColumn
-            // 
-            this.userDataGridViewTextBoxColumn.DataPropertyName = "User";
-            this.userDataGridViewTextBoxColumn.HeaderText = "User";
-            this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
-            this.userDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // passDataGridViewTextBoxColumn
-            // 
-            this.passDataGridViewTextBoxColumn.DataPropertyName = "Pass";
-            this.passDataGridViewTextBoxColumn.HeaderText = "Pass";
-            this.passDataGridViewTextBoxColumn.Name = "passDataGridViewTextBoxColumn";
-            this.passDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Result
-            // 
-            this.Result.HeaderText = "Result";
-            this.Result.Name = "Result";
-            // 
-            // Object_type
-            // 
-            this.Object_type.HeaderText = "Object_type";
-            this.Object_type.Name = "Object_type";
-            // 
-            // Object_status
-            // 
-            this.Object_status.HeaderText = "Object_status";
-            this.Object_status.Name = "Object_status";
-            // 
-            // Last_ddl_time
-            // 
-            this.Last_ddl_time.HeaderText = "Last_ddl_time";
-            this.Last_ddl_time.Name = "Last_ddl_time";
-            // 
-            // linksBindingSource
-            // 
-            this.linksBindingSource.DataMember = "Links";
-            this.linksBindingSource.DataSource = this.categoryBindingSource;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 35);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(640, 329);
+            this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
             // categoryBindingSource
             // 
@@ -230,6 +133,7 @@
             this.categoryComboBox.Size = new System.Drawing.Size(300, 21);
             this.categoryComboBox.TabIndex = 3;
             this.categoryComboBox.ValueMember = "CategoryId";
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -388,14 +292,14 @@
             this.Text = "QMDBO";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.linksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,23 +322,12 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.BindingSource categoryBindingSource;
-        private System.Windows.Forms.DataGridView linksDataGridView;
-        private System.Windows.Forms.BindingSource linksBindingSource;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripButton ClearToolStripButton;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Selectv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hostDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn portDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn servicenameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Object_type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Object_status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Last_ddl_time;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

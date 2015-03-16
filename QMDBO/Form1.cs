@@ -14,6 +14,7 @@ namespace QMDBO
         DatabaseContext _context;
         private List<ClassLinks> linksCollection;
         MDIParent1 frm;
+        private string formName;
 
         public Form1()
         {
@@ -28,6 +29,7 @@ namespace QMDBO
             LoadDataIntoGrid();
             ClassHelper.PopulateComboBox(comboBox1);
             frm = this.MdiParent as MDIParent1;
+            formName = this.Text;
         }
 
         private void LoadDataIntoGrid()
@@ -123,7 +125,7 @@ namespace QMDBO
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            this.Text = e.ProgressPercentage.ToString() + "%";
+            this.Text = formName + " - " + e.ProgressPercentage.ToString() + "%";
             if (frm != null)
             {
                 frm.toolStripStatusLabel.Text = e.ProgressPercentage.ToString() + "%";
@@ -133,7 +135,7 @@ namespace QMDBO
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.buttons_Enable();
-            this.Text = ClassHelper.CompletedText(e);
+            this.Text = formName + " - " + ClassHelper.CompletedText(e);
             MDIParent1 frm = this.MdiParent as MDIParent1;
             if (frm != null)
             {

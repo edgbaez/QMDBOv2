@@ -76,7 +76,10 @@ namespace QMDBO
             int end = 0;
             int total = dataGridView.Rows.Count;
             int pagination = (int)Math.Round((decimal)total / thread);
-            thread = (thread > total) ? total : thread;
+            if (thread > total) {
+                thread = total;
+                pagination = total;
+            }
             Thread[] threads = new Thread[thread];
             for (int l = 0; l < thread; l++)
             {

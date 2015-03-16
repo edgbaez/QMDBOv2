@@ -397,6 +397,7 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(66, 17);
             this.toolStripStatusLabel.Text = "Состояние";
+            this.toolStripStatusLabel.TextChanged += new System.EventHandler(this.toolStripStatusLabel_TextChanged);
             // 
             // newToolStripButton
             // 

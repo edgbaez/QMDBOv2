@@ -162,5 +162,10 @@ namespace QMDBO
             ProcessStartInfo sInfo = new ProcessStartInfo("http://mazdik.ru/?p=716");
             Process.Start(sInfo);
         }
+
+        private void toolStripStatusLabel_TextChanged(object sender, EventArgs e)
+        {
+            statusStrip.Refresh();
+        }
     }
 }

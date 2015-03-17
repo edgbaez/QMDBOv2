@@ -39,10 +39,6 @@ namespace QMDBO
 
         }
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -157,5 +153,6 @@ namespace QMDBO
         {
             statusStrip.Refresh();
         }
+
     }
 }

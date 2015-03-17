@@ -256,7 +256,7 @@
             this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.openToolStripButton.Text = "&Открыть";
+            this.openToolStripButton.Text = "&Открыть скрипт";
             this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
             // 
             // saveToolStripButton
@@ -286,7 +286,7 @@
             this.ExpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ExpToolStripButton.Name = "ExpToolStripButton";
             this.ExpToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.ExpToolStripButton.Text = "Экспорт";
+            this.ExpToolStripButton.Text = "Экспорт в файл";
             this.ExpToolStripButton.Click += new System.EventHandler(this.ExpToolStripButton_Click);
             // 
             // Form1

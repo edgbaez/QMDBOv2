@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace QMDBO
 {
-    public partial class Jobs
+    public partial class Job
     {
-        public Jobs()
+        public Job()
         {
             Results = new List<Results>();
         }

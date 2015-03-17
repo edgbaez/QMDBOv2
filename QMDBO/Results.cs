@@ -14,7 +14,7 @@ namespace QMDBO
         public string Content { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual Jobs Jobs { get; set; }
+        public virtual Job Job { get; set; }
 
     }
 }

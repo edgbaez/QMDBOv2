@@ -11,7 +11,7 @@ namespace QMDBO
 {
     public partial class Form1 : Form
     {
-        DatabaseContext _context;
+        DatabaseCrud crud;
         private List<ClassLinks> linksCollection;
         MDIParent1 frm;
         private string formName;
@@ -23,9 +23,8 @@ namespace QMDBO
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _context = new DatabaseContext();
-            _context.Categories.Load();
-            this.categoryBindingSource.DataSource = _context.Categories.Local.ToBindingList();
+            crud = new DatabaseCrud();
+            crud.loadCategory(this.categoryBindingSource);
             LoadDataIntoGrid();
             ClassHelper.PopulateComboBox(comboBox1);
             frm = this.MdiParent as MDIParent1;
@@ -34,40 +33,7 @@ namespace QMDBO
 
         private void LoadDataIntoGrid()
         {
-            int category =  Convert.ToInt32(categoryComboBox.SelectedValue);
-
-            linksCollection = new List<ClassLinks>();
-            int counter = _context.Links.Count();
-            var query = from b in _context.Links
-                        where b.CategoryId == category 
-                        select b;
-            foreach (var link in query)
-            {
-                ClassLinks item = new ClassLinks();
-                item.select = false;
-                item.name = link.Name;
-                item.host = link.Host;
-                item.port = link.Port;
-                item.servicename = link.Servicename;
-                item.user = link.User;
-                item.pass = link.Pass;
-                item.result = null;
-                item.object_type = null;
-                item.object_status = null;
-                item.last_ddl_time = null;
-                item.hide_link_id = link.LinkId.ToString();
-                linksCollection.Add(item);
-                item = null;
-            }
-            //bindingSource1.DataSource = linksCollection;
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = linksCollection;
-            dataGridView1.Columns["hide_link_id"].Visible = false;
-            dataGridView1.Refresh();
-            if (frm != null)
-            {
-                frm.toolStripStatusLabel.Text = "Количество: " + counter;
-            }
+            crud.loadDataIntoGrid(this.linksCollection, this.categoryComboBox, this.dataGridView1, this.frm);
         }
 
         private void buttons_Disable()
@@ -171,60 +137,9 @@ namespace QMDBO
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
-            int jobID;
-            int counter=1;
-
-            Job job = new Job
-            {
-                Name = "Anberlin"
-            };
-            var originalJob = _context.Jobs.FirstOrDefault(b => b.Name == job.Name);
-            if (originalJob != null)
-            {
-                jobID = originalJob.JobId;
-            }
-            else
-            {
-                _context.Jobs.Add(job);
-                _context.SaveChanges();
-                jobID = job.JobId;
-            }
-
-            foreach (DataGridViewRow myRow in dataGridView1.Rows)
-            {
-            Result result = new Result
-            {
-                JobId = jobID,
-                LinkId = Convert.ToInt32(myRow.Cells["hide_link_id"].Value.ToString()),
-                Content = (myRow.Cells["result"].Value ?? String.Empty).ToString(),
-                Object_type = (myRow.Cells["object_type"].Value ?? String.Empty).ToString(),
-                Object_status = (myRow.Cells["object_status"].Value ?? String.Empty).ToString(),
-                Last_ddl_time = (myRow.Cells["last_ddl_time"].Value ?? String.Empty).ToString(),
-            };
-            var originalResult = _context.Results.FirstOrDefault(b => b.JobId == result.JobId && b.LinkId == result.LinkId);
-            if (originalResult != null)
-            {
-                originalResult.Content = result.Content;
-            }
-            else
-            {
-                _context.Results.Add(result);
-            }
-            _context.SaveChanges();
-
-            originalResult = null;
-            result = null;
-
-            if (frm != null)
-            {
-                frm.toolStripStatusLabel.Text = "Сохранено строк: " + counter++;
-            }
-
-            }
-            if (frm != null)
-            {
-                frm.toolStripStatusLabel.Text = job.Name + " сохранена с количеством строк: " + counter;
-            }
+            this.buttons_Disable();
+            crud.saveJob(this.dataGridView1, this.frm, this.formName);
+            this.buttons_Enable();
         }
 
         private void ClearToolStripButton_Click(object sender, EventArgs e)

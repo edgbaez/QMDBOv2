@@ -24,9 +24,11 @@ namespace QMDBO
         {
             if (ClassHelper.IsFormAlreadyOpen(typeof(Form1)) == null)
             {
+                DateTime thisDay = DateTime.Now;
+
                 Form1 childForm = new Form1();
                 childForm.MdiParent = this;
-                childForm.Text = "Задача " + childFormNumber++;
+                childForm.Text = "Задача " + childFormNumber++ + " от " + thisDay.ToString("g");
                 childForm.WindowState = FormWindowState.Maximized;
                 childForm.Show();
             }

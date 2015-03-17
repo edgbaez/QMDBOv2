@@ -108,7 +108,7 @@ namespace QMDBO
                         foreach (var line in File.ReadAllLines(FileName))
                         {
                             var columns = line.Split(';');
-                            var link = new Links
+                            var link = new Link
                             {
                                 CategoryId = cell_value_int,
                                 Name = columns[1],

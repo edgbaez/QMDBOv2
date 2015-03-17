@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace QMDBO
 {
-    public partial class Links
+    public partial class Link
     {
-        public int Id { get; set; }
+        public int LinkId { get; set; }
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public string Host { get; set; }

@@ -12,8 +12,8 @@ namespace QMDBO
         }
 
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Links> Links { get; set; }
+        public virtual DbSet<Link> Links { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
-        public virtual DbSet<Results> Results { get; set; }
+        public virtual DbSet<Result> Results { get; set; }
     }
 }

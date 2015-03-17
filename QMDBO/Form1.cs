@@ -55,12 +55,14 @@ namespace QMDBO
                 item.object_type = null;
                 item.object_status = null;
                 item.last_ddl_time = null;
+                item.hide_link_id = link.LinkId.ToString();
                 linksCollection.Add(item);
                 item = null;
             }
             //bindingSource1.DataSource = linksCollection;
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = linksCollection;
+            dataGridView1.Columns["hide_link_id"].Visible = false;
             dataGridView1.Refresh();
             if (frm != null)
             {
@@ -169,7 +171,60 @@ namespace QMDBO
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
+            int jobID;
+            int counter=1;
 
+            Job job = new Job
+            {
+                Name = "Anberlin"
+            };
+            var originalJob = _context.Jobs.FirstOrDefault(b => b.Name == job.Name);
+            if (originalJob != null)
+            {
+                jobID = originalJob.JobId;
+            }
+            else
+            {
+                _context.Jobs.Add(job);
+                _context.SaveChanges();
+                jobID = job.JobId;
+            }
+
+            foreach (DataGridViewRow myRow in dataGridView1.Rows)
+            {
+            Result result = new Result
+            {
+                JobId = jobID,
+                LinkId = Convert.ToInt32(myRow.Cells["hide_link_id"].Value.ToString()),
+                Content = (myRow.Cells["result"].Value ?? String.Empty).ToString(),
+                Object_type = (myRow.Cells["object_type"].Value ?? String.Empty).ToString(),
+                Object_status = (myRow.Cells["object_status"].Value ?? String.Empty).ToString(),
+                Last_ddl_time = (myRow.Cells["last_ddl_time"].Value ?? String.Empty).ToString(),
+            };
+            var originalResult = _context.Results.FirstOrDefault(b => b.JobId == result.JobId && b.LinkId == result.LinkId);
+            if (originalResult != null)
+            {
+                originalResult.Content = result.Content;
+            }
+            else
+            {
+                _context.Results.Add(result);
+            }
+            _context.SaveChanges();
+
+            originalResult = null;
+            result = null;
+
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = "Сохранено строк: " + counter++;
+            }
+
+            }
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = job.Name + " сохранена с количеством строк: " + counter;
+            }
         }
 
         private void ClearToolStripButton_Click(object sender, EventArgs e)

@@ -11,12 +11,12 @@ namespace QMDBO
     {
         public Job()
         {
-            Results = new List<Results>();
+            Result = new List<Result>();
         }
 
         public int JobId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Results> Results { get; set; }
+        public virtual ICollection<Result> Result { get; set; }
     }
 }

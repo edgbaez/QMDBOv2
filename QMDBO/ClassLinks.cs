@@ -19,6 +19,7 @@ namespace QMDBO
         public string object_type { get; set; }
         public string object_status { get; set; }
         public string last_ddl_time { get; set; }
+        public string hide_link_id { get; set; }
 
         public static List<ClassLinks> LoadLinksListFromFile()
         {

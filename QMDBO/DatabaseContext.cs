@@ -13,5 +13,7 @@ namespace QMDBO
 
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Links> Links { get; set; }
+        public virtual DbSet<Jobs> Jobs { get; set; }
+        public virtual DbSet<Results> Results { get; set; }
     }
 }

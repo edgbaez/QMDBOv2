@@ -35,8 +35,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -50,6 +50,7 @@
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ClearToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.ExpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -119,10 +120,6 @@
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataSource = typeof(QMDBO.Category);
-            // 
             // categoryComboBox
             // 
             this.categoryComboBox.DataSource = this.categoryBindingSource;
@@ -134,6 +131,10 @@
             this.categoryComboBox.TabIndex = 3;
             this.categoryComboBox.ValueMember = "CategoryId";
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataSource = typeof(QMDBO.Category);
             // 
             // button1
             // 
@@ -240,7 +241,8 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripButton,
             this.saveToolStripButton,
-            this.ClearToolStripButton});
+            this.ClearToolStripButton,
+            this.ExpToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(684, 25);
@@ -276,6 +278,16 @@
             this.ClearToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.ClearToolStripButton.Text = "Очистить журнал";
             this.ClearToolStripButton.Click += new System.EventHandler(this.ClearToolStripButton_Click);
+            // 
+            // ExpToolStripButton
+            // 
+            this.ExpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ExpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("ExpToolStripButton.Image")));
+            this.ExpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExpToolStripButton.Name = "ExpToolStripButton";
+            this.ExpToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.ExpToolStripButton.Text = "Экспорт";
+            this.ExpToolStripButton.Click += new System.EventHandler(this.ExpToolStripButton_Click);
             // 
             // Form1
             // 
@@ -328,6 +340,7 @@
         private System.Windows.Forms.ToolStripButton ClearToolStripButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.ToolStripButton ExpToolStripButton;
     }
 }
 

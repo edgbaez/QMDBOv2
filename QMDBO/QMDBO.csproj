@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Gakuseisean-Ivista-2-Misc-Upload-Database.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\Gakuseisean-Ivista-2-Misc-Upload-Database.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -115,6 +115,7 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jobs.cs" />
     <Compile Include="Links.cs" />
     <Compile Include="MDIParent1.cs">
       <SubType>Form</SubType>
@@ -125,6 +126,7 @@
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results.cs" />
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
@@ -176,10 +178,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Gakuseisean-Ivista-2-Misc-Upload-Database.ico" />
-    <Content Include="Icojam-Blue-Bits-Database-add.ico" />
-    <Content Include="Treetog-File-Type-Settings.ico" />
-    <Content Include="Zerode-Plump-Document-scheduled-tasks.ico" />
+    <Content Include="Icons\Export.ico" />
+    <Content Include="Icons\Gakuseisean-Ivista-2-Misc-Upload-Database.ico" />
+    <Content Include="Icons\Icojam-Blue-Bits-Database-add.ico" />
+    <Content Include="Icons\Import.ico" />
+    <Content Include="Icons\Treetog-File-Type-Settings.ico" />
+    <Content Include="Icons\Zerode-Plump-Document-scheduled-tasks.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

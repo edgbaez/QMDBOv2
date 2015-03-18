@@ -160,5 +160,16 @@ namespace QMDBO
             statusStrip.Refresh();
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (ClassHelper.IsFormAlreadyOpen(typeof(Form4)) == null)
+            {
+                Form4 childForm = new Form4();
+                childForm.MdiParent = this;
+                childForm.WindowState = FormWindowState.Maximized;
+                childForm.Show();
+            }
+        }
+
     }
 }

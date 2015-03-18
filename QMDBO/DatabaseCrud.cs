@@ -139,7 +139,6 @@ namespace QMDBO
         public void loadDataGridViewLinksHistory(List<ClassLinks> linksCollection, int jobId, int CategoryId, DataGridView dataGridView, MDIParent1 frm)
         {
             linksCollection = new List<ClassLinks>();
-            int totalItems = 0;
             /* LINQ LEFT OUTER JOIN */
             var query = from a in _context.Links
                         where a.CategoryId == CategoryId
@@ -152,7 +151,6 @@ namespace QMDBO
                             c.Content, c.Object_type, c.Object_status, c.Last_ddl_time};
             foreach (var result in query)
             {
-                totalItems++;
                 ClassLinks item = new ClassLinks();
                 item.select = false;
                 item.name = result.Name;
@@ -175,7 +173,7 @@ namespace QMDBO
             dataGridView.Refresh();
             if (frm != null)
             {
-                frm.toolStripStatusLabel.Text = "Количество: " + totalItems;
+                frm.toolStripStatusLabel.Text = "Количество: " + query.Count();
             }
         }
 

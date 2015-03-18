@@ -194,6 +194,7 @@
     <Content Include="Icons\Import.ico" />
     <Content Include="Icons\Treetog-File-Type-Settings.ico" />
     <Content Include="Icons\Zerode-Plump-Document-scheduled-tasks.ico" />
+    <Content Include="Icons\Zerode-Plump-Folder-Scheduled-Tasks.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

@@ -119,5 +119,18 @@ namespace QMDBO
                 frm.toolStripStatusLabel.Text = job.Name + " сохранена с количеством строк: " + counter;
             }
         }
+
+        public void loadListViewJobs(ListView listView)
+        {
+            var query = from b in _context.Jobs
+            select b;
+            foreach (var job in query)
+            {
+                ListViewItem newList = new ListViewItem(job.Name);
+                newList.SubItems.Add(job.JobId.ToString());
+                listView.Items.Add(newList);
+            }
+        }
+
     }
 }

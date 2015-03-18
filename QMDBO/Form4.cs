@@ -19,13 +19,8 @@ namespace QMDBO
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            ListViewItem newList = new ListViewItem("NewItem");
-            newList.SubItems.Add(DateTime.Now.ToLongTimeString());
-            listView1.Items.Add(newList);
-            ListViewItem newList2 = new ListViewItem("NewItem2");
-            listView1.Items.Add(newList2);
-            ListViewItem newList3 = new ListViewItem("NewItem3");
-            listView1.Items.Add(newList3);
+            DatabaseCrud crud = new DatabaseCrud();
+            crud.loadListViewJobs(this.listView1);
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)

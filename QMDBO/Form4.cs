@@ -25,7 +25,17 @@ namespace QMDBO
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(listView1.SelectedItems[0].SubItems[1].Text);
+            int jobId = Convert.ToInt32(listView1.SelectedItems[0].SubItems[1].Text);
+            string jobName = listView1.SelectedItems[0].SubItems[0].Text;
+
+            if (ClassHelper.IsFormAlreadyOpen(typeof(Form1)) == null)
+            {
+                Form1 childForm = new Form1(jobId);
+                childForm.MdiParent = this.MdiParent;
+                childForm.Text = jobName;
+                childForm.WindowState = FormWindowState.Maximized;
+                childForm.Show();
+            }
         }
 
     }

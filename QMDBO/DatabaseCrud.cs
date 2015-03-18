@@ -22,17 +22,18 @@ namespace QMDBO
             categoryBindingSource.DataSource = _context.Categories.Local.ToBindingList();
         }
 
-        public void loadDataIntoGrid(List<ClassLinks> linksCollection, ComboBox categoryComboBox, DataGridView dataGridView, MDIParent1 frm)
+        public void loadDataGridViewLinks(List<ClassLinks> linksCollection, ComboBox categoryComboBox, DataGridView dataGridView, MDIParent1 frm)
         {
             int category = Convert.ToInt32(categoryComboBox.SelectedValue);
 
             linksCollection = new List<ClassLinks>();
-            int counter = _context.Links.Count();
+            int totalItems = 0;
             var query = from b in _context.Links
                         where b.CategoryId == category
                         select b;
             foreach (var link in query)
             {
+                totalItems++;
                 ClassLinks item = new ClassLinks();
                 item.select = false;
                 item.name = link.Name;
@@ -55,7 +56,7 @@ namespace QMDBO
             dataGridView.Refresh();
             if (frm != null)
             {
-                frm.toolStripStatusLabel.Text = "Количество: " + counter;
+                frm.toolStripStatusLabel.Text = "Количество: " + totalItems;
             }
         }
 
@@ -129,6 +130,49 @@ namespace QMDBO
                 ListViewItem newList = new ListViewItem(job.Name);
                 newList.SubItems.Add(job.JobId.ToString());
                 listView.Items.Add(newList);
+            }
+        }
+
+        public void loadDataGridViewLinksHistory(List<ClassLinks> linksCollection, int jobId, DataGridView dataGridView, MDIParent1 frm)
+        {
+            linksCollection = new List<ClassLinks>();
+            int totalItems = 0;
+            /* LINQ LEFT OUTER JOIN */
+            var query = from a in _context.Links
+                        where a.CategoryId == 2
+                        join b in
+                            (from r in _context.Results where r.JobId == jobId select r)
+                        on a.LinkId equals b.LinkId
+                        into outer
+                        from c in outer.DefaultIfEmpty()
+                        select new { a.Name, a.Host, a.Port, a.Servicename, a.User, a.Pass, a.LinkId, 
+                            c.Content, c.Object_type, c.Object_status, c.Last_ddl_time};
+            foreach (var result in query)
+            {
+                totalItems++;
+                ClassLinks item = new ClassLinks();
+                item.select = false;
+                item.name = result.Name;
+                item.host = result.Host;
+                item.port = result.Port;
+                item.servicename = result.Servicename;
+                item.user = result.User;
+                item.pass = result.Pass;
+                item.result = result.Content;
+                item.object_type = result.Object_type;
+                item.object_status = result.Object_status;
+                item.last_ddl_time = result.Last_ddl_time;
+                item.hide_link_id = result.LinkId.ToString();
+                linksCollection.Add(item);
+                item = null;
+            }
+            dataGridView.DataSource = null;
+            dataGridView.DataSource = linksCollection;
+            dataGridView.Columns["hide_link_id"].Visible = false;
+            dataGridView.Refresh();
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = "Количество: " + totalItems;
             }
         }
 

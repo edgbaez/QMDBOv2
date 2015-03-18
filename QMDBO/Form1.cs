@@ -15,25 +15,34 @@ namespace QMDBO
         private List<ClassLinks> linksCollection;
         MDIParent1 frm;
         private string formName;
+        private int jobId;
 
-        public Form1()
+        public Form1(int jobId = 0)
         {
             InitializeComponent();
+            this.jobId = jobId;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             crud = new DatabaseCrud();
-            crud.loadCategory(this.categoryBindingSource);
-            LoadDataIntoGrid();
+            LoadCategoryAndLinks();
             ClassHelper.PopulateComboBox(comboBox1);
             frm = this.MdiParent as MDIParent1;
             formName = this.Text;
         }
 
-        private void LoadDataIntoGrid()
+        private void LoadCategoryAndLinks()
         {
-            crud.loadDataIntoGrid(this.linksCollection, this.categoryComboBox, this.dataGridView1, this.frm);
+            if (this.jobId == 0)
+            {
+                crud.loadCategory(this.categoryBindingSource);
+                crud.loadDataGridViewLinks(this.linksCollection, this.categoryComboBox, this.dataGridView1, this.frm);
+            }
+            else {
+                categoryComboBox.Visible = false;
+                crud.loadDataGridViewLinksHistory(this.linksCollection, this.jobId, this.dataGridView1, this.frm);
+            }
         }
 
         private void buttons_Disable()
@@ -46,6 +55,7 @@ namespace QMDBO
             textBox1.Enabled = false;
             toolStrip1.Enabled = false;
             comboBox1.Enabled = false;
+            categoryComboBox.Enabled = false;
         }
 
         private void buttons_Enable()
@@ -58,6 +68,7 @@ namespace QMDBO
             textBox1.Enabled = true;
             toolStrip1.Enabled = true;
             comboBox1.Enabled = true;
+            categoryComboBox.Enabled = true;
         }
 
         /* Выбранные */
@@ -191,7 +202,7 @@ namespace QMDBO
 
         private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadDataIntoGrid();
+            crud.loadDataGridViewLinks(this.linksCollection, this.categoryComboBox, this.dataGridView1, this.frm);
         }
 
         private void ExpToolStripButton_Click(object sender, EventArgs e)

@@ -16,11 +16,13 @@ namespace QMDBO
         MDIParent1 frm;
         private string formName;
         private int jobId;
+        private int categoryId;
 
-        public Form1(int jobId = 0)
+        public Form1(int jobId = 0, int categoryId = 0)
         {
             InitializeComponent();
             this.jobId = jobId;
+            this.categoryId = categoryId;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,7 +43,7 @@ namespace QMDBO
             }
             else {
                 categoryComboBox.Visible = false;
-                crud.loadDataGridViewLinksHistory(this.linksCollection, this.jobId, this.dataGridView1, this.frm);
+                crud.loadDataGridViewLinksHistory(this.linksCollection, this.jobId, this.categoryId, this.dataGridView1, this.frm);
             }
         }
 
@@ -149,7 +151,8 @@ namespace QMDBO
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             this.buttons_Disable();
-            crud.saveJob(this.dataGridView1, this.frm, this.formName);
+            int category = Convert.ToInt32(categoryComboBox.SelectedValue);
+            crud.saveJob(this.dataGridView1, this.frm, this.formName, category);
             this.buttons_Enable();
         }
 

@@ -15,8 +15,10 @@ namespace QMDBO
         }
 
         public int JobId { get; set; }
+        public int CategoryId { get; set; }
         public string Name { get; set; }
 
+        public virtual Category Category { get; set; }
         public virtual ICollection<Result> Result { get; set; }
     }
 }

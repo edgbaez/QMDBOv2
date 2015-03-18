@@ -82,7 +82,7 @@ namespace QMDBO
 
         private void importToolStripButton1_Click(object sender, EventArgs e)
         {
-            int counter = 1;
+            int counter = 0;
             MDIParent1 frm = this.MdiParent as MDIParent1;
 
             if (categoryDataGridView.SelectedCells[0].Value == null)

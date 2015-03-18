@@ -60,14 +60,15 @@ namespace QMDBO
             }
         }
 
-        public void saveJob(DataGridView dataGridView, MDIParent1 frm, string formName)
+        public void saveJob(DataGridView dataGridView, MDIParent1 frm, string formName, int category=0)
         {
             int jobID;
             int counter = 1;
 
             Job job = new Job
             {
-                Name = formName
+                Name = formName,
+                CategoryId = category
             };
             var originalJob = _context.Jobs.FirstOrDefault(b => b.Name == job.Name);
             if (originalJob != null)
@@ -128,18 +129,20 @@ namespace QMDBO
             foreach (var job in query)
             {
                 ListViewItem newList = new ListViewItem(job.Name);
+                newList.SubItems.Add(job.Category.Name);
                 newList.SubItems.Add(job.JobId.ToString());
+                newList.SubItems.Add(job.CategoryId.ToString());
                 listView.Items.Add(newList);
             }
         }
 
-        public void loadDataGridViewLinksHistory(List<ClassLinks> linksCollection, int jobId, DataGridView dataGridView, MDIParent1 frm)
+        public void loadDataGridViewLinksHistory(List<ClassLinks> linksCollection, int jobId, int CategoryId, DataGridView dataGridView, MDIParent1 frm)
         {
             linksCollection = new List<ClassLinks>();
             int totalItems = 0;
             /* LINQ LEFT OUTER JOIN */
             var query = from a in _context.Links
-                        where a.CategoryId == 2
+                        where a.CategoryId == CategoryId
                         join b in
                             (from r in _context.Results where r.JobId == jobId select r)
                         on a.LinkId equals b.LinkId

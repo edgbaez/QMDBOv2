@@ -21,39 +21,5 @@ namespace QMDBO
         public string last_ddl_time { get; set; }
         public string hide_link_id { get; set; }
 
-        public static List<ClassLinks> LoadLinksListFromFile()
-        {
-            string path = "links.csv";
-
-            if (!File.Exists(path))
-            {
-                using (var stream = File.CreateText(path))
-                {
-                    stream.WriteLine("0;name;host;port;servicename;user;pass;;;;;");
-                }
-            }
-            var users = new List<ClassLinks>();
-
-            foreach (var line in File.ReadAllLines(path))
-            {
-                var columns = line.Split(';');
-                users.Add(new ClassLinks
-                {
-                    select = false,
-                    name = columns[1],
-                    host = columns[2],
-                    port = columns[3],
-                    servicename = columns[4],
-                    user = columns[5],
-                    pass = columns[6],
-                    result = columns[7],
-                    object_type = columns[8],
-                    object_status = columns[9],
-                    last_ddl_time = columns[10]
-                });
-            }
-
-            return users;
-        }
     }
 }

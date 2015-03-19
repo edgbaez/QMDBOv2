@@ -143,7 +143,6 @@ namespace QMDBO
 
         public void loadDataGridViewLinksHistory(List<ClassLinks> linksCollection, int jobId, int CategoryId, DataGridView dataGridView, MDIParent1 frm)
         {
-            linksCollection = new List<ClassLinks>();
             /* LINQ LEFT OUTER JOIN */
             var query = from a in _context.Links
                         where a.CategoryId == CategoryId

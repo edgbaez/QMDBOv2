@@ -27,13 +27,11 @@ namespace QMDBO
             int category = Convert.ToInt32(categoryComboBox.SelectedValue);
 
             linksCollection = new List<ClassLinks>();
-            int totalItems = 0;
             var query = from b in _context.Links
                         where b.CategoryId == category
                         select b;
             foreach (var link in query)
             {
-                totalItems++;
                 ClassLinks item = new ClassLinks();
                 item.select = false;
                 item.name = link.Name;
@@ -54,9 +52,10 @@ namespace QMDBO
             dataGridView.DataSource = linksCollection;
             dataGridView.Columns["hide_link_id"].Visible = false;
             dataGridView.Refresh();
-            if (frm != null)
+            int count = query.Count();
+            if (frm != null && count>0)
             {
-                frm.toolStripStatusLabel.Text = "Количество: " + totalItems;
+                frm.toolStripStatusLabel.Text = "Количество: " + count;
             }
         }
 
@@ -171,9 +170,10 @@ namespace QMDBO
             dataGridView.DataSource = linksCollection;
             dataGridView.Columns["hide_link_id"].Visible = false;
             dataGridView.Refresh();
-            if (frm != null)
+            int count = query.Count();
+            if (frm != null && count > 0)
             {
-                frm.toolStripStatusLabel.Text = "Количество: " + query.Count();
+                frm.toolStripStatusLabel.Text = "Количество: " + count;
             }
         }
 

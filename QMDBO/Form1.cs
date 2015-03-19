@@ -27,11 +27,11 @@ namespace QMDBO
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            frm = this.MdiParent as MDIParent1;
+            formName = this.Text;
             crud = new DatabaseCrud();
             LoadCategoryAndLinks();
             ClassHelper.PopulateComboBox(comboBox1);
-            frm = this.MdiParent as MDIParent1;
-            formName = this.Text;
         }
 
         private void LoadCategoryAndLinks()
@@ -217,6 +217,14 @@ namespace QMDBO
             {
                 string FileName = saveFileDialog.FileName;
                 ClassHelper.writeCSV(dataGridView1, FileName);
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = "";
             }
         }
 

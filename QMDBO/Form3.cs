@@ -15,6 +15,7 @@ namespace QMDBO
     public partial class Form3 : Form
     {
         DatabaseContext _context;
+        MDIParent1 frm;
         public Form3()
         {
             InitializeComponent();
@@ -23,6 +24,8 @@ namespace QMDBO
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            frm = this.MdiParent as MDIParent1;
+
             _context = new DatabaseContext();
 
             // Call the Load method to get the data for the given DbSet  
@@ -78,12 +81,15 @@ namespace QMDBO
         {
             base.OnClosing(e);
             this._context.Dispose();
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = "";
+            }
         }
 
         private void importToolStripButton1_Click(object sender, EventArgs e)
         {
             int counter = 0;
-            MDIParent1 frm = this.MdiParent as MDIParent1;
 
             if (categoryDataGridView.SelectedCells[0].Value == null)
             {

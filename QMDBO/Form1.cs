@@ -30,6 +30,7 @@ namespace QMDBO
             frm = this.MdiParent as MDIParent1;
             formName = this.Text;
             ClassHelper.PopulateComboBox(comboBox1);
+            linksCollection = new List<ClassLinks>();
             crud = new DatabaseCrud();
             LoadCategoryAndLinks();
         }

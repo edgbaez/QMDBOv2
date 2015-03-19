@@ -26,7 +26,6 @@ namespace QMDBO
         {
             int category = Convert.ToInt32(categoryComboBox.SelectedValue);
 
-            linksCollection = new List<ClassLinks>();
             var query = from b in _context.Links
                         where b.CategoryId == category
                         select b;

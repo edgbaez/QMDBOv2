@@ -98,6 +98,7 @@
     <Compile Include="ClassWork.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="DatabaseCrud.cs" />
+    <Compile Include="DataGridViewSortOrder.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

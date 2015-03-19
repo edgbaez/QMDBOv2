@@ -25,7 +25,7 @@ namespace QMDBO
         public void loadDataGridViewLinks(List<ClassLinks> linksCollection, ComboBox categoryComboBox, DataGridView dataGridView, MDIParent1 frm)
         {
             int category = Convert.ToInt32(categoryComboBox.SelectedValue);
-
+            linksCollection.Clear();
             var query = from b in _context.Links
                         where b.CategoryId == category
                         select b;
@@ -143,6 +143,7 @@ namespace QMDBO
 
         public void loadDataGridViewLinksHistory(List<ClassLinks> linksCollection, int jobId, int CategoryId, DataGridView dataGridView, MDIParent1 frm)
         {
+            linksCollection.Clear();
             /* LINQ LEFT OUTER JOIN */
             var query = from a in _context.Links
                         where a.CategoryId == CategoryId

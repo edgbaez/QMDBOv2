@@ -59,7 +59,7 @@ namespace QMDBO
             }
         }
 
-        public void saveJob(DataGridView dataGridView, MDIParent1 frm, string formName, int category=0)
+        public void saveJob(DataGridView dataGridView, MDIParent1 frm, string formName, int category, string sSQL, string objName, int typeExecute = 1)
         {
             int jobID;
             int counter = 1;
@@ -67,11 +67,18 @@ namespace QMDBO
             Job job = new Job
             {
                 Name = formName,
-                CategoryId = category
+                CategoryId = category,
+                Code = sSQL,
+                TypeExecute = typeExecute,
+                ObjName = objName
             };
             var originalJob = _context.Jobs.FirstOrDefault(b => b.Name == job.Name);
             if (originalJob != null)
             {
+                originalJob.Code = sSQL;
+                originalJob.TypeExecute = typeExecute;
+                originalJob.ObjName = objName;
+                _context.SaveChanges();
                 jobID = originalJob.JobId;
             }
             else
@@ -174,6 +181,17 @@ namespace QMDBO
             if (frm != null && count > 0)
             {
                 frm.toolStripStatusLabel.Text = "Количество: " + count;
+            }
+        }
+
+        public void loadTab1(int jobId, RichTextBox richTextBox, TextBox textBox, ComboBox comboBox)
+        {
+            var job = _context.Jobs.FirstOrDefault(b => b.JobId == jobId);
+            if (job != null)
+            {
+                richTextBox.Text = job.Code;
+                textBox.Text = job.ObjName;
+                comboBox.SelectedValue = job.TypeExecute;
             }
         }
 

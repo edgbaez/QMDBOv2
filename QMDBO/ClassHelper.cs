@@ -126,7 +126,7 @@ namespace QMDBO
             }
         }
 
-        public static void PopulateComboBox(ComboBox comboBox1)
+        public static void PopulateComboBox(ComboBox comboBox1, int selectedIndex=0)
         {
             var dict = new Dictionary<int, string>();
             dict.Add(1, "NonQuery");
@@ -135,6 +135,7 @@ namespace QMDBO
             comboBox1.DataSource = new BindingSource(dict, null);
             comboBox1.DisplayMember = "Value";
             comboBox1.ValueMember = "Key";
+            comboBox1.SelectedIndex = selectedIndex;
         }
 
     }

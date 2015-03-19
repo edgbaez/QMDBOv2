@@ -29,9 +29,9 @@ namespace QMDBO
         {
             frm = this.MdiParent as MDIParent1;
             formName = this.Text;
+            ClassHelper.PopulateComboBox(comboBox1);
             crud = new DatabaseCrud();
             LoadCategoryAndLinks();
-            ClassHelper.PopulateComboBox(comboBox1);
         }
 
         private void LoadCategoryAndLinks()
@@ -43,6 +43,7 @@ namespace QMDBO
             }
             else {
                 categoryComboBox.Visible = false;
+                crud.loadTab1(this.jobId, this.richTextBox1, this.textBox1, this.comboBox1);
                 crud.loadDataGridViewLinksHistory(this.linksCollection, this.jobId, this.categoryId, this.dataGridView1, this.frm);
             }
         }
@@ -152,7 +153,8 @@ namespace QMDBO
         {
             this.buttons_Disable();
             int category = Convert.ToInt32(categoryComboBox.SelectedValue);
-            crud.saveJob(this.dataGridView1, this.frm, this.formName, category);
+            int typeExecute = Convert.ToInt32(comboBox1.SelectedValue ?? 1);
+            crud.saveJob(this.dataGridView1, this.frm, this.formName, category, this.richTextBox1.Text, this.textBox1.Text, typeExecute);
             this.buttons_Enable();
         }
 

@@ -115,15 +115,19 @@ namespace QMDBO
                 originalResult = null;
                 result = null;
 
+                int count_rows = dataGridView.Rows.Count;
                 if (frm != null)
                 {
-                    frm.toolStripStatusLabel.Text = "Сохранено строк: " + counter++;
+                    frm.toolStripStatusLabel.Text = "Сохранение";
+                    frm.toolStripProgressBar1.Visible = true;
+                    frm.toolStripProgressBar1.Value = (100 * counter++) / count_rows;
                 }
 
             }
             if (frm != null)
             {
                 frm.toolStripStatusLabel.Text = job.Name + " сохранена с количеством строк: " + counter;
+                frm.toolStripProgressBar1.Visible = false;
             }
         }
 

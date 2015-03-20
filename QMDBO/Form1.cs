@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Data.Entity;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace QMDBO
 {
@@ -17,6 +18,7 @@ namespace QMDBO
         private string formName;
         private int jobId;
         private int categoryId;
+        Stopwatch timer;
 
         public Form1(int jobId = 0, int categoryId = 0)
         {
@@ -33,6 +35,7 @@ namespace QMDBO
             linksCollection = new List<ClassLinks>();
             crud = new DatabaseCrud();
             LoadCategoryAndLinks();
+            timer = new Stopwatch();
         }
 
         private void LoadCategoryAndLinks()
@@ -81,6 +84,8 @@ namespace QMDBO
             int comboBox1_value = Convert.ToInt32(comboBox1.SelectedValue ?? 1);
             if (ClassHelper.QuestionYesNoStart(richTextBox1.Text))
             {
+                timer.Reset();
+                timer.Start();
                 this.buttons_Disable();
                 ClassWork cw = new ClassWork(richTextBox1.Text, textBox1.Text, dataGridView1, ClassWork.ONE, comboBox1_value);
                 backgroundWorker1.RunWorkerAsync(cw);
@@ -93,6 +98,8 @@ namespace QMDBO
             int comboBox1_value = Convert.ToInt32(comboBox1.SelectedValue ?? 1);
             if (ClassHelper.QuestionYesNoStart(richTextBox1.Text))
             {
+                timer.Reset();
+                timer.Start();
                 this.buttons_Disable();
                 ClassWork cw = new ClassWork(richTextBox1.Text, textBox1.Text, dataGridView1, ClassWork.ALL, comboBox1_value);
                 backgroundWorker1.RunWorkerAsync(cw);
@@ -111,18 +118,21 @@ namespace QMDBO
             this.Text = formName + " - " + e.ProgressPercentage.ToString() + "%";
             if (frm != null)
             {
-                frm.toolStripStatusLabel.Text = e.ProgressPercentage.ToString() + "%";
+                frm.toolStripStatusLabel.Text = "Выполнено: " + e.ProgressPercentage.ToString() + "%";
             }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            timer.Stop();
             this.buttons_Enable();
             this.Text = formName + " - " + ClassHelper.CompletedText(e);
-            MDIParent1 frm = this.MdiParent as MDIParent1;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                timer.Elapsed.Hours, timer.Elapsed.Minutes, timer.Elapsed.Seconds,
+                timer.Elapsed.Milliseconds / 10);
             if (frm != null)
             {
-                frm.toolStripStatusLabel.Text = ClassHelper.CompletedText(e);
+                frm.toolStripStatusLabel.Text = ClassHelper.CompletedText(e) + " Затраченное время: " + elapsedTime;
             }
         }
 

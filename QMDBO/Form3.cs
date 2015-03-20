@@ -126,10 +126,9 @@ namespace QMDBO
                             };
                             _context.Links.Add(link);
                             _context.SaveChanges();
-
+                            counter++;
                             if (frm != null)
                             {
-                                counter++;
                                 frm.toolStripStatusLabel.Text = "Импортировано: " + counter.ToString();
                             }
                         }

@@ -13,8 +13,6 @@ namespace QMDBO
 {
     public partial class MDIParent1 : Form
     {
-        private int childFormNumber = 1;
-
         public MDIParent1()
         {
             InitializeComponent();
@@ -28,7 +26,7 @@ namespace QMDBO
 
                 Form1 childForm = new Form1();
                 childForm.MdiParent = this;
-                childForm.Text = "Задача " + childFormNumber++ + " от " + thisDay.ToString("g");
+                childForm.Text = "Задача " + DatabaseCrud.getMaxjobId() + " от " + thisDay.ToString("g");
                 childForm.WindowState = FormWindowState.Maximized;
                 childForm.Show();
             }

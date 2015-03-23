@@ -111,6 +111,8 @@ namespace QMDBO
                         string FileName = openFileDialog.FileName;
                         string cell_value = categoryDataGridView.Rows[row_index].Cells[0].Value.ToString();
                         int cell_value_int = Convert.ToInt32(cell_value);
+                        var links = new List<Link>();
+
                         foreach (var line in File.ReadAllLines(FileName))
                         {
                             var columns = line.Split(';');
@@ -124,14 +126,16 @@ namespace QMDBO
                                 User = columns[5],
                                 Pass = columns[6]
                             };
-                            _context.Links.Add(link);
-                            _context.SaveChanges();
+                            //_context.Links.Add(link);
+                            links.Add(link);
                             counter++;
                             if (frm != null)
                             {
                                 frm.toolStripStatusLabel.Text = "Импортировано: " + counter.ToString();
                             }
                         }
+                        _context.Links.AddRange(links);
+                        _context.SaveChanges();
                     }
                 }
             }

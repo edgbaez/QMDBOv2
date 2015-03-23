@@ -87,6 +87,8 @@ namespace QMDBO
                 jobID = job.JobId;
             }
 
+            var results = new List<Result>();
+
             foreach (DataGridViewRow myRow in dataGridView.Rows)
             {
                 Result result = new Result
@@ -108,9 +110,9 @@ namespace QMDBO
                 }
                 else
                 {
-                    _context.Results.Add(result);
+                    //_context.Results.Add(result);
+                    results.Add(result);
                 }
-                _context.SaveChanges();
 
                 originalResult = null;
                 result = null;
@@ -124,6 +126,8 @@ namespace QMDBO
                 }
 
             }
+            _context.Results.AddRange(results);
+            _context.SaveChanges();
             if (frm != null)
             {
                 frm.toolStripStatusLabel.Text = job.Name + " сохранена с количеством строк: " + counter;

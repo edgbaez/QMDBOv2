@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace QMDBO
 {
-    class ClassHelper
+    public class ClassHelper
     {
         public static bool QuestionYesNoStart(string txt)
         {
@@ -136,6 +136,24 @@ namespace QMDBO
             comboBox1.DisplayMember = "Value";
             comboBox1.ValueMember = "Key";
             comboBox1.SelectedIndex = selectedIndex;
+        }
+
+        public static void AddContextMenu(RichTextBox rtb)
+        {
+            if (rtb.ContextMenuStrip == null)
+            {
+                ContextMenuStrip cms = new ContextMenuStrip { ShowImageMargin = false };
+                ToolStripMenuItem tsmiCut = new ToolStripMenuItem("Cut");
+                tsmiCut.Click += (sender, e) => rtb.Cut();
+                cms.Items.Add(tsmiCut);
+                ToolStripMenuItem tsmiCopy = new ToolStripMenuItem("Copy");
+                tsmiCopy.Click += (sender, e) => rtb.Copy();
+                cms.Items.Add(tsmiCopy);
+                ToolStripMenuItem tsmiPaste = new ToolStripMenuItem("Paste");
+                tsmiPaste.Click += (sender, e) => rtb.Paste();
+                cms.Items.Add(tsmiPaste);
+                rtb.ContextMenuStrip = cms;
+            }
         }
 
     }

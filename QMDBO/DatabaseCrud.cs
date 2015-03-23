@@ -201,7 +201,7 @@ namespace QMDBO
         public static int getMaxjobId()
         {
             DatabaseContext context = new DatabaseContext();
-            int maxJobId = context.Jobs.Max(b => (int?)b.JobId) ?? 1;
+            int maxJobId = context.Jobs.Max(b => (int?)b.JobId+1) ?? 1;
             context.Dispose();
             return maxJobId;
         }

@@ -167,6 +167,7 @@ namespace QMDBO
             int typeExecute = Convert.ToInt32(comboBox1.SelectedValue ?? 1);
             crud.saveJob(this.dataGridView1, this.frm, this.formName, category, this.richTextBox1.Text, this.textBox1.Text, typeExecute);
             this.buttons_Enable();
+            categoryComboBox.Enabled = false;
         }
 
         private void ClearToolStripButton_Click(object sender, EventArgs e)

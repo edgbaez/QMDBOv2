@@ -48,6 +48,7 @@
             this.categoryDataGridView = new System.Windows.Forms.DataGridView();
             this.linksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.linksDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem1 = new System.Windows.Forms.ToolStripLabel();
@@ -61,15 +62,14 @@
             this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.portDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.servicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingNavigator)).BeginInit();
             this.categoryBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataGridView)).BeginInit();
@@ -231,6 +231,7 @@
             this.categoryDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.categoryDataGridView.AutoGenerateColumns = false;
+            this.categoryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.categoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.categoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.categoryIdDataGridViewTextBoxColumn1,
@@ -252,6 +253,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.linksDataGridView.AutoGenerateColumns = false;
+            this.linksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.linksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.linksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -266,6 +268,13 @@
             this.linksDataGridView.Name = "linksDataGridView";
             this.linksDataGridView.Size = new System.Drawing.Size(660, 276);
             this.linksDataGridView.TabIndex = 2;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "LinkId";
+            this.Column1.HeaderText = "LinkId";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // bindingNavigator1
             // 
@@ -386,25 +395,6 @@
             // 
             this.categoryBindingSource.DataSource = typeof(QMDBO.Category);
             // 
-            // categoryIdDataGridViewTextBoxColumn1
-            // 
-            this.categoryIdDataGridViewTextBoxColumn1.DataPropertyName = "CategoryId";
-            this.categoryIdDataGridViewTextBoxColumn1.HeaderText = "CategoryId";
-            this.categoryIdDataGridViewTextBoxColumn1.Name = "categoryIdDataGridViewTextBoxColumn1";
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "LinkId";
-            this.Column1.HeaderText = "LinkId";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
@@ -440,6 +430,18 @@
             this.passDataGridViewTextBoxColumn.DataPropertyName = "Pass";
             this.passDataGridViewTextBoxColumn.HeaderText = "Pass";
             this.passDataGridViewTextBoxColumn.Name = "passDataGridViewTextBoxColumn";
+            // 
+            // categoryIdDataGridViewTextBoxColumn1
+            // 
+            this.categoryIdDataGridViewTextBoxColumn1.DataPropertyName = "CategoryId";
+            this.categoryIdDataGridViewTextBoxColumn1.HeaderText = "CategoryId";
+            this.categoryIdDataGridViewTextBoxColumn1.Name = "categoryIdDataGridViewTextBoxColumn1";
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             // 
             // Form3
             // 

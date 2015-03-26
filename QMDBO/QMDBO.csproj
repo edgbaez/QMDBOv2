@@ -197,9 +197,10 @@
     <Content Include="Icons\Treetog-File-Type-Settings.ico" />
     <Content Include="Icons\Zerode-Plump-Document-scheduled-tasks.ico" />
     <Content Include="Icons\Zerode-Plump-Folder-Scheduled-Tasks.ico" />
-    <None Include="Resources\Delete-icon.png" />
-    <None Include="Resources\Cut-icon.png" />
     <None Include="Resources\Copy-icon.png" />
+    <None Include="Resources\Paste-icon.png" />
+    <None Include="Resources\Cut-icon.png" />
+    <None Include="Resources\Delete-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

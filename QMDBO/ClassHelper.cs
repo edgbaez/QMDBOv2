@@ -142,17 +142,17 @@ namespace QMDBO
         {
             if (rtb.ContextMenuStrip == null)
             {
-                ContextMenuStrip cms = new ContextMenuStrip { ShowImageMargin = false };
-                ToolStripMenuItem tsmiCut = new ToolStripMenuItem("Cut");
+                ContextMenuStrip cms = new ContextMenuStrip { ShowImageMargin = true };
+                ToolStripMenuItem tsmiCut = new ToolStripMenuItem("Вырезать");
+                tsmiCut.Image = Properties.Resources.Cut_icon;
                 tsmiCut.Click += (sender, e) => rtb.Cut();
                 cms.Items.Add(tsmiCut);
-                ToolStripMenuItem tsmiCopy = new ToolStripMenuItem();
-                tsmiCopy.Text = "Копировать";
+                ToolStripMenuItem tsmiCopy = new ToolStripMenuItem("Копировать");
                 tsmiCopy.Image = Properties.Resources.Copy_icon;
-                tsmiCopy.Size = new System.Drawing.Size(152, 22);
                 tsmiCopy.Click += (sender, e) => rtb.Copy();
                 cms.Items.Add(tsmiCopy);
-                ToolStripMenuItem tsmiPaste = new ToolStripMenuItem("Paste");
+                ToolStripMenuItem tsmiPaste = new ToolStripMenuItem("Вставить");
+                tsmiPaste.Image = Properties.Resources.Paste_icon;
                 tsmiPaste.Click += (sender, e) => rtb.Paste();
                 cms.Items.Add(tsmiPaste);
                 rtb.ContextMenuStrip = cms;

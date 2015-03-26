@@ -35,6 +35,7 @@ namespace QMDBO
             linksCollection = new List<ClassLinks>();
             crud = new DatabaseCrud();
             LoadCategoryAndLinks();
+            ClassHelper.AddContextMenu(this.richTextBox1);
             timer = new Stopwatch();
         }
 

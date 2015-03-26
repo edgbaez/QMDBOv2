@@ -146,7 +146,10 @@ namespace QMDBO
                 ToolStripMenuItem tsmiCut = new ToolStripMenuItem("Cut");
                 tsmiCut.Click += (sender, e) => rtb.Cut();
                 cms.Items.Add(tsmiCut);
-                ToolStripMenuItem tsmiCopy = new ToolStripMenuItem("Copy");
+                ToolStripMenuItem tsmiCopy = new ToolStripMenuItem();
+                tsmiCopy.Text = "Копировать";
+                tsmiCopy.Image = Properties.Resources.Copy_icon;
+                tsmiCopy.Size = new System.Drawing.Size(152, 22);
                 tsmiCopy.Click += (sender, e) => rtb.Copy();
                 cms.Items.Add(tsmiCopy);
                 ToolStripMenuItem tsmiPaste = new ToolStripMenuItem("Paste");

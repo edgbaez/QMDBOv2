@@ -90,6 +90,7 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
+    <Compile Include="InParametersOracle.cs" />
     <Compile Include="ClassHelper.cs" />
     <Compile Include="ClassLinks.cs" />
     <Compile Include="ClassOpenFile.cs" />
@@ -138,6 +139,7 @@
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </Compile>
     <Compile Include="ObservableListSource.cs" />
+    <Compile Include="OutParametersOracle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />

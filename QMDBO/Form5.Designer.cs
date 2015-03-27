@@ -30,17 +30,17 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.inDataGridView = new System.Windows.Forms.DataGridView();
-            this.InParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outDataGridView = new System.Windows.Forms.DataGridView();
-            this.OutParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OutType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OutValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linksDataGridView = new System.Windows.Forms.DataGridView();
             this.resultsDataGridView = new System.Windows.Forms.DataGridView();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStartAll = new System.Windows.Forms.Button();
+            this.OutParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OutType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OutSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
@@ -66,47 +66,17 @@
             this.inDataGridView.Size = new System.Drawing.Size(343, 150);
             this.inDataGridView.TabIndex = 1;
             // 
-            // InParam
-            // 
-            this.InParam.HeaderText = "Param";
-            this.InParam.Name = "InParam";
-            // 
-            // InType
-            // 
-            this.InType.HeaderText = "Type";
-            this.InType.Name = "InType";
-            // 
-            // InValue
-            // 
-            this.InValue.HeaderText = "Value";
-            this.InValue.Name = "InValue";
-            // 
             // outDataGridView
             // 
             this.outDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.outDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OutParam,
             this.OutType,
-            this.OutValue});
+            this.OutSize});
             this.outDataGridView.Location = new System.Drawing.Point(369, 38);
             this.outDataGridView.Name = "outDataGridView";
             this.outDataGridView.Size = new System.Drawing.Size(343, 150);
             this.outDataGridView.TabIndex = 2;
-            // 
-            // OutParam
-            // 
-            this.OutParam.HeaderText = "Param";
-            this.OutParam.Name = "OutParam";
-            // 
-            // OutType
-            // 
-            this.OutType.HeaderText = "Type";
-            this.OutType.Name = "OutType";
-            // 
-            // OutValue
-            // 
-            this.OutValue.HeaderText = "Value";
-            this.OutValue.Name = "OutValue";
             // 
             // linksDataGridView
             // 
@@ -148,6 +118,36 @@
             this.buttonStartAll.Text = "StartAll";
             this.buttonStartAll.UseVisualStyleBackColor = true;
             // 
+            // OutParam
+            // 
+            this.OutParam.HeaderText = "Out";
+            this.OutParam.Name = "OutParam";
+            // 
+            // OutType
+            // 
+            this.OutType.HeaderText = "Type";
+            this.OutType.Name = "OutType";
+            // 
+            // OutSize
+            // 
+            this.OutSize.HeaderText = "Size";
+            this.OutSize.Name = "OutSize";
+            // 
+            // InParam
+            // 
+            this.InParam.HeaderText = "In";
+            this.InParam.Name = "InParam";
+            // 
+            // InType
+            // 
+            this.InType.HeaderText = "Type";
+            this.InType.Name = "InType";
+            // 
+            // InValue
+            // 
+            this.InValue.HeaderText = "Value";
+            this.InValue.Name = "InValue";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,16 +177,16 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView inDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InParam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InValue;
         private System.Windows.Forms.DataGridView outDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OutParam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OutType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OutValue;
         private System.Windows.Forms.DataGridView linksDataGridView;
         private System.Windows.Forms.DataGridView resultsDataGridView;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStartAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InParam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OutParam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OutType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OutSize;
     }
 }

@@ -124,7 +124,7 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
             return result;
         }
 
-        public Dictionary<string, string> OracleProcedure(string ConnectionString, string procedureName)
+        public Dictionary<string, string> OracleProcedure(string ConnectionString, string procedureName, List <InParametersOracle> inParams, List <OutParametersOracle> outParams)
         {
             var dict = new Dictionary<string, string>();
             string[] result = new string[4];
@@ -138,16 +138,25 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 cmd.BindByName = true;
 
                 /* In параметры */
-                cmd.Parameters.Add("sDISK", OracleDbType.Char).Value = "D";
+                foreach (InParametersOracle inParam in inParams)
+                {
+                    cmd.Parameters.Add(inParam.name, inParam.type).Value = inParam.value;
+                }
 
                 /* Out параметры */
-                cmd.Parameters.Add("sOUT", OracleDbType.Varchar2, 4000).Direction = ParameterDirection.Output;
+                foreach (OutParametersOracle outParam in outParams)
+                {
+                    cmd.Parameters.Add(outParam.name, outParam.type, outParam.size).Direction = ParameterDirection.Output;
+                }
 
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    result[0] = (cmd.Parameters["sOUT"].Value ?? String.Empty).ToString();
-                    dict.Add("sOUT", (cmd.Parameters["sOUT"].Value ?? String.Empty).ToString());
+                    foreach (OutParametersOracle outParam in outParams)
+                    {
+                        result[0] = (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString();
+                        dict.Add(outParam.name, (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString());
+                    }
                     cmd.Dispose();
                 }
                 catch (OracleException oe)

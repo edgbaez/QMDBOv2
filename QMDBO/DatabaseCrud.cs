@@ -22,9 +22,8 @@ namespace QMDBO
             categoryBindingSource.DataSource = _context.Categories.Local.ToBindingList();
         }
 
-        public void loadDataGridViewLinks(List<ClassLinks> linksCollection, ComboBox categoryComboBox, DataGridView dataGridView, MDIParent1 frm)
+        public void loadDataGridViewLinks(List<ClassLinks> linksCollection, int category, DataGridView dataGridView, MDIParent1 frm)
         {
-            int category = Convert.ToInt32(categoryComboBox.SelectedValue);
             linksCollection.Clear();
             var query = from b in _context.Links
                         where b.CategoryId == category

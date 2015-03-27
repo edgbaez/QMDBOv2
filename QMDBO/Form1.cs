@@ -44,7 +44,8 @@ namespace QMDBO
             if (this.jobId == 0)
             {
                 crud.loadCategory(this.categoryBindingSource);
-                crud.loadDataGridViewLinks(this.linksCollection, this.categoryComboBox, this.dataGridView1, this.frm);
+                int category = Convert.ToInt32(categoryComboBox.SelectedValue);
+                crud.loadDataGridViewLinks(this.linksCollection, category, this.dataGridView1, this.frm);
             }
             else {
                 categoryComboBox.Visible = false;
@@ -189,7 +190,8 @@ namespace QMDBO
 
         private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            crud.loadDataGridViewLinks(this.linksCollection, this.categoryComboBox, this.dataGridView1, this.frm);
+            int category = Convert.ToInt32(categoryComboBox.SelectedValue);
+            crud.loadDataGridViewLinks(this.linksCollection, category, this.dataGridView1, this.frm);
         }
 
         private void ExpToolStripButton_Click(object sender, EventArgs e)

@@ -30,13 +30,13 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.inDataGridView = new System.Windows.Forms.DataGridView();
+            this.InParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outDataGridView = new System.Windows.Forms.DataGridView();
             this.OutParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OutType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OutValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linksDataGridView = new System.Windows.Forms.DataGridView();
             this.resultsDataGridView = new System.Windows.Forms.DataGridView();
             this.buttonStart = new System.Windows.Forms.Button();
@@ -66,6 +66,21 @@
             this.inDataGridView.Size = new System.Drawing.Size(343, 150);
             this.inDataGridView.TabIndex = 1;
             // 
+            // InParam
+            // 
+            this.InParam.HeaderText = "Param";
+            this.InParam.Name = "InParam";
+            // 
+            // InType
+            // 
+            this.InType.HeaderText = "Type";
+            this.InType.Name = "InType";
+            // 
+            // InValue
+            // 
+            this.InValue.HeaderText = "Value";
+            this.InValue.Name = "InValue";
+            // 
             // outDataGridView
             // 
             this.outDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -92,21 +107,6 @@
             // 
             this.OutValue.HeaderText = "Value";
             this.OutValue.Name = "OutValue";
-            // 
-            // InParam
-            // 
-            this.InParam.HeaderText = "Param";
-            this.InParam.Name = "InParam";
-            // 
-            // InType
-            // 
-            this.InType.HeaderText = "Type";
-            this.InType.Name = "InType";
-            // 
-            // InValue
-            // 
-            this.InValue.HeaderText = "Value";
-            this.InValue.Name = "InValue";
             // 
             // linksDataGridView
             // 
@@ -137,6 +137,7 @@
             this.buttonStart.TabIndex = 5;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // buttonStartAll
             // 

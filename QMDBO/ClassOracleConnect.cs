@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Oracle.DataAccess.Client;
+using System.Data;
 
 namespace QMDBO
 {
@@ -121,6 +122,52 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 reader.Dispose();
             }
             return result;
+        }
+
+        public Dictionary<string, string> OracleProcedure(string ConnectionString, string procedureName)
+        {
+            var dict = new Dictionary<string, string>();
+            string[] result = new string[4];
+            OracleConnection OracleCon = new OracleConnection(ConnectionString);
+            try
+            {
+                OracleCon.Open();
+                OracleCommand cmd = new OracleCommand(procedureName);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = OracleCon;
+                cmd.BindByName = true;
+
+                /* In параметры */
+                cmd.Parameters.Add("sDISK", OracleDbType.Char).Value = "D";
+
+                /* Out параметры */
+                cmd.Parameters.Add("sOUT", OracleDbType.Varchar2, 4000).Direction = ParameterDirection.Output;
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    result[0] = (cmd.Parameters["sOUT"].Value ?? String.Empty).ToString();
+                    dict.Add("sOUT", (cmd.Parameters["sOUT"].Value ?? String.Empty).ToString());
+                    cmd.Dispose();
+                }
+                catch (OracleException oe)
+                {
+                    result[0] = "Ошибка выполнения запроса к БД Oracle." + '\n' + oe.Message;
+                }
+            }
+            catch (OracleException oe)
+            {
+                result[0] = "Ошибка подключения к БД Oracle." + '\n' + oe.Message;
+            }
+            finally
+            {
+                if (OracleCon != null)
+                {
+                    OracleCon.Close();
+                    OracleCon.Dispose();
+                }
+            }
+            return dict;
         }
 
 

@@ -28,5 +28,32 @@ namespace QMDBO
             crud = new DatabaseCrud();
             crud.loadDataGridViewLinks(this.linksCollection, 2, this.linksDataGridView, this.frm);
         }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            ClassOracleConnect ora = new ClassOracleConnect();
+            foreach (DataGridViewRow row in linksDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value))
+                {
+                    string ConnectionString = ora.OracleConnString(
+                        (row.Cells[2].Value ?? String.Empty).ToString(),
+                        (row.Cells[3].Value ?? String.Empty).ToString(),
+                        (row.Cells[4].Value ?? String.Empty).ToString(),
+                        (row.Cells[5].Value ?? String.Empty).ToString(),
+                        (row.Cells[6].Value ?? String.Empty).ToString()
+                        );
+                    var dict = ora.OracleProcedure(ConnectionString, "PKG_R_TASK.P_DISK_FREE");
+                    //MessageBox.Show(res[0].ToString());
+                    foreach (var item in dict)
+                    {
+                        resultsDataGridView.Columns.Add(item.Key, item.Key);
+                        resultsDataGridView.Rows.Add(item.Value);
+                    }
+                    resultsDataGridView.Refresh();
+                }
+            }
+        }
+
     }
 }

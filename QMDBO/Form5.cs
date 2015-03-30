@@ -96,7 +96,6 @@ namespace QMDBO
 
                     var resultList = ora.OracleProcedure(ConnectionString, textBox1.Text, inParamsList, outParamsList);
 
-                    //MessageBox.Show(res[0].ToString());
                     foreach (var item in resultList)
                     {
                         resultsDataGridView.Rows.Add(row.Cells[2].Value, item.value);

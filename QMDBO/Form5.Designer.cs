@@ -31,16 +31,16 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.inDataGridView = new System.Windows.Forms.DataGridView();
             this.InParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.InValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outDataGridView = new System.Windows.Forms.DataGridView();
-            this.OutParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OutType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OutSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linksDataGridView = new System.Windows.Forms.DataGridView();
             this.resultsDataGridView = new System.Windows.Forms.DataGridView();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStartAll = new System.Windows.Forms.Button();
+            this.OutSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OutType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.OutParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
@@ -75,6 +75,8 @@
             // 
             this.InType.HeaderText = "Type";
             this.InType.Name = "InType";
+            this.InType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.InType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // InValue
             // 
@@ -92,21 +94,6 @@
             this.outDataGridView.Name = "outDataGridView";
             this.outDataGridView.Size = new System.Drawing.Size(343, 150);
             this.outDataGridView.TabIndex = 2;
-            // 
-            // OutParam
-            // 
-            this.OutParam.HeaderText = "Out";
-            this.OutParam.Name = "OutParam";
-            // 
-            // OutType
-            // 
-            this.OutType.HeaderText = "Type";
-            this.OutType.Name = "OutType";
-            // 
-            // OutSize
-            // 
-            this.OutSize.HeaderText = "Size";
-            this.OutSize.Name = "OutSize";
             // 
             // linksDataGridView
             // 
@@ -148,6 +135,23 @@
             this.buttonStartAll.Text = "StartAll";
             this.buttonStartAll.UseVisualStyleBackColor = true;
             // 
+            // OutSize
+            // 
+            this.OutSize.HeaderText = "Size";
+            this.OutSize.Name = "OutSize";
+            // 
+            // OutType
+            // 
+            this.OutType.HeaderText = "Type";
+            this.OutType.Name = "OutType";
+            this.OutType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.OutType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // OutParam
+            // 
+            this.OutParam.HeaderText = "Out";
+            this.OutParam.Name = "OutParam";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,10 +187,10 @@
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStartAll;
         private System.Windows.Forms.DataGridViewTextBoxColumn InParam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn InType;
+        private System.Windows.Forms.DataGridViewComboBoxColumn InType;
         private System.Windows.Forms.DataGridViewTextBoxColumn InValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn OutParam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OutType;
+        private System.Windows.Forms.DataGridViewComboBoxColumn OutType;
         private System.Windows.Forms.DataGridViewTextBoxColumn OutSize;
     }
 }

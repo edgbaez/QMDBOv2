@@ -138,6 +138,22 @@ namespace QMDBO
             comboBox1.SelectedIndex = selectedIndex;
         }
 
+        enum MyEnum
+        {
+            Char,
+            Date,
+            Decimal,
+            Double,
+            Int64,
+            Varchar2,
+        };
+
+        public static void dridComboBoxOracleDbType(DataGridViewComboBoxColumn comboBox)
+        {
+            comboBox.ValueType = typeof(MyEnum);
+            comboBox.DataSource = Enum.GetValues(typeof(MyEnum));
+        }
+
         public static void AddContextMenu(RichTextBox rtb)
         {
             if (rtb.ContextMenuStrip == null)

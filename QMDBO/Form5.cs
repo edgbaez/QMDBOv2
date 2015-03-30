@@ -23,6 +23,8 @@ namespace QMDBO
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            ClassHelper.dridComboBoxOracleDbType(this.InType);
+            ClassHelper.dridComboBoxOracleDbType(this.OutType);
             frm = this.MdiParent as MDIParent1;
             linksCollection = new List<ClassLinks>();
             crud = new DatabaseCrud();
@@ -62,17 +64,17 @@ namespace QMDBO
             }
 
             /* для теста */
-            InParametersOracle inTest = new InParametersOracle();
-            inTest.name = "sDISK";
-            inTest.typeName = "Char";
-            inTest.value = "D";
-            inParamsList.Add(inTest);
-            OutParametersOracle outTest = new OutParametersOracle();
-            outTest.name = "sOUT";
-            outTest.typeName = "Varchar2";
-            outTest.size = 4000;
-            outParamsList.Add(outTest);
-            textBox1.Text = "PKG_R_TASK.P_DISK_FREE";
+            //InParametersOracle inTest = new InParametersOracle();
+            //inTest.name = "sDISK";
+            //inTest.typeName = "Char";
+            //inTest.value = "D";
+            //inParamsList.Add(inTest);
+            //OutParametersOracle outTest = new OutParametersOracle();
+            //outTest.name = "sOUT";
+            //outTest.typeName = "Varchar2";
+            //outTest.size = 4000;
+            //outParamsList.Add(outTest);
+            //textBox1.Text = "PKG_R_TASK.P_DISK_FREE";
 
             if (resultsDataGridView.ColumnCount==0) {
                 resultsDataGridView.Columns.Add("name", "name");

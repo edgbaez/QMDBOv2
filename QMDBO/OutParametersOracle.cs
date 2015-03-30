@@ -17,17 +17,25 @@ namespace QMDBO
                 {
                     return OracleDbType.Char;
                 }
-                else if (this.typeName.Equals("Varchar2"))
-                {
-                    return OracleDbType.Varchar2;
-                }
                 else if (this.typeName.Equals("Date"))
                 {
                     return OracleDbType.Date;
                 }
+                else if (this.typeName.Equals("Decimal"))
+                {
+                    return OracleDbType.Decimal;
+                }
                 else if (this.typeName.Equals("Double"))
                 {
                     return OracleDbType.Double;
+                }
+                else if (this.typeName.Equals("Int64"))
+                {
+                    return OracleDbType.Int64;
+                }
+                else if (this.typeName.Equals("Varchar2"))
+                {
+                    return OracleDbType.Varchar2;
                 }
                 else
                 {

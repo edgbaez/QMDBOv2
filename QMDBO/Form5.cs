@@ -26,7 +26,7 @@ namespace QMDBO
             frm = this.MdiParent as MDIParent1;
             linksCollection = new List<ClassLinks>();
             crud = new DatabaseCrud();
-            crud.loadDataGridViewLinks(this.linksCollection, 2, this.linksDataGridView, this.frm);
+            crud.loadDataGridViewLinks(this.linksCollection, 1, this.linksDataGridView, this.frm);
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -62,18 +62,25 @@ namespace QMDBO
             }
 
             /* для теста */
-            //InParametersOracle inTest = new InParametersOracle();
-            //inTest.name = "sDISK";
-            //inTest.typeName = "Char";
-            //inTest.value = "D";
-            //inParamsList.Add(inTest);
-            //OutParametersOracle outTest = new OutParametersOracle();
-            //outTest.name = "sOUT";
-            //outTest.typeName = "Varchar2";
-            //outTest.size = 4000;
-            //outParamsList.Add(outTest);
-            //textBox1.Text = "PKG_R_TASK.P_DISK_FREE";
+            InParametersOracle inTest = new InParametersOracle();
+            inTest.name = "sDISK";
+            inTest.typeName = "Char";
+            inTest.value = "D";
+            inParamsList.Add(inTest);
+            OutParametersOracle outTest = new OutParametersOracle();
+            outTest.name = "sOUT";
+            outTest.typeName = "Varchar2";
+            outTest.size = 4000;
+            outParamsList.Add(outTest);
+            textBox1.Text = "PKG_R_TASK.P_DISK_FREE";
 
+            if (resultsDataGridView.ColumnCount==0) {
+                resultsDataGridView.Columns.Add("name", "name");
+                foreach (OutParametersOracle outParam in outParamsList)
+                {
+                resultsDataGridView.Columns.Add(outParam.name, outParam.name);
+                }
+            }
 
             foreach (DataGridViewRow row in linksDataGridView.Rows)
             {
@@ -87,13 +94,12 @@ namespace QMDBO
                         (row.Cells[6].Value ?? String.Empty).ToString()
                         );
 
-                    var dict = ora.OracleProcedure(ConnectionString, textBox1.Text, inParamsList, outParamsList);
+                    var resultList = ora.OracleProcedure(ConnectionString, textBox1.Text, inParamsList, outParamsList);
 
                     //MessageBox.Show(res[0].ToString());
-                    foreach (var item in dict)
+                    foreach (var item in resultList)
                     {
-                        resultsDataGridView.Columns.Add(item.Key, item.Key);
-                        resultsDataGridView.Rows.Add(item.Value);
+                        resultsDataGridView.Rows.Add(row.Cells[2].Value, item.value);
                     }
                     resultsDataGridView.Refresh();
                 }

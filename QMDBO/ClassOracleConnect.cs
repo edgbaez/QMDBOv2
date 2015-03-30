@@ -124,9 +124,9 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
             return result;
         }
 
-        public Dictionary<string, string> OracleProcedure(string ConnectionString, string procedureName, List <InParametersOracle> inParams, List <OutParametersOracle> outParams)
+        public List<OutParametersOracle> OracleProcedure(string ConnectionString, string procedureName, List<InParametersOracle> inParams, List<OutParametersOracle> outParams)
         {
-            var dict = new Dictionary<string, string>();
+            List<OutParametersOracle> resultList = new List <OutParametersOracle>();
             string[] result = new string[4];
             OracleConnection OracleCon = new OracleConnection(ConnectionString);
             try
@@ -155,7 +155,10 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                     foreach (OutParametersOracle outParam in outParams)
                     {
                         result[0] = (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString();
-                        dict.Add(outParam.name, (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString());
+                        OutParametersOracle resultParam = new OutParametersOracle();
+                        resultParam.name = outParam.name;
+                        resultParam.value = (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString();
+                        resultList.Add(resultParam);
                     }
                     cmd.Dispose();
                 }
@@ -176,7 +179,7 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                     OracleCon.Dispose();
                 }
             }
-            return dict;
+            return resultList;
         }
 
 

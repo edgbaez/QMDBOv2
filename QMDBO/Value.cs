@@ -10,6 +10,7 @@ namespace QMDBO
         public int KeyId { get; set; }
         public string KeyValue { get; set; }
 
+        public virtual Link Link { get; set; }
         public virtual Key Key { get; set; }
     }
 }

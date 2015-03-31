@@ -98,6 +98,11 @@ namespace QMDBO
 
                     var resultList = ora.OracleProcedure(ConnectionString, textBox1.Text, inParamsList, outParamsList);
 
+                    DatabaseCrud crud = new DatabaseCrud();
+                    crud.saveKeys(1, inParamsList);
+                    crud.saveKeys(1, outParamsList);
+                    crud.saveValues(Convert.ToInt32(row.Cells["hide_link_id"].Value.ToString()), 1, resultList);
+
                     foreach (var item in resultList)
                     {
                         resultsDataGridView.Rows.Add(row.Cells[2].Value, item.value);

@@ -209,5 +209,38 @@ namespace QMDBO
             return maxJobId;
         }
 
+        public void saveKeys(int JobId, List <ParametersOracle> paramList)
+        {
+            foreach (ParametersOracle param in paramList)
+            {
+                Key key = new Key
+                {
+                    JobId = JobId,
+                    Name = param.name,
+                    DbType = param.typeName,
+                    Size = param.size,
+                    InValue = param.value,
+                    Type = 3
+                };
+                _context.Keys.Add(key);
+            }
+            _context.SaveChanges();
+        }
+
+        public void saveValues(int LinkId, int KeyId, List<ParametersOracle> paramList)
+        {
+            foreach (ParametersOracle param in paramList)
+            {
+                Value val = new Value
+                {
+                    LinkId = LinkId,
+                    KeyId = KeyId,
+                    KeyValue = param.value
+                };
+                _context.Values.Add(val);
+            }
+            _context.SaveChanges();
+        }
+
     }
 }

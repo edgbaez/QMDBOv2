@@ -15,6 +15,7 @@ namespace QMDBO
         DatabaseCrud crud;
         private List<ClassLinks> linksCollection;
         MDIParent1 frm;
+        DataTable table;
 
         public Form5()
         {
@@ -23,6 +24,8 @@ namespace QMDBO
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            table = new DataTable();
+            table.Columns.Add("name"); 
             ClassHelper.dridComboBoxOracleDbType(this.InType);
             ClassHelper.dridComboBoxOracleDbType(this.OutType);
             frm = this.MdiParent as MDIParent1;
@@ -64,25 +67,30 @@ namespace QMDBO
             }
 
             /* для теста */
-            //InParametersOracle inTest = new InParametersOracle();
-            //inTest.name = "sDISK";
-            //inTest.typeName = "Char";
-            //inTest.value = "D";
-            //inParamsList.Add(inTest);
-            //OutParametersOracle outTest = new OutParametersOracle();
-            //outTest.name = "sOUT";
-            //outTest.typeName = "Varchar2";
-            //outTest.size = 4000;
-            //outParamsList.Add(outTest);
-            //textBox1.Text = "PKG_R_TASK.P_DISK_FREE";
+            ParametersOracle inTest = new ParametersOracle();
+            inTest.name = "sDISK";
+            inTest.typeName = "Char";
+            inTest.value = "D";
+            inParamsList.Add(inTest);
+            ParametersOracle outTest = new ParametersOracle();
+            outTest.name = "sOUT";
+            outTest.typeName = "Varchar2";
+            outTest.size = 4000;
+            outParamsList.Add(outTest);
+            textBox1.Text = "PKG_R_TASK.P_DISK_FREE";
 
-            if (resultsDataGridView.ColumnCount==0) {
-                resultsDataGridView.Columns.Add("name", "name");
-                foreach (ParametersOracle outParam in outParamsList)
+            List <string> columnNames = new List <string>();
+            columnNames = (from dc in table.Columns.Cast<DataColumn>()
+                                    select dc.ColumnName).ToList();
+
+            foreach (ParametersOracle outParam in outParamsList)
+            {
+                if (!columnNames.Contains(outParam.name))
                 {
-                resultsDataGridView.Columns.Add(outParam.name, outParam.name);
+                    table.Columns.Add(outParam.name); 
                 }
             }
+
 
             foreach (DataGridViewRow row in linksDataGridView.Rows)
             {
@@ -98,15 +106,19 @@ namespace QMDBO
 
                     var resultList = ora.OracleProcedure(ConnectionString, textBox1.Text, inParamsList, outParamsList);
 
-                    DatabaseCrud crud = new DatabaseCrud();
-                    crud.saveKeys(1, inParamsList);
-                    crud.saveKeys(1, outParamsList);
-                    crud.saveValues(Convert.ToInt32(row.Cells["hide_link_id"].Value.ToString()), 1, resultList);
+                    //DatabaseCrud crud = new DatabaseCrud();
+                    //crud.saveKeys(1, inParamsList);
+                    //crud.saveKeys(1, outParamsList);
+                    //crud.saveValues(Convert.ToInt32(row.Cells["hide_link_id"].Value.ToString()), 1, resultList);
 
                     foreach (var item in resultList)
                     {
-                        resultsDataGridView.Rows.Add(row.Cells[2].Value, item.value);
+                        DataRow newRow = table.NewRow();
+                        newRow["name"] = row.Cells[1].Value;
+                        newRow[item.name] = item.value;
+                        table.Rows.Add(newRow);
                     }
+                    resultsDataGridView.DataSource = table;
                     resultsDataGridView.Refresh();
                 }
             }

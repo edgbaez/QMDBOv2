@@ -124,9 +124,9 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
             return result;
         }
 
-        public List<OutParametersOracle> OracleProcedure(string ConnectionString, string procedureName, List<InParametersOracle> inParams, List<OutParametersOracle> outParams)
+        public List<ParametersOracle> OracleProcedure(string ConnectionString, string procedureName, List<ParametersOracle> inParams, List<ParametersOracle> outParams)
         {
-            List<OutParametersOracle> resultList = new List <OutParametersOracle>();
+            List<ParametersOracle> resultList = new List <ParametersOracle>();
             string[] result = new string[4];
             OracleConnection OracleCon = new OracleConnection(ConnectionString);
             try
@@ -138,13 +138,13 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 cmd.BindByName = true;
 
                 /* In параметры */
-                foreach (InParametersOracle inParam in inParams)
+                foreach (ParametersOracle inParam in inParams)
                 {
                     cmd.Parameters.Add(inParam.name, inParam.type).Value = inParam.value;
                 }
 
                 /* Out параметры */
-                foreach (OutParametersOracle outParam in outParams)
+                foreach (ParametersOracle outParam in outParams)
                 {
                     cmd.Parameters.Add(outParam.name, outParam.type, outParam.size).Direction = ParameterDirection.Output;
                 }
@@ -152,10 +152,10 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    foreach (OutParametersOracle outParam in outParams)
+                    foreach (ParametersOracle outParam in outParams)
                     {
                         result[0] = (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString();
-                        OutParametersOracle resultParam = new OutParametersOracle();
+                        ParametersOracle resultParam = new ParametersOracle();
                         resultParam.name = outParam.name;
                         resultParam.value = (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString();
                         resultList.Add(resultParam);

@@ -35,12 +35,12 @@ namespace QMDBO
         {
             ClassOracleConnect ora = new ClassOracleConnect();
 
-            List<InParametersOracle> inParamsList = new List<InParametersOracle>();
+            List<ParametersOracle> inParamsList = new List<ParametersOracle>();
             foreach (DataGridViewRow inRow in inDataGridView.Rows)
             {
                 if (inRow.Cells[0].Value != null)
                 {
-                    InParametersOracle inParam = new InParametersOracle();
+                    ParametersOracle inParam = new ParametersOracle();
                     inParam.name = (inRow.Cells[0].Value ?? String.Empty).ToString();
                     inParam.typeName = (inRow.Cells[1].Value ?? String.Empty).ToString();
                     inParam.value = (inRow.Cells[2].Value ?? String.Empty).ToString();
@@ -49,12 +49,12 @@ namespace QMDBO
                 }
             }
 
-            List<OutParametersOracle> outParamsList = new List<OutParametersOracle>();
+            List<ParametersOracle> outParamsList = new List<ParametersOracle>();
             foreach (DataGridViewRow outRow in outDataGridView.Rows)
             {
                 if (outRow.Cells[0].Value != null)
                 {
-                    OutParametersOracle outParam = new OutParametersOracle();
+                    ParametersOracle outParam = new ParametersOracle();
                     outParam.name = (outRow.Cells[0].Value ?? String.Empty).ToString();
                     outParam.typeName = (outRow.Cells[1].Value ?? String.Empty).ToString();
                     outParam.size = Convert.ToInt32((outRow.Cells[2].Value ?? 1));
@@ -78,7 +78,7 @@ namespace QMDBO
 
             if (resultsDataGridView.ColumnCount==0) {
                 resultsDataGridView.Columns.Add("name", "name");
-                foreach (OutParametersOracle outParam in outParamsList)
+                foreach (ParametersOracle outParam in outParamsList)
                 {
                 resultsDataGridView.Columns.Add(outParam.name, outParam.name);
                 }

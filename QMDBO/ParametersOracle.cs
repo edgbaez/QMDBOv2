@@ -5,7 +5,7 @@ using Oracle.DataAccess.Client;
 
 namespace QMDBO
 {
-    public class OutParametersOracle
+    public class ParametersOracle
     {
         public string name { get; set; }
         public string typeName { get; set; }

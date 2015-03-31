@@ -163,6 +163,7 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 catch (OracleException oe)
                 {
                     ParametersOracle resultParam = new ParametersOracle();
+                    resultParam.name = outParams[0].name;
                     resultParam.value = "Ошибка выполнения запроса к БД Oracle." + '\n' + oe.Message;
                     resultList.Add(resultParam);
                 }
@@ -170,6 +171,7 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
             catch (OracleException oe)
             {
                 ParametersOracle resultParam = new ParametersOracle();
+                resultParam.name = outParams[0].name;
                 resultParam.value = "Ошибка подключения к БД Oracle." + '\n' + oe.Message;
                 resultList.Add(resultParam);
             }

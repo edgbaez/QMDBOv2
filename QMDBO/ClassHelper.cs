@@ -12,11 +12,11 @@ namespace QMDBO
         {
             if (string.IsNullOrEmpty(txt))
             {
-                MessageBox.Show("Что обновлять?", "Пусто");
+                MessageBox.Show("Необходимо заполнить все поля", "Пусто");
             }
             else
             {
-                var result = MessageBox.Show("Обновить?", "Подтверждение",
+                var result = MessageBox.Show("Продолжить?", "Подтверждение",
                                              MessageBoxButtons.YesNo,
                                              MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)

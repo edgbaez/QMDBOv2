@@ -144,7 +144,7 @@ namespace QMDBO
             Date,
             Decimal,
             Double,
-            Int64,
+            Int32,
             Varchar2,
         };
 
@@ -173,6 +173,20 @@ namespace QMDBO
                 cms.Items.Add(tsmiPaste);
                 rtb.ContextMenuStrip = cms;
             }
+        }
+
+        public static int TryToInt32(object value)
+        {
+            int result;
+            try
+            {
+                result = Convert.ToInt32(value);
+            }
+            catch
+            {
+                result = 0;
+            }
+            return result;
         }
 
     }

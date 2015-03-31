@@ -29,9 +29,9 @@ namespace QMDBO
                 {
                     return OracleDbType.Double;
                 }
-                else if (this.typeName.Equals("Int64"))
+                else if (this.typeName.Equals("Int32"))
                 {
-                    return OracleDbType.Int64;
+                    return OracleDbType.Int32;
                 }
                 else if (this.typeName.Equals("Varchar2"))
                 {

@@ -127,7 +127,6 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
         public List<ParametersOracle> OracleProcedure(string ConnectionString, string procedureName, List<ParametersOracle> inParams, List<ParametersOracle> outParams)
         {
             List<ParametersOracle> resultList = new List <ParametersOracle>();
-            string[] result = new string[4];
             OracleConnection OracleCon = new OracleConnection(ConnectionString);
             try
             {
@@ -154,7 +153,6 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                     cmd.ExecuteNonQuery();
                     foreach (ParametersOracle outParam in outParams)
                     {
-                        result[0] = (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString();
                         ParametersOracle resultParam = new ParametersOracle();
                         resultParam.name = outParam.name;
                         resultParam.value = (cmd.Parameters[outParam.name].Value ?? String.Empty).ToString();
@@ -164,12 +162,16 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 }
                 catch (OracleException oe)
                 {
-                    result[0] = "Ошибка выполнения запроса к БД Oracle." + '\n' + oe.Message;
+                    ParametersOracle resultParam = new ParametersOracle();
+                    resultParam.value = "Ошибка выполнения запроса к БД Oracle." + '\n' + oe.Message;
+                    resultList.Add(resultParam);
                 }
             }
             catch (OracleException oe)
             {
-                result[0] = "Ошибка подключения к БД Oracle." + '\n' + oe.Message;
+                ParametersOracle resultParam = new ParametersOracle();
+                resultParam.value = "Ошибка подключения к БД Oracle." + '\n' + oe.Message;
+                resultList.Add(resultParam);
             }
             finally
             {

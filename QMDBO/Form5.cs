@@ -57,7 +57,7 @@ namespace QMDBO
                     ParametersOracle outParam = new ParametersOracle();
                     outParam.name = (outRow.Cells[0].Value ?? String.Empty).ToString();
                     outParam.typeName = (outRow.Cells[1].Value ?? String.Empty).ToString();
-                    outParam.size = Convert.ToInt32((outRow.Cells[2].Value ?? 1));
+                    outParam.size = ClassHelper.TryToInt32(outRow.Cells[2].Value);
                     outParamsList.Add(outParam);
                     outParam = null;
                 }

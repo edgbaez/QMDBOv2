@@ -70,22 +70,22 @@ namespace QMDBO
                 }
 
                 /* для теста */
-                //ParametersOracle inTest = new ParametersOracle();
-                //inTest.name = "dDATE";
-                //inTest.typeName = "Date";
-                ////inTest.value = "31.03.2015";
-                //inParamsList.Add(inTest);
-                //ParametersOracle outTest = new ParametersOracle();
-                //outTest.name = "nOFOUND";
-                //outTest.typeName = "Double";
-                //outTest.size = 17;
-                //outParamsList.Add(outTest);
-                //ParametersOracle outTest2 = new ParametersOracle();
-                //outTest2.name = "nOERR";
-                //outTest2.typeName = "Double";
-                //outTest2.size = 17;
-                //outParamsList.Add(outTest2);
-                //textBox1.Text = "PKG_R_TASK.P_R_SYNC_LOG_RETURN";
+                ParametersOracle inTest = new ParametersOracle();
+                inTest.name = "dDATE";
+                inTest.typeName = "Date";
+                //inTest.value = "31.03.2015";
+                inParamsList.Add(inTest);
+                ParametersOracle outTest = new ParametersOracle();
+                outTest.name = "nOFOUND";
+                outTest.typeName = "Decimal";
+                outTest.size = 17;
+                outParamsList.Add(outTest);
+                ParametersOracle outTest2 = new ParametersOracle();
+                outTest2.name = "nOERR";
+                outTest2.typeName = "Decimal";
+                outTest2.size = 17;
+                outParamsList.Add(outTest2);
+                textBox1.Text = "P_R_SYNC_LOG_RETURN";
 
                 List<string> columnNames = new List<string>();
                 columnNames = (from dc in table.Columns.Cast<DataColumn>()
@@ -119,17 +119,34 @@ namespace QMDBO
                         //crud.saveKeys(1, outParamsList);
                         //crud.saveValues(Convert.ToInt32(row.Cells["hide_link_id"].Value.ToString()), 1, resultList);
 
-                        DataRow newRow = table.NewRow();
-                        newRow["name"] = row.Cells[1].Value;
+                        string name = (row.Cells[1].Value ?? String.Empty).ToString();
 
-                        foreach (var item in resultList)
+                        DataRow drFound = table.Select("name = '" + name + "'").FirstOrDefault();
+                        if (drFound != null)
                         {
-                            if (item.name != null)
+                            foreach (var item in resultList)
                             {
-                                newRow[item.name] = item.value;
+                                if (item.name != null)
+                                {
+                                    drFound[item.name] = item.value;
+                                }
                             }
                         }
-                        table.Rows.Add(newRow);
+                        else
+                        {
+                            DataRow newRow = table.NewRow();
+                            newRow["name"] = name;
+
+                            foreach (var item in resultList)
+                            {
+                                if (item.name != null)
+                                {
+                                    newRow[item.name] = item.value;
+                                }
+                            }
+                            table.Rows.Add(newRow);
+                        }
+
                         resultsDataGridView.DataSource = table;
                         resultsDataGridView.Refresh();
                     }

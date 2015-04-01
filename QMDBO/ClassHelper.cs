@@ -142,7 +142,6 @@ namespace QMDBO
         {
             Char,
             Date,
-            Decimal,
             Double,
             Int32,
             Varchar2,

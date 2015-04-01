@@ -21,10 +21,6 @@ namespace QMDBO
                 {
                     return OracleDbType.Date;
                 }
-                else if (this.typeName.Equals("Decimal"))
-                {
-                    return OracleDbType.Decimal;
-                }
                 else if (this.typeName.Equals("Double"))
                 {
                     return OracleDbType.Double;

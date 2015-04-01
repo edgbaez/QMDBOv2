@@ -20,22 +20,12 @@ namespace QMDBO
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            if (ClassHelper.IsFormAlreadyOpen(typeof(NewTask)) == null)
+            if (ClassHelper.IsFormAlreadyOpen(typeof(FormNewTask)) == null)
             {
-                NewTask childForm = new NewTask();
+                FormNewTask childForm = new FormNewTask();
                 childForm.MdiParent = this;
                 childForm.Show();
             }
-            //if (ClassHelper.IsFormAlreadyOpen(typeof(Form1)) == null)
-            //{
-            //    DateTime thisDay = DateTime.Now;
-
-            //    Form1 childForm = new Form1();
-            //    childForm.MdiParent = this;
-            //    childForm.Text = "Задача " + DatabaseCrud.getMaxjobId() + " от " + thisDay.ToString("g");
-            //    childForm.WindowState = FormWindowState.Maximized;
-            //    childForm.Show();
-            //}
         }
 
         private void OpenFile(object sender, EventArgs e)

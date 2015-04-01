@@ -32,7 +32,7 @@ namespace QMDBO
 
             if (ClassHelper.IsFormAlreadyOpen(typeof(Form1)) == null)
             {
-                Form1 childForm = new Form1(jobId, categoryId);
+                Form1 childForm = new Form1(categoryId, jobId);
                 childForm.MdiParent = this.MdiParent;
                 childForm.Text = jobName;
                 childForm.WindowState = FormWindowState.Maximized;

@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace QMDBO
 {
-    public partial class NewTask : Form
+    public partial class FormNewTask : Form
     {
         DatabaseCrud crud;
 
-        public NewTask()
+        public FormNewTask()
         {
             InitializeComponent();
         }
@@ -29,6 +29,20 @@ namespace QMDBO
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int categoryId = Convert.ToInt32(categoryComboBox.SelectedValue);
+            if (ClassHelper.IsFormAlreadyOpen(typeof(Form1)) == null)
+            {
+                Form1 childForm = new Form1(categoryId);
+                childForm.MdiParent = this.MdiParent;
+                childForm.Text = this.textBox1.Text;
+                childForm.WindowState = FormWindowState.Maximized;
+                childForm.Show();
+            }
             this.Close();
         }
     }

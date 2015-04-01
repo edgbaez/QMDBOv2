@@ -20,7 +20,7 @@ namespace QMDBO
         private int categoryId;
         Stopwatch timer;
 
-        public Form1(int jobId = 0, int categoryId = 0)
+        public Form1(int categoryId, int jobId = 0)
         {
             InitializeComponent();
             this.jobId = jobId;
@@ -43,12 +43,9 @@ namespace QMDBO
         {
             if (this.jobId == 0)
             {
-                crud.loadCategory(this.categoryBindingSource);
-                int category = Convert.ToInt32(categoryComboBox.SelectedValue);
-                crud.loadDataGridViewLinks(this.linksCollection, category, this.dataGridView1, this.frm);
+                crud.loadDataGridViewLinks(this.linksCollection, this.categoryId, this.dataGridView1, this.frm);
             }
             else {
-                categoryComboBox.Visible = false;
                 crud.loadTab1(this.jobId, this.richTextBox1, this.textBox1, this.comboBox1);
                 crud.loadDataGridViewLinksHistory(this.linksCollection, this.jobId, this.categoryId, this.dataGridView1, this.frm);
             }
@@ -64,7 +61,6 @@ namespace QMDBO
             textBox1.Enabled = false;
             toolStrip1.Enabled = false;
             comboBox1.Enabled = false;
-            categoryComboBox.Enabled = false;
         }
 
         private void buttons_Enable()
@@ -77,7 +73,6 @@ namespace QMDBO
             textBox1.Enabled = true;
             toolStrip1.Enabled = true;
             comboBox1.Enabled = true;
-            categoryComboBox.Enabled = true;
         }
 
         /* Выбранные */
@@ -165,11 +160,9 @@ namespace QMDBO
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             this.buttons_Disable();
-            int category = Convert.ToInt32(categoryComboBox.SelectedValue);
             int typeExecute = Convert.ToInt32(comboBox1.SelectedValue ?? 1);
-            crud.saveJob(this.dataGridView1, this.frm, this.formName, category, this.richTextBox1.Text, this.textBox1.Text, typeExecute);
+            crud.saveJob(this.dataGridView1, this.frm, this.formName, this.categoryId, this.richTextBox1.Text, this.textBox1.Text, typeExecute);
             this.buttons_Enable();
-            categoryComboBox.Enabled = false;
         }
 
         private void ClearToolStripButton_Click(object sender, EventArgs e)
@@ -186,12 +179,6 @@ namespace QMDBO
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridViewSortOrder.dataGridViewColumnHeaderOrder(this.dataGridView1, e, this.linksCollection);
-        }
-
-        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int category = Convert.ToInt32(categoryComboBox.SelectedValue);
-            crud.loadDataGridViewLinks(this.linksCollection, category, this.dataGridView1, this.frm);
         }
 
         private void ExpToolStripButton_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace QMDBO
 {
-    partial class NewTask
+    partial class FormNewTask
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label categoryIdLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewTask));
-            this.categoryIdComboBox = new System.Windows.Forms.ComboBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNewTask));
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,17 +50,17 @@
             categoryIdLabel.TabIndex = 1;
             categoryIdLabel.Text = "Категория";
             // 
-            // categoryIdComboBox
+            // categoryComboBox
             // 
-            this.categoryIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.categoryBindingSource, "CategoryId", true));
-            this.categoryIdComboBox.DataSource = this.categoryBindingSource;
-            this.categoryIdComboBox.DisplayMember = "Name";
-            this.categoryIdComboBox.FormattingEnabled = true;
-            this.categoryIdComboBox.Location = new System.Drawing.Point(31, 85);
-            this.categoryIdComboBox.Name = "categoryIdComboBox";
-            this.categoryIdComboBox.Size = new System.Drawing.Size(178, 21);
-            this.categoryIdComboBox.TabIndex = 2;
-            this.categoryIdComboBox.ValueMember = "CategoryId";
+            this.categoryComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.categoryBindingSource, "CategoryId", true));
+            this.categoryComboBox.DataSource = this.categoryBindingSource;
+            this.categoryComboBox.DisplayMember = "Name";
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(31, 85);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(178, 21);
+            this.categoryComboBox.TabIndex = 2;
+            this.categoryComboBox.ValueMember = "CategoryId";
             // 
             // categoryBindingSource
             // 
@@ -90,6 +90,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "ОК";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -101,7 +102,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // NewTask
+            // FormNewTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -111,12 +112,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(categoryIdLabel);
-            this.Controls.Add(this.categoryIdComboBox);
+            this.Controls.Add(this.categoryComboBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 250);
-            this.Name = "NewTask";
+            this.Name = "FormNewTask";
             this.Text = "Новая задача";
             this.Load += new System.EventHandler(this.NewTask_Load);
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
@@ -128,7 +130,7 @@
         #endregion
 
         private System.Windows.Forms.BindingSource categoryBindingSource;
-        private System.Windows.Forms.ComboBox categoryIdComboBox;
+        private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

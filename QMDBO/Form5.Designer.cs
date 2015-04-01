@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.inDataGridView = new System.Windows.Forms.DataGridView();
             this.InParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.InValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outDataGridView = new System.Windows.Forms.DataGridView();
+            this.OutParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OutType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.OutSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linksDataGridView = new System.Windows.Forms.DataGridView();
             this.resultsDataGridView = new System.Windows.Forms.DataGridView();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStartAll = new System.Windows.Forms.Button();
-            this.OutSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OutType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.OutParam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
@@ -95,6 +96,23 @@
             this.outDataGridView.Size = new System.Drawing.Size(343, 150);
             this.outDataGridView.TabIndex = 2;
             // 
+            // OutParam
+            // 
+            this.OutParam.HeaderText = "Out";
+            this.OutParam.Name = "OutParam";
+            // 
+            // OutType
+            // 
+            this.OutType.HeaderText = "Type";
+            this.OutType.Name = "OutType";
+            this.OutType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.OutType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // OutSize
+            // 
+            this.OutSize.HeaderText = "Size";
+            this.OutSize.Name = "OutSize";
+            // 
             // linksDataGridView
             // 
             this.linksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -135,23 +153,6 @@
             this.buttonStartAll.Text = "StartAll";
             this.buttonStartAll.UseVisualStyleBackColor = true;
             // 
-            // OutSize
-            // 
-            this.OutSize.HeaderText = "Size";
-            this.OutSize.Name = "OutSize";
-            // 
-            // OutType
-            // 
-            this.OutType.HeaderText = "Type";
-            this.OutType.Name = "OutType";
-            this.OutType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.OutType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // OutParam
-            // 
-            this.OutParam.HeaderText = "Out";
-            this.OutParam.Name = "OutParam";
-            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +165,7 @@
             this.Controls.Add(this.outDataGridView);
             this.Controls.Add(this.inDataGridView);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(735, 520);
             this.Name = "Form5";
             this.Text = "Выполнить процедуру";

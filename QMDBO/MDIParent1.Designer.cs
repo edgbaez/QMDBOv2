@@ -51,6 +51,7 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.procedureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +71,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.SettingsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.linksToolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.procedureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -271,6 +271,14 @@
             this.linksToolStripMenuItem.Text = "Подключения";
             this.linksToolStripMenuItem.Click += new System.EventHandler(this.linksToolStripMenuItem_Click);
             // 
+            // procedureToolStripMenuItem
+            // 
+            this.procedureToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("procedureToolStripMenuItem.Image")));
+            this.procedureToolStripMenuItem.Name = "procedureToolStripMenuItem";
+            this.procedureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.procedureToolStripMenuItem.Text = "Процедура";
+            this.procedureToolStripMenuItem.Click += new System.EventHandler(this.procedureToolStripMenuItem_Click);
+            // 
             // windowsMenu
             // 
             this.windowsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -427,13 +435,6 @@
             this.linksToolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.linksToolStripButton2.Text = "Подключения";
             this.linksToolStripButton2.Click += new System.EventHandler(this.linksToolStripButton2_Click);
-            // 
-            // procedureToolStripMenuItem
-            // 
-            this.procedureToolStripMenuItem.Name = "procedureToolStripMenuItem";
-            this.procedureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.procedureToolStripMenuItem.Text = "Процедура";
-            this.procedureToolStripMenuItem.Click += new System.EventHandler(this.procedureToolStripMenuItem_Click);
             // 
             // MDIParent1
             // 

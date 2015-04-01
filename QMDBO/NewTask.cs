@@ -26,5 +26,10 @@ namespace QMDBO
             DateTime thisDay = DateTime.Now;
             this.textBox1.Text = "Задача " + DatabaseCrud.getMaxjobId() + " от " + thisDay.ToString("g");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

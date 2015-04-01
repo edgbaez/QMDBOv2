@@ -16,10 +16,12 @@ namespace QMDBO
         private List<ClassLinks> linksCollection;
         MDIParent1 frm;
         DataTable table;
+        private int categoryId;
 
-        public Form5()
+        public Form5(int categoryId)
         {
             InitializeComponent();
+            this.categoryId = categoryId;
         }
 
         private void Form5_Load(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace QMDBO
             frm = this.MdiParent as MDIParent1;
             linksCollection = new List<ClassLinks>();
             crud = new DatabaseCrud();
-            crud.loadDataGridViewLinks(this.linksCollection, 1, this.linksDataGridView, this.frm);
+            crud.loadDataGridViewLinks(this.linksCollection, this.categoryId, this.linksDataGridView, this.frm);
         }
 
         private void buttonStart_Click(object sender, EventArgs e)

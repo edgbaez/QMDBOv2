@@ -169,7 +169,7 @@ namespace QMDBO
         {
             if (ClassHelper.IsFormAlreadyOpen(typeof(Form5)) == null)
             {
-                Form5 childForm = new Form5();
+                Form5 childForm = new Form5(1);
                 childForm.MdiParent = this;
                 childForm.WindowState = FormWindowState.Maximized;
                 childForm.Show();

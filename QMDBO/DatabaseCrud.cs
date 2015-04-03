@@ -144,6 +144,7 @@ namespace QMDBO
                 newList.SubItems.Add(job.Category.Name);
                 newList.SubItems.Add(job.JobId.ToString());
                 newList.SubItems.Add(job.CategoryId.ToString());
+                newList.SubItems.Add(job.TypeExecute.ToString());
                 listView.Items.Add(newList);
             }
         }
@@ -272,6 +273,15 @@ namespace QMDBO
             {
                 frm.toolStripStatusLabel.Text = "Задача сохранена";
                 frm.toolStripProgressBar1.Visible = false;
+            }
+        }
+
+        public void loadJobProcedure(int jobId, TextBox textBox)
+        {
+            var job = _context.Jobs.FirstOrDefault(b => b.JobId == jobId);
+            if (job != null)
+            {
+                textBox.Text = job.Code;
             }
         }
 

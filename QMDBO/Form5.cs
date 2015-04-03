@@ -17,15 +17,22 @@ namespace QMDBO
         MDIParent1 frm;
         DataTable table;
         private int categoryId;
+        private int jobId;
 
-        public Form5(int categoryId)
+        public Form5(int categoryId, int jobId = 0)
         {
             InitializeComponent();
             this.categoryId = categoryId;
+            this.jobId = jobId;
         }
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            crud = new DatabaseCrud();
+            if (this.jobId > 0)
+            {
+                crud.loadJobProcedure(this.jobId, this.textBox1);
+            }
             table = new DataTable();
             table.Columns.Add("name");
             table.Columns.Add("error"); 
@@ -33,7 +40,6 @@ namespace QMDBO
             ClassHelper.dridComboBoxOracleDbType(this.OutType);
             frm = this.MdiParent as MDIParent1;
             linksCollection = new List<ClassLinks>();
-            crud = new DatabaseCrud();
             crud.loadDataGridViewLinks(this.linksCollection, this.categoryId, this.linksDataGridView, this.frm);
         }
 

@@ -57,6 +57,23 @@ namespace QMDBO
             }
         }
 
+        public void loadLinks(int category, DataGridView dataGridView, MDIParent1 frm)
+        {
+            var query = from b in _context.Links
+                        where b.CategoryId == category
+                        select b;
+            foreach (var link in query)
+            {
+                dataGridView.Rows.Add(false, link.Name, link.Host, link.Port, link.Servicename, link.User, link.Pass, link.LinkId.ToString());
+            }
+            dataGridView.Refresh();
+            int count = query.Count();
+            if (frm != null && count > 0)
+            {
+                frm.toolStripStatusLabel.Text = "Количество: " + count;
+            }
+        }
+
         public void saveJob(DataGridView dataGridView, MDIParent1 frm, string formName, int category, string sSQL, string objName, int typeExecute = 1)
         {
             int jobID;

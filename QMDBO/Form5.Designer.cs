@@ -45,6 +45,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.сохранитьToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.ColumnSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPort = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnServicename = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnLinkId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
@@ -54,7 +62,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(137, 33);
+            this.textBox1.Location = new System.Drawing.Point(223, 15);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(218, 20);
             this.textBox1.TabIndex = 0;
@@ -66,7 +74,7 @@
             this.InParam,
             this.InType,
             this.InValue});
-            this.inDataGridView.Location = new System.Drawing.Point(12, 66);
+            this.inDataGridView.Location = new System.Drawing.Point(12, 50);
             this.inDataGridView.Name = "inDataGridView";
             this.inDataGridView.Size = new System.Drawing.Size(343, 120);
             this.inDataGridView.TabIndex = 1;
@@ -95,7 +103,7 @@
             this.OutParam,
             this.OutType,
             this.OutSize});
-            this.outDataGridView.Location = new System.Drawing.Point(12, 207);
+            this.outDataGridView.Location = new System.Drawing.Point(12, 191);
             this.outDataGridView.Name = "outDataGridView";
             this.outDataGridView.Size = new System.Drawing.Size(343, 120);
             this.outDataGridView.TabIndex = 2;
@@ -119,12 +127,23 @@
             // 
             // linksDataGridView
             // 
+            this.linksDataGridView.AllowUserToAddRows = false;
+            this.linksDataGridView.AllowUserToDeleteRows = false;
             this.linksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.linksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.linksDataGridView.Location = new System.Drawing.Point(369, 66);
+            this.linksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnSelect,
+            this.ColumnName,
+            this.ColumnHost,
+            this.ColumnPort,
+            this.ColumnServicename,
+            this.ColumnUser,
+            this.ColumnPass,
+            this.ColumnLinkId});
+            this.linksDataGridView.Location = new System.Drawing.Point(369, 50);
             this.linksDataGridView.Name = "linksDataGridView";
-            this.linksDataGridView.Size = new System.Drawing.Size(343, 261);
+            this.linksDataGridView.Size = new System.Drawing.Size(308, 261);
             this.linksDataGridView.TabIndex = 3;
             // 
             // resultsDataGridView
@@ -133,15 +152,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.resultsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.resultsDataGridView.Location = new System.Drawing.Point(12, 347);
+            this.resultsDataGridView.Location = new System.Drawing.Point(12, 328);
             this.resultsDataGridView.Name = "resultsDataGridView";
-            this.resultsDataGridView.Size = new System.Drawing.Size(700, 115);
+            this.resultsDataGridView.Size = new System.Drawing.Size(665, 95);
             this.resultsDataGridView.TabIndex = 4;
             // 
             // buttonStart
             // 
             this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStart.Location = new System.Drawing.Point(556, 30);
+            this.buttonStart.Location = new System.Drawing.Point(521, 12);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 5;
@@ -152,7 +171,7 @@
             // buttonStartAll
             // 
             this.buttonStartAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStartAll.Location = new System.Drawing.Point(637, 30);
+            this.buttonStartAll.Location = new System.Drawing.Point(602, 12);
             this.buttonStartAll.Name = "buttonStartAll";
             this.buttonStartAll.Size = new System.Drawing.Size(75, 23);
             this.buttonStartAll.TabIndex = 6;
@@ -162,7 +181,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 35);
+            this.label1.Location = new System.Drawing.Point(130, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 7;
@@ -170,11 +189,12 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.сохранитьToolStripButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(12, 10);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(719, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -188,11 +208,56 @@
             this.сохранитьToolStripButton.Text = "&Сохранить задачу";
             this.сохранитьToolStripButton.Click += new System.EventHandler(this.сохранитьToolStripButton_Click);
             // 
+            // ColumnSelect
+            // 
+            this.ColumnSelect.HeaderText = "Select";
+            this.ColumnSelect.Name = "ColumnSelect";
+            this.ColumnSelect.Width = 50;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.Name = "ColumnName";
+            // 
+            // ColumnHost
+            // 
+            this.ColumnHost.HeaderText = "Host";
+            this.ColumnHost.Name = "ColumnHost";
+            // 
+            // ColumnPort
+            // 
+            this.ColumnPort.HeaderText = "Port";
+            this.ColumnPort.Name = "ColumnPort";
+            // 
+            // ColumnServicename
+            // 
+            this.ColumnServicename.HeaderText = "Servicename";
+            this.ColumnServicename.Name = "ColumnServicename";
+            // 
+            // ColumnUser
+            // 
+            this.ColumnUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnUser.HeaderText = "User";
+            this.ColumnUser.MinimumWidth = 100;
+            this.ColumnUser.Name = "ColumnUser";
+            // 
+            // ColumnPass
+            // 
+            this.ColumnPass.HeaderText = "Pass";
+            this.ColumnPass.Name = "ColumnPass";
+            this.ColumnPass.Visible = false;
+            // 
+            // ColumnLinkId
+            // 
+            this.ColumnLinkId.HeaderText = "LinkId";
+            this.ColumnLinkId.Name = "ColumnLinkId";
+            this.ColumnLinkId.Visible = false;
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 482);
+            this.ClientSize = new System.Drawing.Size(684, 462);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonStartAll);
@@ -203,7 +268,7 @@
             this.Controls.Add(this.inDataGridView);
             this.Controls.Add(this.textBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(735, 520);
+            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "Form5";
             this.Text = "Выполнить процедуру";
             this.Load += new System.EventHandler(this.Form5_Load);
@@ -236,5 +301,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton сохранитьToolStripButton;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSelect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPort;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnServicename;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLinkId;
     }
 }

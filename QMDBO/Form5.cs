@@ -40,7 +40,7 @@ namespace QMDBO
             ClassHelper.dridComboBoxOracleDbType(this.OutType);
             frm = this.MdiParent as MDIParent1;
             linksCollection = new List<ClassLinks>();
-            crud.loadDataGridViewLinks(this.linksCollection, this.categoryId, this.linksDataGridView, this.frm);
+            crud.loadLinks(this.categoryId, this.linksDataGridView, this.frm);
         }
 
         private void buttonStart_Click(object sender, EventArgs e)

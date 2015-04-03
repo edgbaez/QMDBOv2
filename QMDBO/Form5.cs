@@ -52,29 +52,6 @@ namespace QMDBO
 
                 ClassOracleConnect ora = new ClassOracleConnect();
 
-                /* для теста */
-                //ParametersOracle inTest = new ParametersOracle();
-                //inTest.name = "dDATE";
-                //inTest.typeName = "Date";
-                ////inTest.value = "31.03.2015";
-                //inParamsList.Add(inTest);
-                //ParametersOracle inTest2 = new ParametersOracle();
-                //inTest2.name = "nNN";
-                //inTest2.typeName = "Double";
-                //inTest2.value = "2";
-                //inParamsList.Add(inTest2);
-                //ParametersOracle outTest = new ParametersOracle();
-                //outTest.name = "nOFOUND";
-                //outTest.typeName = "Double";
-                //outTest.size = 17;
-                //outParamsList.Add(outTest);
-                //ParametersOracle outTest2 = new ParametersOracle();
-                //outTest2.name = "nOERR";
-                //outTest2.typeName = "Double";
-                //outTest2.size = 17;
-                //outParamsList.Add(outTest2);
-                //textBox1.Text = "P_R_SYNC_LOG_RETURN";
-
                 List<string> columnNames = new List<string>();
                 columnNames = (from dc in table.Columns.Cast<DataColumn>()
                                select dc.ColumnName).ToList();

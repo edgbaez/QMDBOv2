@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Data;
 
 namespace QMDBO
 {
@@ -138,19 +139,20 @@ namespace QMDBO
             comboBox1.SelectedIndex = selectedIndex;
         }
 
-        enum MyEnum
-        {
-            Char,
-            Date,
-            Double,
-            Int32,
-            Varchar2,
-        };
-
         public static void dridComboBoxOracleDbType(DataGridViewComboBoxColumn comboBox)
         {
-            comboBox.ValueType = typeof(MyEnum);
-            comboBox.DataSource = Enum.GetValues(typeof(MyEnum));
+            DataTable table = new DataTable();
+            table.Columns.Add("Id");
+            table.Columns.Add("Name");
+            table.Rows.Add("Char", "Char");
+            table.Rows.Add("Date", "Date");
+            table.Rows.Add("Double", "Double");
+            table.Rows.Add("Int32", "Int32");
+            table.Rows.Add("Varchar2", "Varchar2");
+
+            comboBox.DataSource = table;
+            comboBox.ValueMember = "Id";
+            comboBox.DisplayMember = "Name";
         }
 
         public static void AddContextMenu(RichTextBox rtb)

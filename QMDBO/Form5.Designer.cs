@@ -42,6 +42,7 @@
             this.resultsDataGridView = new System.Windows.Forms.DataGridView();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStartAll = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
@@ -50,7 +51,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(136, 12);
+            this.textBox1.Location = new System.Drawing.Point(137, 9);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(218, 20);
             this.textBox1.TabIndex = 0;
@@ -140,7 +141,7 @@
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 5;
-            this.buttonStart.Text = "Start";
+            this.buttonStart.Text = "Выбранные";
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
@@ -150,14 +151,24 @@
             this.buttonStartAll.Name = "buttonStartAll";
             this.buttonStartAll.Size = new System.Drawing.Size(75, 23);
             this.buttonStartAll.TabIndex = 6;
-            this.buttonStartAll.Text = "StartAll";
+            this.buttonStartAll.Text = "Все";
             this.buttonStartAll.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Имя процедуры";
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 482);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonStartAll);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.resultsDataGridView);
@@ -194,5 +205,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OutParam;
         private System.Windows.Forms.DataGridViewComboBoxColumn OutType;
         private System.Windows.Forms.DataGridViewTextBoxColumn OutSize;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -27,7 +27,8 @@ namespace QMDBO
         private void Form5_Load(object sender, EventArgs e)
         {
             table = new DataTable();
-            table.Columns.Add("name"); 
+            table.Columns.Add("name");
+            table.Columns.Add("error"); 
             ClassHelper.dridComboBoxOracleDbType(this.InType);
             ClassHelper.dridComboBoxOracleDbType(this.OutType);
             frm = this.MdiParent as MDIParent1;
@@ -121,45 +122,47 @@ namespace QMDBO
 
                         var resultList = ora.OracleProcedure(ConnectionString, textBox1.Text, inParamsList, outParamsList);
 
-                        //DatabaseCrud crud = new DatabaseCrud();
-                        //crud.saveKeys(1, inParamsList);
-                        //crud.saveKeys(1, outParamsList);
-                        //crud.saveValues(Convert.ToInt32(row.Cells["hide_link_id"].Value.ToString()), 1, resultList);
-
-                        string name = (row.Cells[1].Value ?? String.Empty).ToString();
-
-                        DataRow drFound = table.Select("name = '" + name + "'").FirstOrDefault();
-                        if (drFound != null)
+                        if (resultList.Count > 0)
                         {
-                            foreach (var item in resultList)
+                            //DatabaseCrud crud = new DatabaseCrud();
+                            //crud.saveKeys(1, inParamsList);
+                            //crud.saveKeys(1, outParamsList);
+                            //crud.saveValues(Convert.ToInt32(row.Cells["hide_link_id"].Value.ToString()), 1, resultList);
+
+                            string name = (row.Cells[1].Value ?? String.Empty).ToString();
+
+                            DataRow drFound = table.Select("name = '" + name + "'").FirstOrDefault();
+                            if (drFound != null)
                             {
-                                if (item.name != null)
+                                    foreach (var item in resultList)
+                                    {
+                                        if (item.name != null)
+                                        {
+                                            drFound[item.name] = item.value;
+                                        }
+                                    }
+                            }
+                            else
+                            {
+                                DataRow newRow = table.NewRow();
+                                newRow["name"] = name;
+                                foreach (var item in resultList)
                                 {
-                                    drFound[item.name] = item.value;
+                                    if (item.name != null)
+                                    {
+                                        newRow[item.name] = item.value;
+                                    }
                                 }
+                                table.Rows.Add(newRow);
                             }
                         }
-                        else
-                        {
-                            DataRow newRow = table.NewRow();
-                            newRow["name"] = name;
-
-                            foreach (var item in resultList)
-                            {
-                                if (item.name != null)
-                                {
-                                    newRow[item.name] = item.value;
-                                }
-                            }
-                            table.Rows.Add(newRow);
-                        }
-
                         resultsDataGridView.DataSource = table;
                         resultsDataGridView.Refresh();
-                    }
-                }
-            }
-        }
+
+                    } /* end if row.Cells[0] true */
+                } /* end foreach DataGridViewRow */
+            } /* end QuestionYesNoStart */
+        } /* end buttonStart_Click */
 
     }
 }

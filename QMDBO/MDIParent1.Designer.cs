@@ -51,7 +51,6 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.procedureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tileVerticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -249,8 +248,7 @@
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem,
-            this.linksToolStripMenuItem,
-            this.procedureToolStripMenuItem});
+            this.linksToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(59, 20);
             this.toolsMenu.Text = "&Сервис";
@@ -270,14 +268,6 @@
             this.linksToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.linksToolStripMenuItem.Text = "Подключения";
             this.linksToolStripMenuItem.Click += new System.EventHandler(this.linksToolStripMenuItem_Click);
-            // 
-            // procedureToolStripMenuItem
-            // 
-            this.procedureToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("procedureToolStripMenuItem.Image")));
-            this.procedureToolStripMenuItem.Name = "procedureToolStripMenuItem";
-            this.procedureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.procedureToolStripMenuItem.Text = "Процедура";
-            this.procedureToolStripMenuItem.Click += new System.EventHandler(this.procedureToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -503,7 +493,6 @@
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         public System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.ToolStripMenuItem procedureToolStripMenuItem;
     }
 }
 

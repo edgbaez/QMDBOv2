@@ -43,15 +43,18 @@
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStartAll = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.сохранитьToolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsDataGridView)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(137, 9);
+            this.textBox1.Location = new System.Drawing.Point(137, 33);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(218, 20);
             this.textBox1.TabIndex = 0;
@@ -63,9 +66,9 @@
             this.InParam,
             this.InType,
             this.InValue});
-            this.inDataGridView.Location = new System.Drawing.Point(12, 38);
+            this.inDataGridView.Location = new System.Drawing.Point(12, 66);
             this.inDataGridView.Name = "inDataGridView";
-            this.inDataGridView.Size = new System.Drawing.Size(343, 150);
+            this.inDataGridView.Size = new System.Drawing.Size(343, 120);
             this.inDataGridView.TabIndex = 1;
             // 
             // InParam
@@ -92,9 +95,9 @@
             this.OutParam,
             this.OutType,
             this.OutSize});
-            this.outDataGridView.Location = new System.Drawing.Point(369, 38);
+            this.outDataGridView.Location = new System.Drawing.Point(12, 207);
             this.outDataGridView.Name = "outDataGridView";
-            this.outDataGridView.Size = new System.Drawing.Size(343, 150);
+            this.outDataGridView.Size = new System.Drawing.Size(343, 120);
             this.outDataGridView.TabIndex = 2;
             // 
             // OutParam
@@ -119,9 +122,9 @@
             this.linksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.linksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.linksDataGridView.Location = new System.Drawing.Point(12, 199);
+            this.linksDataGridView.Location = new System.Drawing.Point(369, 66);
             this.linksDataGridView.Name = "linksDataGridView";
-            this.linksDataGridView.Size = new System.Drawing.Size(700, 135);
+            this.linksDataGridView.Size = new System.Drawing.Size(343, 261);
             this.linksDataGridView.TabIndex = 3;
             // 
             // resultsDataGridView
@@ -137,7 +140,8 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(552, 9);
+            this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStart.Location = new System.Drawing.Point(556, 30);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 5;
@@ -147,7 +151,8 @@
             // 
             // buttonStartAll
             // 
-            this.buttonStartAll.Location = new System.Drawing.Point(633, 9);
+            this.buttonStartAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStartAll.Location = new System.Drawing.Point(637, 30);
             this.buttonStartAll.Name = "buttonStartAll";
             this.buttonStartAll.Size = new System.Drawing.Size(75, 23);
             this.buttonStartAll.TabIndex = 6;
@@ -157,17 +162,38 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 12);
+            this.label1.Location = new System.Drawing.Point(12, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Имя процедуры";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(719, 25);
+            this.toolStrip1.TabIndex = 8;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // сохранитьToolStripButton
+            // 
+            this.сохранитьToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.сохранитьToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьToolStripButton.Image")));
+            this.сохранитьToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.сохранитьToolStripButton.Name = "сохранитьToolStripButton";
+            this.сохранитьToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.сохранитьToolStripButton.Text = "&Сохранить задачу";
+            this.сохранитьToolStripButton.Click += new System.EventHandler(this.сохранитьToolStripButton_Click);
             // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 482);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonStartAll);
             this.Controls.Add(this.buttonStart);
@@ -185,6 +211,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsDataGridView)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,5 +234,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn OutType;
         private System.Windows.Forms.DataGridViewTextBoxColumn OutSize;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton сохранитьToolStripButton;
     }
 }

@@ -164,5 +164,10 @@ namespace QMDBO
             } /* end QuestionYesNoStart */
         } /* end buttonStart_Click */
 
+        private void сохранитьToolStripButton_Click(object sender, EventArgs e)
+        {
+            crud.saveJobProcedure(this.frm, this.Text, this.categoryId, this.textBox1.Text);
+        }
+
     }
 }

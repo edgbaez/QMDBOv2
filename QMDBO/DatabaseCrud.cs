@@ -242,5 +242,38 @@ namespace QMDBO
             _context.SaveChanges();
         }
 
+        public void saveJobProcedure(MDIParent1 frm, string formName, int category, string code)
+        {
+            int jobID;
+            int typeExecute = 3;
+
+            Job job = new Job
+            {
+                Name = formName,
+                CategoryId = category,
+                Code = code,
+                TypeExecute = typeExecute
+            };
+            var originalJob = _context.Jobs.FirstOrDefault(b => b.Name == job.Name);
+            if (originalJob != null)
+            {
+                originalJob.Code = code;
+                originalJob.TypeExecute = typeExecute;
+                _context.SaveChanges();
+                jobID = originalJob.JobId;
+            }
+            else
+            {
+                _context.Jobs.Add(job);
+                _context.SaveChanges();
+                jobID = job.JobId;
+            }
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = "Задача сохранена";
+                frm.toolStripProgressBar1.Visible = false;
+            }
+        }
+
     }
 }

@@ -7,6 +7,8 @@ namespace QMDBO
 {
     public class ParametersOracle
     {
+        public const int In = 1;
+        public const int Out = 2;
         public string name { get; set; }
         public string typeName { get; set; }
         public OracleDbType type

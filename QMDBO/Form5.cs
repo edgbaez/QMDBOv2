@@ -31,7 +31,7 @@ namespace QMDBO
             crud = new DatabaseCrud();
             if (this.jobId > 0)
             {
-                crud.loadJobProcedure(this.jobId, this.textBox1);
+                crud.loadJobProcedure(this.jobId, this.textBox1, inDataGridView, outDataGridView);
             }
             table = new DataTable();
             table.Columns.Add("name");
@@ -47,36 +47,10 @@ namespace QMDBO
         {
             if (ClassHelper.QuestionYesNoStart(textBox1.Text))
             {
+                List<ParametersOracle> inParamsList = createInParamsList();
+                List<ParametersOracle> outParamsList = createOutParamsList();
 
                 ClassOracleConnect ora = new ClassOracleConnect();
-
-                List<ParametersOracle> inParamsList = new List<ParametersOracle>();
-                foreach (DataGridViewRow inRow in inDataGridView.Rows)
-                {
-                    if (inRow.Cells[0].Value != null)
-                    {
-                        ParametersOracle inParam = new ParametersOracle();
-                        inParam.name = (inRow.Cells[0].Value ?? String.Empty).ToString();
-                        inParam.typeName = (inRow.Cells[1].Value ?? String.Empty).ToString();
-                        inParam.value = (inRow.Cells[2].Value ?? String.Empty).ToString();
-                        inParamsList.Add(inParam);
-                        inParam = null;
-                    }
-                }
-
-                List<ParametersOracle> outParamsList = new List<ParametersOracle>();
-                foreach (DataGridViewRow outRow in outDataGridView.Rows)
-                {
-                    if (outRow.Cells[0].Value != null)
-                    {
-                        ParametersOracle outParam = new ParametersOracle();
-                        outParam.name = (outRow.Cells[0].Value ?? String.Empty).ToString();
-                        outParam.typeName = (outRow.Cells[1].Value ?? String.Empty).ToString();
-                        outParam.size = ClassHelper.TryToInt32(outRow.Cells[2].Value);
-                        outParamsList.Add(outParam);
-                        outParam = null;
-                    }
-                }
 
                 /* для теста */
                 //ParametersOracle inTest = new ParametersOracle();
@@ -130,11 +104,6 @@ namespace QMDBO
 
                         if (resultList.Count > 0)
                         {
-                            //DatabaseCrud crud = new DatabaseCrud();
-                            //crud.saveKeys(1, inParamsList);
-                            //crud.saveKeys(1, outParamsList);
-                            //crud.saveValues(Convert.ToInt32(row.Cells["hide_link_id"].Value.ToString()), 1, resultList);
-
                             string name = (row.Cells[1].Value ?? String.Empty).ToString();
 
                             DataRow drFound = table.Select("name = '" + name + "'").FirstOrDefault();
@@ -170,9 +139,47 @@ namespace QMDBO
             } /* end QuestionYesNoStart */
         } /* end buttonStart_Click */
 
+        private List<ParametersOracle> createInParamsList()
+        {
+            List<ParametersOracle> inParamsList = new List<ParametersOracle>();
+            foreach (DataGridViewRow inRow in inDataGridView.Rows)
+            {
+                if (inRow.Cells[0].Value != null)
+                {
+                    ParametersOracle inParam = new ParametersOracle();
+                    inParam.name = (inRow.Cells[0].Value ?? String.Empty).ToString();
+                    inParam.typeName = (inRow.Cells[1].Value ?? String.Empty).ToString();
+                    inParam.value = (inRow.Cells[2].Value ?? String.Empty).ToString();
+                    inParamsList.Add(inParam);
+                    inParam = null;
+                }
+            }
+            return inParamsList;
+        }
+
+        private List<ParametersOracle> createOutParamsList()
+        {
+            List<ParametersOracle> outParamsList = new List<ParametersOracle>();
+            foreach (DataGridViewRow outRow in outDataGridView.Rows)
+            {
+                if (outRow.Cells[0].Value != null)
+                {
+                    ParametersOracle outParam = new ParametersOracle();
+                    outParam.name = (outRow.Cells[0].Value ?? String.Empty).ToString();
+                    outParam.typeName = (outRow.Cells[1].Value ?? String.Empty).ToString();
+                    outParam.size = ClassHelper.TryToInt32(outRow.Cells[2].Value);
+                    outParamsList.Add(outParam);
+                    outParam = null;
+                }
+            }
+            return outParamsList;
+        }
+
         private void сохранитьToolStripButton_Click(object sender, EventArgs e)
         {
-            crud.saveJobProcedure(this.frm, this.Text, this.categoryId, this.textBox1.Text);
+            List<ParametersOracle> inParamsList = createInParamsList();
+            List<ParametersOracle> outParamsList = createOutParamsList();
+            crud.saveJobProcedure(this.frm, this.Text, this.categoryId, this.textBox1.Text, inParamsList, outParamsList);
         }
 
     }

@@ -210,7 +210,7 @@ namespace QMDBO
             return maxJobId;
         }
 
-        public void saveKeys(int JobId, List <ParametersOracle> paramList)
+        public void saveKeys(int JobId, List <ParametersOracle> paramList, int type)
         {
             foreach (ParametersOracle param in paramList)
             {
@@ -221,9 +221,23 @@ namespace QMDBO
                     DbType = param.typeName,
                     Size = param.size,
                     InValue = param.value,
-                    Type = 3
+                    Type = type
                 };
-                _context.Keys.Add(key);
+                var originalKey = _context.Keys.FirstOrDefault(b => b.JobId == key.JobId && b.Name == key.Name);
+                if (originalKey != null)
+                {
+                    originalKey.Name = key.Name;
+                    originalKey.DbType = key.DbType;
+                    originalKey.Size = key.Size;
+                    originalKey.InValue = key.InValue;
+                    originalKey.Type = key.Type;
+                }
+                else
+                {
+                    _context.Keys.Add(key);
+                }
+                    originalKey = null;
+
             }
             _context.SaveChanges();
         }
@@ -243,7 +257,7 @@ namespace QMDBO
             _context.SaveChanges();
         }
 
-        public void saveJobProcedure(MDIParent1 frm, string formName, int category, string code)
+        public void saveJobProcedure(MDIParent1 frm, string formName, int category, string code, List<ParametersOracle> inParamsList, List<ParametersOracle> outParamsList)
         {
             int jobID;
             int typeExecute = 3;
@@ -269,6 +283,8 @@ namespace QMDBO
                 _context.SaveChanges();
                 jobID = job.JobId;
             }
+            saveKeys(jobID, inParamsList, ParametersOracle.In);
+            saveKeys(jobID, outParamsList, ParametersOracle.Out);
             if (frm != null)
             {
                 frm.toolStripStatusLabel.Text = "Задача сохранена";
@@ -276,12 +292,27 @@ namespace QMDBO
             }
         }
 
-        public void loadJobProcedure(int jobId, TextBox textBox)
+        public void loadJobProcedure(int jobId, TextBox textBox, DataGridView inDataGridView, DataGridView outDataGridView)
         {
             var job = _context.Jobs.FirstOrDefault(b => b.JobId == jobId);
             if (job != null)
             {
                 textBox.Text = job.Code;
+            }
+
+            var query = from a in _context.Keys
+                        where a.JobId == jobId
+                        select a;
+            foreach (var key in query)
+            {
+                if (key.Type == ParametersOracle.In)
+                {
+                    inDataGridView.Rows.Add(key.Name, key.DbType, key.InValue);
+                }
+                else if (key.Type == ParametersOracle.Out)
+                {
+                    outDataGridView.Rows.Add(key.Name, key.DbType, key.Size);
+                }
             }
         }
 

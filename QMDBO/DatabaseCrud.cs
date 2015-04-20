@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.Entity;
+using System.Data;
 
 namespace QMDBO
 {
@@ -259,17 +260,49 @@ namespace QMDBO
             _context.SaveChanges();
         }
 
-        public void saveValues(int LinkId, int KeyId, List<ParametersOracle> paramList)
+        public int getKeyId(string keyName, int jobId)
         {
-            foreach (ParametersOracle param in paramList)
+            var key = _context.Keys.FirstOrDefault(b => b.JobId == jobId && b.Name == keyName);
+            int keyId = key.KeyId;
+            key = null;
+            return keyId;
+        }
+
+        public void saveValues(DataTable table, int jobId)
+        {
+            string[] excludeColumns = { "name", "linkId", "error" };
+
+            foreach (DataRow dtRow in table.Rows)
             {
-                Value val = new Value
+                int linkId = Convert.ToInt32(dtRow["linkId"]);
+
+                if (String.IsNullOrEmpty(dtRow["error"].ToString()))
                 {
-                    LinkId = LinkId,
-                    KeyId = KeyId,
-                    KeyValue = param.value
-                };
-                _context.Values.Add(val);
+
+                    foreach (DataColumn dc in table.Columns)
+                    {
+                        if (!excludeColumns.Contains(dc.ToString()))
+                        {
+                            int keyId = getKeyId(dc.ToString(), jobId);
+
+                            Value val = new Value
+                            {
+                                LinkId = linkId,
+                                KeyId = keyId,
+                                KeyValue = dtRow[dc].ToString()
+                            };
+                            var originalValue = _context.Values.FirstOrDefault(b => b.LinkId == val.LinkId && b.KeyId == val.KeyId);
+                            if (originalValue != null)
+                            {
+                                originalValue.KeyValue = val.KeyValue;
+                            }
+                            else
+                            {
+                                _context.Values.Add(val);
+                            }
+                        }
+                    }
+                }
             }
             _context.SaveChanges();
         }

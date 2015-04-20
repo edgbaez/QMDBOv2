@@ -35,6 +35,7 @@ namespace QMDBO
             }
             table = new DataTable();
             table.Columns.Add("name");
+            table.Columns.Add("linkId");
             table.Columns.Add("error"); 
             ClassHelper.dridComboBoxOracleDbType(this.InType);
             ClassHelper.dridComboBoxOracleDbType(this.OutType);
@@ -82,6 +83,7 @@ namespace QMDBO
                         if (resultList.Count > 0)
                         {
                             string name = (row.Cells[1].Value ?? String.Empty).ToString();
+                            int linkId = Convert.ToInt32(row.Cells["ColumnLinkId"].Value.ToString());
 
                             DataRow drFound = table.Select("name = '" + name + "'").FirstOrDefault();
                             if (drFound != null)
@@ -98,6 +100,7 @@ namespace QMDBO
                             {
                                 DataRow newRow = table.NewRow();
                                 newRow["name"] = name;
+                                newRow["linkId"] = linkId;
                                 foreach (var item in resultList)
                                 {
                                     if (item.name != null)
@@ -109,6 +112,7 @@ namespace QMDBO
                             }
                         }
                         resultsDataGridView.DataSource = table;
+                        resultsDataGridView.Columns["linkId"].Visible = false;
                         resultsDataGridView.Refresh();
 
                     } /* end if row.Cells[0] true */
@@ -157,6 +161,7 @@ namespace QMDBO
             List<ParametersOracle> inParamsList = createInParamsList();
             List<ParametersOracle> outParamsList = createOutParamsList();
             crud.saveJobProcedure(this.frm, this.Text, this.categoryId, this.textBox1.Text, inParamsList, outParamsList);
+            crud.saveValues(this.table, this.jobId);
         }
 
     }

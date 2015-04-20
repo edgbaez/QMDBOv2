@@ -342,7 +342,7 @@ namespace QMDBO
             }
         }
 
-        public void loadJobProcedure(int jobId, TextBox textBox, DataGridView inDataGridView, DataGridView outDataGridView)
+        public void loadJobProcedure(int jobId, TextBox textBox, DataGridView inDataGridView, DataGridView outDataGridView, DataTable table)
         {
             var job = _context.Jobs.FirstOrDefault(b => b.JobId == jobId);
             if (job != null)
@@ -362,8 +362,25 @@ namespace QMDBO
                 else if (key.Type == ParametersOracle.Out)
                 {
                     outDataGridView.Rows.Add(key.Name, key.DbType, key.Size);
+                    table.Columns.Add(key.Name);
+                    loadTableValues(table, key.KeyId, key.Name);
                 }
             }
+        }
+
+        public void loadTableValues(DataTable table, int keyId, string keyName)
+        {
+            var query = from b in _context.Values
+                        where b.KeyId == keyId
+                        select b;
+            DataRow newRow = table.NewRow();
+            foreach (var result in query)
+            { 
+                newRow["name"] = result.Link.Name;
+                newRow["linkId"] = result.LinkId;
+                newRow[keyName] = result.KeyValue;
+            }
+            table.Rows.Add(newRow);
         }
 
     }

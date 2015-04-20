@@ -29,14 +29,16 @@ namespace QMDBO
         private void Form5_Load(object sender, EventArgs e)
         {
             crud = new DatabaseCrud();
-            if (this.jobId > 0)
-            {
-                crud.loadJobProcedure(this.jobId, this.textBox1, inDataGridView, outDataGridView);
-            }
             table = new DataTable();
             table.Columns.Add("name");
             table.Columns.Add("linkId");
-            table.Columns.Add("error"); 
+            table.Columns.Add("error");
+            resultsDataGridView.DataSource = table;
+            resultsDataGridView.Columns["linkId"].Visible = false;
+            if (this.jobId > 0)
+            {
+                crud.loadJobProcedure(this.jobId, this.textBox1, inDataGridView, outDataGridView, this.table);
+            }
             ClassHelper.dridComboBoxOracleDbType(this.InType);
             ClassHelper.dridComboBoxOracleDbType(this.OutType);
             frm = this.MdiParent as MDIParent1;
@@ -111,8 +113,6 @@ namespace QMDBO
                                 table.Rows.Add(newRow);
                             }
                         }
-                        resultsDataGridView.DataSource = table;
-                        resultsDataGridView.Columns["linkId"].Visible = false;
                         resultsDataGridView.Refresh();
 
                     } /* end if row.Cells[0] true */

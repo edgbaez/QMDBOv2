@@ -139,7 +139,23 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 /* In параметры */
                 foreach (ParametersOracle inParam in inParams)
                 {
-                    cmd.Parameters.Add(inParam.name, inParam.type).Value = inParam.value;
+                    if (inParam.type == OracleDbType.Date)
+                    {
+                        DateTime dt;
+                        if (String.IsNullOrEmpty(inParam.value))
+                        {
+                            dt = DateTime.Now;
+                        }
+                        else
+                        {
+                            dt = Convert.ToDateTime(inParam.value);
+                        }
+                        cmd.Parameters.Add(inParam.name, inParam.type).Value = dt;
+                    }
+                    else
+                    {
+                        cmd.Parameters.Add(inParam.name, inParam.type).Value = inParam.value;
+                    }
                 }
 
                 /* Out параметры */

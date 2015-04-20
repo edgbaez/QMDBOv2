@@ -152,7 +152,7 @@ namespace QMDBO
             return outParamsList;
         }
 
-        private void сохранитьToolStripButton_Click(object sender, EventArgs e)
+        private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             List<ParametersOracle> inParamsList = createInParamsList();
             List<ParametersOracle> outParamsList = createOutParamsList();

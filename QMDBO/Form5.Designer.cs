@@ -39,12 +39,6 @@
             this.OutType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.OutSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linksDataGridView = new System.Windows.Forms.DataGridView();
-            this.resultsDataGridView = new System.Windows.Forms.DataGridView();
-            this.buttonStart = new System.Windows.Forms.Button();
-            this.buttonStartAll = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.сохранитьToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ColumnSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnHost = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +47,12 @@
             this.ColumnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLinkId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultsDataGridView = new System.Windows.Forms.DataGridView();
+            this.buttonStart = new System.Windows.Forms.Button();
+            this.buttonStartAll = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
@@ -146,6 +146,51 @@
             this.linksDataGridView.Size = new System.Drawing.Size(308, 261);
             this.linksDataGridView.TabIndex = 3;
             // 
+            // ColumnSelect
+            // 
+            this.ColumnSelect.HeaderText = "Select";
+            this.ColumnSelect.Name = "ColumnSelect";
+            this.ColumnSelect.Width = 50;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.Name = "ColumnName";
+            // 
+            // ColumnHost
+            // 
+            this.ColumnHost.HeaderText = "Host";
+            this.ColumnHost.Name = "ColumnHost";
+            // 
+            // ColumnPort
+            // 
+            this.ColumnPort.HeaderText = "Port";
+            this.ColumnPort.Name = "ColumnPort";
+            // 
+            // ColumnServicename
+            // 
+            this.ColumnServicename.HeaderText = "Servicename";
+            this.ColumnServicename.Name = "ColumnServicename";
+            // 
+            // ColumnUser
+            // 
+            this.ColumnUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnUser.HeaderText = "User";
+            this.ColumnUser.MinimumWidth = 100;
+            this.ColumnUser.Name = "ColumnUser";
+            // 
+            // ColumnPass
+            // 
+            this.ColumnPass.HeaderText = "Pass";
+            this.ColumnPass.Name = "ColumnPass";
+            this.ColumnPass.Visible = false;
+            // 
+            // ColumnLinkId
+            // 
+            this.ColumnLinkId.HeaderText = "LinkId";
+            this.ColumnLinkId.Name = "ColumnLinkId";
+            this.ColumnLinkId.Visible = false;
+            // 
             // resultsDataGridView
             // 
             this.resultsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -191,67 +236,22 @@
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сохранитьToolStripButton});
+            this.saveToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(12, 10);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // сохранитьToolStripButton
+            // saveToolStripButton
             // 
-            this.сохранитьToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.сохранитьToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьToolStripButton.Image")));
-            this.сохранитьToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.сохранитьToolStripButton.Name = "сохранитьToolStripButton";
-            this.сохранитьToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.сохранитьToolStripButton.Text = "&Сохранить задачу";
-            this.сохранитьToolStripButton.Click += new System.EventHandler(this.сохранитьToolStripButton_Click);
-            // 
-            // ColumnSelect
-            // 
-            this.ColumnSelect.HeaderText = "Select";
-            this.ColumnSelect.Name = "ColumnSelect";
-            this.ColumnSelect.Width = 50;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Name";
-            this.ColumnName.Name = "ColumnName";
-            // 
-            // ColumnHost
-            // 
-            this.ColumnHost.HeaderText = "Host";
-            this.ColumnHost.Name = "ColumnHost";
-            // 
-            // ColumnPort
-            // 
-            this.ColumnPort.HeaderText = "Port";
-            this.ColumnPort.Name = "ColumnPort";
-            // 
-            // ColumnServicename
-            // 
-            this.ColumnServicename.HeaderText = "Servicename";
-            this.ColumnServicename.Name = "ColumnServicename";
-            // 
-            // ColumnUser
-            // 
-            this.ColumnUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnUser.HeaderText = "User";
-            this.ColumnUser.MinimumWidth = 100;
-            this.ColumnUser.Name = "ColumnUser";
-            // 
-            // ColumnPass
-            // 
-            this.ColumnPass.HeaderText = "Pass";
-            this.ColumnPass.Name = "ColumnPass";
-            this.ColumnPass.Visible = false;
-            // 
-            // ColumnLinkId
-            // 
-            this.ColumnLinkId.HeaderText = "LinkId";
-            this.ColumnLinkId.Name = "ColumnLinkId";
-            this.ColumnLinkId.Visible = false;
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Text = "&Сохранить задачу";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
             // Form5
             // 
@@ -300,7 +300,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OutSize;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton сохранитьToolStripButton;
+        private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSelect;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHost;

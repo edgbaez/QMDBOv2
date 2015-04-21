@@ -164,5 +164,17 @@ namespace QMDBO
             crud.saveValues(this.table, this.jobId);
         }
 
+        private void expToolStripButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "CSV-файлы (*.csv)|*.csv|Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = saveFileDialog.FileName;
+                ClassHelper.writeCSV(resultsDataGridView, FileName);
+            }
+        }
+
     }
 }

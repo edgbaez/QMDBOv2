@@ -53,6 +53,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.expToolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.inDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.linksDataGridView)).BeginInit();
@@ -236,10 +237,11 @@
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripButton});
+            this.saveToolStripButton,
+            this.expToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(12, 10);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(89, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -252,6 +254,16 @@
             this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.saveToolStripButton.Text = "&Сохранить задачу";
             this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
+            // expToolStripButton
+            // 
+            this.expToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.expToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("expToolStripButton.Image")));
+            this.expToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.expToolStripButton.Name = "expToolStripButton";
+            this.expToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.expToolStripButton.Text = "Экспорт в файл";
+            this.expToolStripButton.Click += new System.EventHandler(this.expToolStripButton_Click);
             // 
             // Form5
             // 
@@ -309,5 +321,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPass;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLinkId;
+        private System.Windows.Forms.ToolStripButton expToolStripButton;
     }
 }

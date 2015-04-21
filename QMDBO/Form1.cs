@@ -139,6 +139,7 @@ namespace QMDBO
             {
                 backgroundWorker1.CancelAsync();
             }
+            timer.Stop();
         }
 
         void richTextBox1_DragEnter(object sender, DragEventArgs e)

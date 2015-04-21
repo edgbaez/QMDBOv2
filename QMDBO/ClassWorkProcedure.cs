@@ -46,8 +46,9 @@ namespace QMDBO
 
             //Объект - блокировка для разграничения доступа
             object _LogLock = new object();
+            int thread = Convert.ToInt32(Properties.Settings.Default.Thread);
 
-            Parallel.ForEach(lRows, new ParallelOptions { MaxDegreeOfParallelism = 4 }, row =>
+            Parallel.ForEach(lRows, new ParallelOptions { MaxDegreeOfParallelism = thread }, row =>
             {
                         string ConnectionString = ora.OracleConnString(
                             (row.Cells[2].Value ?? String.Empty).ToString(),

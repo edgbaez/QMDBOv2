@@ -272,6 +272,8 @@
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // progressBar1
             // 
@@ -282,6 +284,7 @@
             this.progressBar1.Size = new System.Drawing.Size(584, 23);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 9;
+            this.progressBar1.Visible = false;
             // 
             // buttonStop
             // 
@@ -292,6 +295,8 @@
             this.buttonStop.TabIndex = 10;
             this.buttonStop.Text = "Стоп";
             this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Visible = false;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // Form5
             // 

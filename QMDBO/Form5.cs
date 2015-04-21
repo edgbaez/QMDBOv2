@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace QMDBO
         private int jobId;
         private DataTable table = new DataTable();
         private BindingSource bindingSource1 = new BindingSource();
+        private string formName;
+        Stopwatch timer;
 
         public Form5(int categoryId, int jobId = 0)
         {
@@ -30,6 +33,7 @@ namespace QMDBO
         private void Form5_Load(object sender, EventArgs e)
         {
             crud = new DatabaseCrud();
+            formName = this.Text;
             table.Columns.Add("name");
             table.Columns.Add("linkId");
             table.Columns.Add("error");
@@ -46,6 +50,7 @@ namespace QMDBO
             frm = this.MdiParent as MDIParent1;
             linksCollection = new List<ClassLinks>();
             crud.loadLinks(this.categoryId, this.linksDataGridView, this.frm);
+            timer = new Stopwatch();
         }
 
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
@@ -116,9 +121,31 @@ namespace QMDBO
             cw.start_work(backgroundWorker1, e);
         }
 
-        private void startJob(int type) {
-            if (ClassHelper.QuestionYesNoStart(textBox1.Text))
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+            this.Text = formName + " - " + e.ProgressPercentage.ToString() + "%";
+            if (frm != null)
             {
+                frm.toolStripStatusLabel.Text = "Выполнено: " + e.ProgressPercentage.ToString() + "%";
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+            this.buttons_Enable();
+            this.Text = formName + " - " + ClassHelper.CompletedText(e);
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                timer.Elapsed.Hours, timer.Elapsed.Minutes, timer.Elapsed.Seconds,
+                timer.Elapsed.Milliseconds / 10);
+            if (frm != null)
+            {
+                frm.toolStripStatusLabel.Text = ClassHelper.CompletedText(e) + " Затраченное время: " + elapsedTime;
+            }
+        }
+
+        private void startJob(int type) {
                 List<ParametersOracle> inParamsList = createInParamsList();
                 List<ParametersOracle> outParamsList = createOutParamsList();
 
@@ -135,17 +162,59 @@ namespace QMDBO
                 }
                 ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.table, inParamsList, outParamsList, this.textBox1.Text, type);
                 backgroundWorker1.RunWorkerAsync(cw);
-            }
+        }
+
+        private void buttons_Disable()
+        {
+            progressBar1.Visible = true;
+            buttonStop.Visible = true;
+            progressBar1.Value = 0;
+            textBox1.Enabled = false;
+            toolStrip1.Enabled = false;
+            buttonStart.Enabled = false;
+            buttonStartAll.Enabled = false;
+        }
+
+        private void buttons_Enable()
+        {
+            progressBar1.Visible = false;
+            buttonStop.Visible = false;
+            progressBar1.Value = 0;
+            textBox1.Enabled = true;
+            toolStrip1.Enabled = true;
+            buttonStart.Enabled = true;
+            buttonStartAll.Enabled = true;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            startJob(ClassWorkProcedure.SELECTED);
+            if (ClassHelper.QuestionYesNoStart(textBox1.Text))
+            {
+                timer.Reset();
+                timer.Start();
+                this.buttons_Disable();
+                startJob(ClassWorkProcedure.SELECTED);
+            }
         }
 
         private void buttonStartAll_Click(object sender, EventArgs e)
         {
-            startJob(ClassWorkProcedure.ALL);
+            if (ClassHelper.QuestionYesNoStart(textBox1.Text))
+            {
+                timer.Reset();
+                timer.Start();
+                this.buttons_Disable();
+                startJob(ClassWorkProcedure.ALL);
+            }
+        }
+
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.WorkerSupportsCancellation == true)
+            {
+                backgroundWorker1.CancelAsync();
+            }
+            timer.Stop();
         }
 
     }

@@ -96,6 +96,7 @@
     <Compile Include="ClassOracleConnect.cs" />
     <Compile Include="ClassOracleUpdate.cs" />
     <Compile Include="ClassWork.cs" />
+    <Compile Include="ClassWorkProcedure.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="DatabaseCrud.cs" />
     <Compile Include="DataGridViewSortOrder.cs" />

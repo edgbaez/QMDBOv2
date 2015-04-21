@@ -182,15 +182,15 @@
   <data name="expToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHoSURBVDhPjZJLaxpRGIYtdN/mFxS6DwilgWwqRJPQxFAh
-        PyCrUujGglmmiGaTRYNFFEsW/QEqMq6abtKApijFkCYz42Vm4mWcizrLkC6ac76ecybITO1IP3hW877P
-        vAzjKxQKryeTyY1lWb+8GFvW7ftjsfIk8Oqx7+8rl8sJRVFQt9vFXsjX1zj69Qd68alaXXgWenRftY/j
-        uCQVkBXgxZgQL9Vw4OgbWvrwpfrUKaECWZbnC8Zj6Gs6nJ1f4tr5T5RKp9/c122BJEmIhrwYjUZTaDaX
-        y7kFnU4HOUPzoFmXoFQqMYFpmvA//FPQbrfnCwxjCs3OCFqtFjLIQxe67sJUFBidnkJLFFEmk5kV6CTk
-        xNA0MCoVME9ObDgOrO1tkFIp9PnwkAoeMEGxWEw2m80Zga6qYEYiYG5t2YTDDGlzE6vhsPjR73/OJFQg
-        klkaeaOLwQC0jQ3Q1tddNNfWsBgIIH519fZgcfElEwiCgIbDIThR+33okUIvFLIJBhlXwSDml5dvYn5/
-        jCx4OBWoZLILsoDf34ervT2GsLsL8soKfN/ZwQfR6Ds2n14+n0/yPI+IBA9IyQVZMej1GN2LCzhLJPBl
-        o4HSzl85m82+JYK7er2OybcATwQB6rUaJtnf8Xg8Yrd9vj+PVNhCjQLAxAAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHpSURBVDhPjZLNShtRGIZT6L7tFRS6FwLSgpsGTFTUSANe
+        gKtS6KIWdKlE48aFEgkJKV14AUkMk1XbjRUyJaEoRDMzSSY/JpnMT5JZil3oOV/POSNhpnFCP3hW877P
+        vAzjSafT74fD4Y1pmn/cGJjm7fZ3Kf/S9+6559/L5XK7jUYDtVot7Ea92cSffvxGb7/w/IvpwLOHqnUc
+        x0WogKwANwaE8EkB+77+RG8OvvGv7BIqqNfrkwWDAXRUDfiLS1y4KKFoLPbhoW4JZFlGNORGv98fQbPJ
+        ZNIpqNVqyB6aBM06BNlslgkMw4D/4VFBtVqdLND1ETQ7JqhUKkgnDx1omgOj2YT+2RlURBHF4/FxgUZC
+        dnRVBT2fB+P01ILjwFxdBTkaRceHh1TwhAkymUxEkqQxgaYoYIRCYKysWASDDHl5GSvBoHTk9b5mEioQ
+        ySyVvNFBtwvq0hKoCwsOpPl5LPp8SJibu92fmlpkAkEQUK/XAztKpwNtUmgHAhZ+P+PK78fCzMzNhte7
+        QRY8HQkUMtkBWSDs7UF5a4shbm5CY3YWfq2t4f319c9sPr1UKhUpl8uISHCXlByQFd12m3FdKgG/s4Mv
+        z89RzP4rJxKJj6R8XywWMfmY4IooQrFQwCR7Fw6HQ1bb4/kLjefX0qla3egAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -43,13 +43,23 @@ namespace QMDBO
                                                      where Convert.ToBoolean(row.Cells[0].Value) == true
                                                      select row;
             }
-
+            int count = lRows.Count();
             //Объект - блокировка для разграничения доступа
             object _LogLock = new object();
+            //Количество потоков берутся из настроек программы
             int thread = Convert.ToInt32(Properties.Settings.Default.Thread);
+            //Массив счетчиков для создаваемых потоков
+            int[] _Counts = new int[thread];
+            //Общий счетчик - разделяемый ресурс
+            int _SharedCount = 0;
 
-            Parallel.ForEach(lRows, new ParallelOptions { MaxDegreeOfParallelism = thread }, row =>
+            Parallel.ForEach(lRows, new ParallelOptions { MaxDegreeOfParallelism = thread }, (DataGridViewRow row, ParallelLoopState state) =>
             {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    state.Stop();
+                }
                         string ConnectionString = ora.OracleConnString(
                             (row.Cells[2].Value ?? String.Empty).ToString(),
                             (row.Cells[3].Value ?? String.Empty).ToString(),
@@ -62,10 +72,10 @@ namespace QMDBO
 
                         var resultList = ora.OracleProcedure(ConnectionString, procedureName, inParamsList, outParamsList);
 
-                        if (resultList.Count > 0)
+                        //Потокобезопасная модификация с использованием блокировки 
+                        lock (_LogLock)
                         {
-                            // использованием блокировки 
-                            lock (_LogLock)
+                            if (resultList.Count > 0)
                             {
                                 DataRow drFound = table.Select("name = '" + name + "'").FirstOrDefault();
                                 if (drFound != null)
@@ -92,8 +102,15 @@ namespace QMDBO
                                     }
                                     table.Rows.Add(newRow);
                                 }
-                            }   
+                            }
                         }
+                        //Каждый поток имеет свой счетчик, поэтому разграничение доступа не требуется
+                        //_Counts[i]++;
+                        //Потокобезопасная операция инкремента (_SharedCount++)
+                        //Операции Interlocked являются атомарными и не требуют блокировок типа lock() {}
+                        //Это позволяет избежать потерь в производительности, связанных с блокировками
+                        Interlocked.Increment(ref _SharedCount);
+                        worker.ReportProgress((100 * _SharedCount) / count);
                 } );
         }
 

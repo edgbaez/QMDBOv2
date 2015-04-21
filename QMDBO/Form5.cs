@@ -55,7 +55,11 @@ namespace QMDBO
 
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {
-            this.resultsDataGridView.Invalidate();
+            //this.resultsDataGridView.Invalidate();
+            this.resultsDataGridView.Invoke(new MethodInvoker(() =>
+            {
+                resultsDataGridView.Refresh();
+            })); ;
         }
 
 

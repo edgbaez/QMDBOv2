@@ -116,8 +116,7 @@ namespace QMDBO
             cw.start_work(backgroundWorker1, e);
         }
 
-        private void buttonStart_Click(object sender, EventArgs e)
-        {
+        private void startJob(int type) {
             if (ClassHelper.QuestionYesNoStart(textBox1.Text))
             {
                 List<ParametersOracle> inParamsList = createInParamsList();
@@ -134,14 +133,19 @@ namespace QMDBO
                         table.Columns.Add(outParam.name);
                     }
                 }
-                ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.table, inParamsList, outParamsList, this.textBox1.Text);
+                ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.table, inParamsList, outParamsList, this.textBox1.Text, type);
                 backgroundWorker1.RunWorkerAsync(cw);
             }
         }
 
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            startJob(ClassWorkProcedure.SELECTED);
+        }
+
         private void buttonStartAll_Click(object sender, EventArgs e)
         {
-
+            startJob(ClassWorkProcedure.ALL);
         }
 
     }

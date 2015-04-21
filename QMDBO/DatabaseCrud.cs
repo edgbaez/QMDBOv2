@@ -362,25 +362,41 @@ namespace QMDBO
                 else if (key.Type == ParametersOracle.Out)
                 {
                     outDataGridView.Rows.Add(key.Name, key.DbType, key.Size);
-                    table.Columns.Add(key.Name);
-                    loadTableValues(table, key.KeyId, key.Name);
                 }
             }
+            loadTableValues(table, jobId);
         }
 
-        public void loadTableValues(DataTable table, int keyId, string keyName)
+        public void loadTableValues(DataTable table, int jobId)
         {
-            var query = from b in _context.Values
-                        where b.KeyId == keyId
-                        select b;
-            DataRow newRow = table.NewRow();
-            foreach (var result in query)
-            { 
-                newRow["name"] = result.Link.Name;
-                newRow["linkId"] = result.LinkId;
-                newRow[keyName] = result.KeyValue;
+            var queryKeys = from a in _context.Keys
+                            where a.JobId == jobId && a.Type == ParametersOracle.Out
+                        select a;
+            foreach (var key in queryKeys)
+            {
+                table.Columns.Add(key.Name);
+
+                var queryValues = from b in _context.Values
+                                  where b.KeyId == key.KeyId
+                                  select b;
+
+                foreach (var value in queryValues)
+                {
+                    DataRow drFound = table.Select("name = '" + value.Link.Name + "'").FirstOrDefault();
+                    if (drFound != null)
+                    {
+                        drFound[key.Name] = value.KeyValue;
+                    }
+                    else
+                    {
+                        DataRow newRow = table.NewRow();
+                        newRow["name"] = value.Link.Name;
+                        newRow["linkId"] = value.LinkId;
+                        newRow[key.Name] = value.KeyValue;
+                        table.Rows.Add(newRow);
+                    }
+                }
             }
-            table.Rows.Add(newRow);
         }
 
     }

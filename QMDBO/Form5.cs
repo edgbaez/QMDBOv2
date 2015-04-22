@@ -19,7 +19,6 @@ namespace QMDBO
         private int categoryId;
         private int jobId;
         private DataTable table = new DataTable();
-        private BindingSource bindingSource1 = new BindingSource();
         private string formName;
         Stopwatch timer;
 
@@ -37,9 +36,9 @@ namespace QMDBO
             table.Columns.Add("name");
             table.Columns.Add("linkId");
             table.Columns.Add("error");
-            table.RowChanged += new DataRowChangeEventHandler(Row_Changed);
-            bindingSource1.DataSource = table;
-            resultsDataGridView.DataSource = bindingSource1;
+            //table.RowChanged += new DataRowChangeEventHandler(Row_Changed);
+            resultsDataGridView.DataSource = table;
+
             resultsDataGridView.Columns["linkId"].Visible = false;
             if (this.jobId > 0)
             {
@@ -55,7 +54,6 @@ namespace QMDBO
 
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {
-            //this.resultsDataGridView.Invalidate();
             this.resultsDataGridView.Invoke(new MethodInvoker(() =>
             {
                 resultsDataGridView.Refresh();
@@ -103,7 +101,7 @@ namespace QMDBO
         {
             List<ParametersOracle> inParamsList = createInParamsList();
             List<ParametersOracle> outParamsList = createOutParamsList();
-            crud.saveJobProcedure(this.frm, this.Text, this.categoryId, this.textBox1.Text, inParamsList, outParamsList);
+            crud.saveJobProcedure(this.frm, this.formName, this.categoryId, this.textBox1.Text, inParamsList, outParamsList);
             crud.saveValues(this.table, this.jobId);
         }
 
@@ -133,6 +131,10 @@ namespace QMDBO
             {
                 frm.toolStripStatusLabel.Text = "Выполнено: " + e.ProgressPercentage.ToString() + "%";
             }
+            this.resultsDataGridView.Invoke(new MethodInvoker(() =>
+            {
+                resultsDataGridView.Refresh();
+            }));
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -147,28 +149,31 @@ namespace QMDBO
             {
                 frm.toolStripStatusLabel.Text = ClassHelper.CompletedText(e) + " Затраченное время: " + elapsedTime;
             }
+            //Потоки завершились. Включаю DataGridView.
             resultsDataGridView.DataSource = table;
             resultsDataGridView.Refresh();
         }
 
-        private void startJob(int type) {
-                List<ParametersOracle> inParamsList = createInParamsList();
-                List<ParametersOracle> outParamsList = createOutParamsList();
+        private void startJob(int type) 
+        {
+            List<ParametersOracle> inParamsList = createInParamsList();
+            List<ParametersOracle> outParamsList = createOutParamsList();
 
-                List<string> columnNames = new List<string>();
-                columnNames = (from dc in table.Columns.Cast<DataColumn>()
-                               select dc.ColumnName).ToList();
+            List<string> columnNames = new List<string>();
+            columnNames = (from dc in table.Columns.Cast<DataColumn>()
+                            select dc.ColumnName).ToList();
 
-                foreach (ParametersOracle outParam in outParamsList)
+            foreach (ParametersOracle outParam in outParamsList)
+            {
+                if (!columnNames.Contains(outParam.name))
                 {
-                    if (!columnNames.Contains(outParam.name))
-                    {
-                        table.Columns.Add(outParam.name);
-                    }
+                    table.Columns.Add(outParam.name);
                 }
-                resultsDataGridView.DataSource = null;
-                ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.table, inParamsList, outParamsList, this.textBox1.Text, type);
-                backgroundWorker1.RunWorkerAsync(cw);
+            }
+            //Потоки выполняются. Выключаю DataGridView на время.
+            resultsDataGridView.DataSource = null;
+            ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.table, inParamsList, outParamsList, this.textBox1.Text, type);
+            backgroundWorker1.RunWorkerAsync(cw);
         }
 
         private void buttons_Disable()

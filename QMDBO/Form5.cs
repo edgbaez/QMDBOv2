@@ -59,7 +59,7 @@ namespace QMDBO
             this.resultsDataGridView.Invoke(new MethodInvoker(() =>
             {
                 resultsDataGridView.Refresh();
-            })); ;
+            }));
         }
 
 
@@ -147,6 +147,8 @@ namespace QMDBO
             {
                 frm.toolStripStatusLabel.Text = ClassHelper.CompletedText(e) + " Затраченное время: " + elapsedTime;
             }
+            resultsDataGridView.DataSource = table;
+            resultsDataGridView.Refresh();
         }
 
         private void startJob(int type) {
@@ -164,6 +166,7 @@ namespace QMDBO
                         table.Columns.Add(outParam.name);
                     }
                 }
+                resultsDataGridView.DataSource = null;
                 ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.table, inParamsList, outParamsList, this.textBox1.Text, type);
                 backgroundWorker1.RunWorkerAsync(cw);
         }

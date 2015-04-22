@@ -172,7 +172,8 @@ namespace QMDBO
             }
             //Потоки выполняются. Выключаю DataGridView на время.
             resultsDataGridView.DataSource = null;
-            ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.table, inParamsList, outParamsList, this.textBox1.Text, type);
+            this.textBoxLogs.Text = string.Empty;
+            ClassWorkProcedure cw = new ClassWorkProcedure(this.linksDataGridView, this.textBoxLogs, this.table, inParamsList, outParamsList, this.textBox1.Text, type);
             backgroundWorker1.RunWorkerAsync(cw);
         }
 

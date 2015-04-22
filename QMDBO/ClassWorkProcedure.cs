@@ -12,6 +12,7 @@ namespace QMDBO
     class ClassWorkProcedure
     {
         private DataGridView linksDataGridView;
+        private TextBox textBoxLogs;
         private DataTable table;
         private List<ParametersOracle> inParamsList;
         private List<ParametersOracle> outParamsList;
@@ -20,9 +21,10 @@ namespace QMDBO
         public const int ALL = 2;
         private int type = 0;
 
-        public ClassWorkProcedure(DataGridView dataGridView, DataTable table, List<ParametersOracle> inParamsList, List<ParametersOracle> outParamsList, string procedureName, int type)
+        public ClassWorkProcedure(DataGridView dataGridView, TextBox textBoxLogs, DataTable table, List<ParametersOracle> inParamsList, List<ParametersOracle> outParamsList, string procedureName, int type)
         {
             this.linksDataGridView = dataGridView;
+            this.textBoxLogs = textBoxLogs;
             this.table = table;
             this.inParamsList = inParamsList;
             this.outParamsList = outParamsList;
@@ -44,6 +46,8 @@ namespace QMDBO
                                                      select row;
             }
             int count = lRows.Count();
+            //Журнал сообщений
+            string _Log = string.Empty;
             //Объект - блокировка для разграничения доступа
             object _LogLock = new object();
             //Количество потоков берутся из настроек программы
@@ -69,12 +73,13 @@ namespace QMDBO
                             );
                         string name = (row.Cells[1].Value ?? String.Empty).ToString();
                         int linkId = Convert.ToInt32(row.Cells["ColumnLinkId"].Value.ToString());
-
+                        
                         var resultList = ora.OracleProcedure(ConnectionString, procedureName, inParamsList, outParamsList);
 
                         //Потокобезопасная модификация с использованием блокировки 
                         lock (_LogLock)
                         {
+                            _Log = name;
                             if (resultList.Count > 0)
                             {
                                 DataRow drFound = table.Select("name = '" + name + "'").FirstOrDefault();
@@ -85,6 +90,7 @@ namespace QMDBO
                                         if (item.name != null)
                                         {
                                             drFound[item.name] = item.value;
+                                            _Log = _Log + " | " + item.name + ": " + item.value + "; ";
                                         }
                                     }
                                 }
@@ -98,11 +104,16 @@ namespace QMDBO
                                         if (item.name != null)
                                         {
                                             newRow[item.name] = item.value;
+                                            _Log = _Log + " | " + item.name + ": " + item.value + "; ";
                                         }
                                     }
                                     table.Rows.Add(newRow);
                                 }
                             }
+                            textBoxLogs.Invoke(new MethodInvoker(() =>
+                            {
+                                textBoxLogs.Text = textBoxLogs.Text + _Log + Environment.NewLine;
+                            }));
                         }
                         //Каждый поток имеет свой счетчик, поэтому разграничение доступа не требуется
                         //_Counts[i]++;

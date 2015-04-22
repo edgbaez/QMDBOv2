@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace QMDBO
 {
-    partial class AboutBox1 : Form
+    partial class ForrmAboutBox : Form
     {
-        public AboutBox1()
+        public ForrmAboutBox()
         {
             InitializeComponent();
             this.Text = String.Format("О {0}", AssemblyTitle);

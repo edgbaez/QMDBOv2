@@ -9,6 +9,8 @@ namespace QMDBO
 {
     public class ClassOracleConnect
     {
+        private string textExceptionConnection = "Connect failed.";
+        private string textExceptionCommand = "Statement failed.";
 
         public string OracleConnString(string host, string port, string servicename, string user, string pass)
         {
@@ -33,7 +35,7 @@ namespace QMDBO
             }
             catch (OracleException oe)
             {
-                status = "Ошибка подключения к БД Oracle." + '\n' + oe.Message;
+                status = this.textExceptionConnection + ' ' + oe.Message;
             }
             finally
             {
@@ -77,12 +79,12 @@ namespace QMDBO
                 }
                 catch (OracleException oe)
                 {
-                    result[0] = "Ошибка выполнения запроса к БД Oracle." + '\n' + oe.Message;
+                    result[0] = this.textExceptionCommand + ' ' + oe.Message;
                 }
             }
             catch (OracleException oe)
             {
-                result[0] = "Ошибка подключения к БД Oracle." + '\n' + oe.Message;
+                result[0] = this.textExceptionConnection + ' ' + oe.Message;
             }
             finally
             {
@@ -180,7 +182,7 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
                 {
                     ParametersOracle resultParam = new ParametersOracle();
                     resultParam.name = "error";
-                    resultParam.value = "Ошибка выполнения запроса к БД Oracle." + '\n' + oe.Message;
+                    resultParam.value = this.textExceptionCommand + ' ' + oe.Message;
                     resultList.Add(resultParam);
                 }
             }
@@ -188,7 +190,7 @@ SELECT WM_CONCAT(T.OBJECT_TYPE),
             {
                 ParametersOracle resultParam = new ParametersOracle();
                 resultParam.name = "error";
-                resultParam.value = "Ошибка подключения к БД Oracle." + '\n' + oe.Message;
+                resultParam.value = this.textExceptionConnection + ' ' + oe.Message;
                 resultList.Add(resultParam);
             }
             finally

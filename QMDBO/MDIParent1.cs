@@ -131,12 +131,6 @@ namespace QMDBO
             }
         }
 
-        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcessStartInfo sInfo = new ProcessStartInfo("http://mazdik.ru/?p=716");
-            Process.Start(sInfo);
-        }
-
         private void toolStripStatusLabel_TextChanged(object sender, EventArgs e)
         {
             statusStrip.Refresh();

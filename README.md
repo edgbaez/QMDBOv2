@@ -6,14 +6,14 @@ Program to query multiple databases Oracle
 <br><br>
 C# NET Framework 4.5.1
 <br>
-EntityFramework 6.1.2
+EntityFramework
 <br>
-System.Data.SQLite 1.0.94.1
+System.Data.SQLite
 <br>
-System.Data.SQLite.Core 1.0.94.0
+System.Data.SQLite.Core
 <br>
-System.Data.SQLite.EF6 1.0.94.0
+System.Data.SQLite.EF6
 <br>
-System.Data.SQLite.Linq 1.0.94.1
+System.Data.SQLite.Linq
 <br>
-Oracle Data Access Components (ODAC) for Windows
+Oracle.ManagedDataAccess
